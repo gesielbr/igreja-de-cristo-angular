@@ -1,0 +1,38 @@
+<section
+  *ngFor="let section of sections()"
+  [attr.aria-labelledby]="section.id"
+  [class]="extraClass()"
+  [class.mb-3]="variant() === 'mobile'"
+>
+  <h2 class="fs-6 text-uppercase text-gold letter-spacing" [id]="section.id">
+    {{ section.title }}
+  </h2>
+
+  @if (section.description) {
+    @for (item of section.description; track item) {
+      <p class="small mb-1">
+        {{ item }}
+      </p>
+    }
+  }
+
+  @for (link of section.links; track link.href) {
+    <a
+      class="btn w-100"
+      [class.mb-2]="variant() === 'desktop'"
+      [class.mb-1]="variant() === 'mobile'"
+      [class.btn-outline-light]="link.variant === 'outline'"
+      [class.btn-gold]="link.variant === 'gold'"
+      [href]="link.href"
+      [attr.aria-label]="link.ariaLabel ?? link.label"
+      [attr.target]="link.external ? '_blank' : null"
+      [attr.rel]="link.external ? 'noopener noreferrer' : null"
+    >
+      @if (link.icon) {
+        <i aria-hidden="true" class="bi me-1" [ngClass]="link.icon"></i>
+      }
+
+      {{ link.label }}
+    </a>
+  }
+</section>

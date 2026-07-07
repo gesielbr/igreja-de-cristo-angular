@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Igreja de Cristo">
+  <rect width="120" height="120" rx="24" fill="#163b67"/>
+  <path d="M60 18v74M40 41h40" stroke="#d4af37" stroke-width="8" stroke-linecap="round"/>
+  <path d="M24 96c10-10 20-14 36-14s26 4 36 14" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+</svg>

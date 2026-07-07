@@ -1,1 +1,548 @@
-/* You can add global styles to this file, and also import other style files */
+/* =========================================================
+   Igreja de Cristo - Design System Global
+   Bootstrap Custom Layer (Angular)
+   ========================================================= */
+
+/* =========================
+   1. Design Tokens
+   ========================= */
+
+:root {
+  /* Brand Colors */
+  --brand-primary: #163b67;
+  --brand-primary-soft: #214f7a;
+  --brand-primary-dark: #102945;
+
+  --brand-accent: #d4af37;
+  --brand-accent-dark: #b79322;
+  --brand-accent-soft: rgba(212, 175, 55, 0.16);
+
+  /* Neutral Colors */
+  --brand-white: #ffffff;
+  --brand-gray-50: #fbfcfe;
+  --brand-gray-100: #f3f4f6;
+  --brand-gray-300: #d9dee7;
+  --brand-gray-700: #273142;
+  --brand-gray-900: #111827;
+
+  /* Semantic Colors */
+  --brand-body-bg: var(--brand-gray-100);
+  --brand-body-color: var(--brand-gray-700);
+  --brand-surface: var(--brand-white);
+  --brand-surface-soft: var(--brand-gray-50);
+
+  /* WhatsApp */
+  --brand-whatsapp: #25d366;
+  --brand-whatsapp-shadow: rgba(37, 211, 102, 0.6);
+
+  /* Borders and Shadows */
+  --brand-border-light: rgba(255, 255, 255, 0.22);
+  --brand-border-dark: rgba(16, 41, 69, 0.12);
+
+  --brand-shadow-soft: 0 1rem 2.5rem rgba(22, 59, 103, 0.12);
+  --brand-shadow-whatsapp: 0 10px 26px -6px var(--brand-whatsapp-shadow);
+
+  /* Motion */
+  --brand-transition-fast: 0.2s ease;
+  --brand-transition-base: 0.25s ease;
+  --brand-transition-slow: 0.45s ease;
+
+  /* Layout */
+  --sidebar-height: 100vh;
+  --hero-min-height: 520px;
+  --hero-max-height: 760px;
+
+  /* Typography (NOVO — causa raiz da fonte "menor") */
+  --brand-font-family:
+    'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --brand-font-size-base: 1rem;
+  --brand-line-height-base: 1.5;
+
+  /* Bootstrap Overrides */
+  --bs-primary: var(--brand-primary);
+  --bs-primary-rgb: 22, 59, 103;
+
+  --bs-warning: var(--brand-accent);
+  --bs-warning-rgb: 212, 175, 55;
+
+  --bs-body-color: var(--brand-body-color);
+  --bs-body-bg: var(--brand-body-bg);
+
+  /* Bootstrap expõe estas custom properties a partir da v5.3;
+     sobrescrevendo aqui, todos os componentes do CDN (nav, cards,
+     buttons, sidebar-link etc.) herdam o Open Sans automaticamente,
+     sem precisar recompilar o Bootstrap via SCSS. */
+  --bs-font-sans-serif: var(--brand-font-family);
+  --bs-body-font-family: var(--brand-font-family);
+  --bs-body-font-size: var(--brand-font-size-base);
+  --bs-body-line-height: var(--brand-line-height-base);
+}
+
+/* =========================
+   2. Base
+   ========================= */
+
+html {
+  /* garante 1rem = 16px reais, independente de reset/zoom herdado
+     de outro global style do Angular (ex: Angular Material) */
+  font-size: 100%;
+}
+
+body {
+  font-family: var(--brand-font-family);
+  font-size: var(--brand-font-size-base);
+  line-height: var(--brand-line-height-base);
+  background-color: var(--brand-body-bg);
+  color: var(--brand-body-color);
+
+  /* Font Smoothing */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* =========================
+   3. Brand Utilities
+   ========================= */
+
+.bg-brand {
+  background-color: var(--brand-primary-soft) !important;
+}
+
+.bg-brand-dark {
+  background-color: var(--brand-primary-dark) !important;
+}
+
+.bg-soft {
+  background-color: var(--brand-gray-100) !important;
+}
+
+.bg-soft-light {
+  background-color: var(--brand-surface-soft) !important;
+}
+
+.text-brand {
+  color: var(--brand-primary) !important;
+}
+
+.text-gold {
+  color: var(--brand-accent) !important;
+}
+
+.border-gold {
+  border-color: var(--brand-accent) !important;
+}
+
+.letter-spacing {
+  letter-spacing: 0.12em;
+}
+
+/* =========================
+   4. Buttons
+   ========================= */
+
+.btn-gold {
+  --bs-btn-color: var(--brand-primary-dark);
+  --bs-btn-bg: var(--brand-accent);
+  --bs-btn-border-color: var(--brand-accent);
+
+  --bs-btn-hover-color: var(--brand-white);
+  --bs-btn-hover-bg: var(--brand-accent-dark);
+  --bs-btn-hover-border-color: var(--brand-accent-dark);
+
+  --bs-btn-active-color: var(--brand-white);
+  --bs-btn-active-bg: var(--brand-accent-dark);
+  --bs-btn-active-border-color: var(--brand-accent-dark);
+
+  font-weight: 600;
+}
+
+/* =========================
+   5. Layout
+   ========================= */
+
+.sidebar {
+  height: var(--sidebar-height);
+  overflow-y: auto;
+}
+
+.content-rounded {
+  overflow: hidden;
+}
+
+/* =========================
+   6. Navigation
+   ========================= */
+
+.sidebar-link {
+  color: var(--brand-white);
+  transition:
+    background-color var(--brand-transition-fast),
+    color var(--brand-transition-fast);
+}
+
+.sidebar-link:hover,
+.sidebar-link:focus,
+.sidebar-link.active {
+  background-color: rgba(212, 175, 55, 0.15);
+  color: var(--brand-white);
+}
+
+.sidebar-link.active {
+  border-left: 0.25rem solid var(--brand-accent);
+}
+
+/* =========================
+   7. Shared Components
+   ========================= */
+
+.gold-rule {
+  width: 4.25rem;
+  height: 0.2rem;
+  background-color: var(--brand-accent);
+}
+
+.section-kicker {
+  color: var(--brand-accent-dark);
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.hover-lift {
+  transition:
+    transform var(--brand-transition-fast),
+    box-shadow var(--brand-transition-fast);
+}
+
+.hover-lift:hover {
+  transform: translateY(-0.2rem);
+  box-shadow: var(--bs-box-shadow-lg) !important;
+}
+
+.social-link {
+  align-items: center;
+  display: inline-flex;
+  height: 2.5rem;
+  justify-content: center;
+  width: 2.5rem;
+}
+
+/* =========================
+   8. Hero
+   ========================= */
+
+.hero-slide {
+  height: 100vh;
+  min-height: var(--hero-min-height);
+  max-height: var(--hero-max-height);
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.75);
+}
+
+.hero-caption {
+  max-width: 46rem;
+}
+
+.page-hero {
+  background:
+    linear-gradient(100deg, rgba(32, 78, 124, 0.82), rgba(73, 124, 174, 0.5)),
+    url('/assets/img/culto-igreja-de-cristo.png') center / cover;
+}
+
+/* =========================
+   9. Cards
+   ========================= */
+
+.mission-card {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform var(--brand-transition-base),
+    box-shadow var(--brand-transition-base);
+}
+
+.mission-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 0.35rem;
+  background: var(--brand-accent);
+}
+
+.mission-card:hover {
+  transform: translateY(-0.35rem);
+  box-shadow: var(--brand-shadow-soft) !important;
+}
+
+.mission-icon {
+  width: 4rem;
+  height: 4rem;
+  color: var(--brand-primary);
+  background: var(--brand-accent-soft);
+}
+
+.mission-card-feature {
+  background:
+    linear-gradient(135deg, rgba(22, 59, 103, 0.04), rgba(212, 175, 55, 0.1)), var(--brand-white);
+}
+
+/* =========================
+   10. Events
+   ========================= */
+
+.event-date {
+  min-width: 5rem;
+
+  strong {
+    font-size: 18px !important;
+  }
+}
+
+/* =========================
+   11. Gallery
+   ========================= */
+
+.gallery-image {
+  height: 16rem;
+  object-fit: cover;
+}
+
+.gallery-trigger {
+  background: var(--brand-primary-dark);
+  cursor: zoom-in;
+}
+
+.gallery-trigger img {
+  transition:
+    transform var(--brand-transition-slow),
+    opacity var(--brand-transition-base);
+}
+
+.gallery-trigger:hover img,
+.gallery-trigger:focus-visible img {
+  transform: scale(1.045);
+  opacity: 0.88;
+}
+
+.gallery-trigger:focus-visible {
+  outline: 0.2rem solid var(--brand-accent);
+  outline-offset: 0.18rem;
+}
+
+.gallery-feature img {
+  height: 32rem;
+  object-fit: cover;
+}
+
+.gallery-thumb,
+.gallery-wide-thumb {
+  min-height: 15.45rem;
+  object-fit: cover;
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(16, 41, 69, 0.82), transparent 46%);
+}
+
+.gallery-zoom {
+  align-items: center;
+  background-color: rgba(16, 41, 69, 0.7);
+  border: 1px solid var(--brand-border-light);
+  border-radius: 50rem;
+  bottom: 1rem;
+  color: var(--brand-white);
+  display: inline-flex;
+  height: 2.6rem;
+  justify-content: center;
+  opacity: 0;
+  position: absolute;
+  right: 1rem;
+  transition: opacity var(--brand-transition-base);
+  width: 2.6rem;
+}
+
+.gallery-trigger:hover .gallery-zoom,
+.gallery-trigger:focus-visible .gallery-zoom {
+  opacity: 1;
+}
+
+.album-photo img {
+  height: 17rem;
+  object-fit: cover;
+}
+
+.gallery-modal .modal-content {
+  min-height: min(86vh, 54rem);
+}
+
+.gallery-lightbox-image {
+  max-height: calc(86vh - 10rem);
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.gallery-nav {
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--brand-border-light);
+  border-radius: 50%;
+  color: var(--brand-white);
+  font-size: 1.35rem;
+  height: 3.25rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3.25rem;
+  z-index: 2;
+}
+
+.gallery-nav:hover,
+.gallery-nav:focus {
+  background-color: var(--brand-accent);
+  color: var(--brand-primary-dark);
+}
+
+.gallery-nav-prev {
+  left: 1rem;
+}
+
+.gallery-nav-next {
+  right: 1rem;
+}
+
+/* =========================
+   12. Forms
+   ========================= */
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.2);
+}
+
+/* =========================
+   13. Floating WhatsApp
+   ========================= */
+
+.whatsapp-float {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--brand-whatsapp);
+  color: var(--brand-white);
+  font-size: 1.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--brand-shadow-whatsapp);
+  transition: transform var(--brand-transition-fast);
+  animation: pulse-whats 2.4s ease infinite;
+  z-index: 1040;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+}
+
+@keyframes pulse-whats {
+  0% {
+    box-shadow: 0 0 0 0 var(--brand-whatsapp-shadow);
+  }
+
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+/* =========================
+   14. Bootstrap Adjustments
+   ========================= */
+
+.text-secondary {
+  color: var(--brand-gray-700) !important;
+}
+
+.display-4 {
+  font-size: calc(1.475rem + 2vw);
+}
+
+.carousel-indicators {
+  margin-bottom: 5rem;
+}
+
+/* =========================
+   15. Responsive
+   ========================= */
+
+@media (min-width: 992px) {
+  .content-rounded {
+    border-top-left-radius: 1.5rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .gallery-feature img {
+    height: 23rem;
+  }
+
+  .gallery-thumb,
+  .gallery-wide-thumb {
+    min-height: 12rem;
+    height: 12rem !important;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hero-slide {
+    height: calc(100vh - 88px);
+    min-height: 560px;
+    max-height: none;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .hero-slide-mobile-right {
+    object-position: 75% center;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .gallery-feature img {
+    height: 19rem;
+  }
+
+  .album-photo img {
+    height: 14rem;
+  }
+
+  .gallery-nav {
+    height: 2.75rem;
+    width: 2.75rem;
+  }
+
+  .gallery-nav-prev {
+    left: 0.5rem;
+  }
+
+  .gallery-nav-next {
+    right: 0.5rem;
+  }
+
+  .carousel-indicators {
+    margin-bottom: 0;
+  }
+}
