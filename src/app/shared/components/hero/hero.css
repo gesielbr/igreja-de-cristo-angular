@@ -1,0 +1,50 @@
+/* ============================================
+   HERO COMPONENT - Estilos específicos
+   ============================================ */
+
+/* Estilo principal das imagens do hero */
+.hero-slide {
+  height: 100vh;
+  min-height: 520px;
+  max-height: 760px;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.75);
+}
+
+/* Container do texto/caption */
+.hero-caption {
+  max-width: 46rem;
+}
+
+/* Ajuste dos indicadores do carousel */
+.carousel-indicators {
+  margin-bottom: 5rem;
+}
+
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
+
+/* Tablets e dispositivos médios */
+@media (max-width: 767.98px) {
+  .hero-slide {
+    height: calc(100vh - 88px); /* Desconta altura do header mobile */
+    min-height: 560px;
+    max-height: none;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  /* Classe opcional para posicionar imagem à direita em mobile */
+  .hero-slide-mobile-right {
+    object-position: 75% center;
+  }
+}
+
+/* Mobile pequeno - ajuste dos indicadores */
+@media (max-width: 575.98px) {
+  .carousel-indicators {
+    margin-bottom: 0;
+  }
+}

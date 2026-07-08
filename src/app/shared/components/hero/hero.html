@@ -1,0 +1,56 @@
+<section class="hero">
+  <div
+    id="heroCarousel"
+    class="carousel slide"
+    data-bs-ride="carousel"
+    data-bs-interval="5000"
+    data-bs-pause="hover"
+  >
+    <div class="carousel-inner">
+      @for (slide of slides(); track slide.image; let first = $first) {
+        <div class="carousel-item" [class.active]="first">
+          <img
+            [src]="slide.image"
+            [alt]="slide.alt"
+            class="d-block w-100 hero-slide"
+            [class]="slide.imageClass || ''"
+            [attr.loading]="slide.loading"
+          />
+          <div class="carousel-caption d-flex h-100 align-items-center text-start">
+            <div class="hero-caption">
+              <p class="section-kicker text-gold text-uppercase fw-semibold letter-spacing">
+                {{ slide.kicker }}
+              </p>
+
+              <h1 class="display-4 fw-bold text-white">
+                {{ slide.title }}
+              </h1>
+
+              @if (slide.description) {
+                <p class="lead text-white">
+                  {{ slide.description }}
+                </p>
+              }
+
+              <a class="btn btn-gold mt-3" [href]="slide.buttonLink">
+                {{ slide.buttonText }}
+              </a>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+    <div class="carousel-indicators">
+      @for (slide of slides(); track slide.image; let index = $index; let first = $first) {
+        <button
+          type="button"
+          data-bs-target="#heroCarousel"
+          [attr.data-bs-slide-to]="index"
+          [class.active]="first"
+          [attr.aria-label]="'Slide ' + (index + 1)"
+          [attr.aria-current]="first ? 'true' : null"
+        ></button>
+      }
+    </div>
+  </div>
+</section>
