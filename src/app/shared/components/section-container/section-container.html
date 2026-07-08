@@ -1,0 +1,22 @@
+<section
+  [id]="sectionId()"
+  [attr.aria-labelledby]="labelledBy()"
+  [class]="bgClass() + ' py-5 px-4 px-md-5'"
+>
+  <!-- Header da seção -->
+  <header class="text-center mx-auto mb-5" [style.max-width]="headerMaxWidth()">
+    @if (kicker()) {
+      <span class="section-kicker">{{ kicker() }}</span>
+    }
+    <h2 class="display-6 fw-bold text-brand" [id]="headerId()">
+      {{ title() }}
+    </h2>
+    <span aria-hidden="true" class="gold-rule d-block mx-auto my-3"></span>
+    @if (description()) {
+      <p class="text-secondary">{{ description() }}</p>
+    }
+  </header>
+
+  <!-- Conteúdo dos cards (será projetado via ng-content) -->
+  <ng-content></ng-content>
+</section>

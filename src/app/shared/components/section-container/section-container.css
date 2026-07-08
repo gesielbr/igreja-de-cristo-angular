@@ -1,0 +1,16 @@
+/* REMOVER DO GLOBAL - VAI PARA SECTION-CONTAINER.CSS */
+.gold-rule {
+  width: 4.25rem;
+  height: 0.2rem;
+  background-color: var(--brand-accent);
+}
+
+.section-kicker {
+  color: var(--brand-accent-dark);
+  display: inline-block;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}

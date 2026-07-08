@@ -1,11 +1,4 @@
-/* =========================================================
-   Igreja de Cristo - Design System Global
-   Bootstrap Custom Layer (Angular)
-   ========================================================= */
-
-/* =========================
-   1. Design Tokens
-   ========================= */
+/* TUDO ISSO FICA NO GLOBAL - NÃO REMOVA */
 
 :root {
   /* Brand Colors */
@@ -52,7 +45,7 @@
   --hero-min-height: 520px;
   --hero-max-height: 760px;
 
-  /* Typography (NOVO — causa raiz da fonte "menor") */
+  /* Typography */
   --brand-font-family:
     'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --brand-font-size-base: 1rem;
@@ -68,23 +61,13 @@
   --bs-body-color: var(--brand-body-color);
   --bs-body-bg: var(--brand-body-bg);
 
-  /* Bootstrap expõe estas custom properties a partir da v5.3;
-     sobrescrevendo aqui, todos os componentes do CDN (nav, cards,
-     buttons, sidebar-link etc.) herdam o Open Sans automaticamente,
-     sem precisar recompilar o Bootstrap via SCSS. */
   --bs-font-sans-serif: var(--brand-font-family);
   --bs-body-font-family: var(--brand-font-family);
   --bs-body-font-size: var(--brand-font-size-base);
   --bs-body-line-height: var(--brand-line-height-base);
 }
 
-/* =========================
-   2. Base
-   ========================= */
-
 html {
-  /* garante 1rem = 16px reais, independente de reset/zoom herdado
-     de outro global style do Angular (ex: Angular Material) */
   font-size: 100%;
 }
 
@@ -94,17 +77,12 @@ body {
   line-height: var(--brand-line-height-base);
   background-color: var(--brand-body-bg);
   color: var(--brand-body-color);
-
-  /* Font Smoothing */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-/* =========================
-   3. Brand Utilities
-   ========================= */
-
+/* Brand Utilities */
 .bg-brand {
   background-color: var(--brand-primary-soft) !important;
 }
@@ -137,30 +115,21 @@ body {
   letter-spacing: 0.12em;
 }
 
-/* =========================
-   4. Buttons
-   ========================= */
-
+/* Buttons */
 .btn-gold {
   --bs-btn-color: var(--brand-primary-dark);
   --bs-btn-bg: var(--brand-accent);
   --bs-btn-border-color: var(--brand-accent);
-
   --bs-btn-hover-color: var(--brand-white);
   --bs-btn-hover-bg: var(--brand-accent-dark);
   --bs-btn-hover-border-color: var(--brand-accent-dark);
-
   --bs-btn-active-color: var(--brand-white);
   --bs-btn-active-bg: var(--brand-accent-dark);
   --bs-btn-active-border-color: var(--brand-accent-dark);
-
   font-weight: 600;
 }
 
-/* =========================
-   5. Layout
-   ========================= */
-
+/* Layout */
 .sidebar {
   height: var(--sidebar-height);
   overflow-y: auto;
@@ -170,10 +139,7 @@ body {
   overflow: hidden;
 }
 
-/* =========================
-   6. Navigation
-   ========================= */
-
+/* Navigation */
 .sidebar-link {
   color: var(--brand-white);
   transition:
@@ -192,59 +158,14 @@ body {
   border-left: 0.25rem solid var(--brand-accent);
 }
 
-/* =========================
-   7. Shared Components
-   ========================= */
-
-.gold-rule {
-  width: 4.25rem;
-  height: 0.2rem;
-  background-color: var(--brand-accent);
-}
-
-.section-kicker {
-  color: var(--brand-accent-dark);
-  display: inline-block;
-  font-size: 1.25rem;
-  font-weight: 800;
-  letter-spacing: 0.28em;
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
-}
-
-.hover-lift {
-  transition:
-    transform var(--brand-transition-fast),
-    box-shadow var(--brand-transition-fast);
-}
-
-.hover-lift:hover {
-  transform: translateY(-0.2rem);
-  box-shadow: var(--bs-box-shadow-lg) !important;
-}
-
-.social-link {
-  align-items: center;
-  display: inline-flex;
-  height: 2.5rem;
-  justify-content: center;
-  width: 2.5rem;
-}
-
-/* =========================
-   8. Page Hero (usado em outras páginas)
-   ========================= */
-
+/* Page Hero */
 .page-hero {
   background:
     linear-gradient(100deg, rgba(32, 78, 124, 0.82), rgba(73, 124, 174, 0.5)),
     url('/assets/img/culto-igreja-de-cristo.png') center / cover;
 }
 
-/* =========================
-   9. Cards
-   ========================= */
-
+/* Cards - APENAS O QUE É ESPECÍFICO DO MISSION CARD */
 .mission-card {
   position: relative;
   overflow: hidden;
@@ -278,22 +199,16 @@ body {
     linear-gradient(135deg, rgba(22, 59, 103, 0.04), rgba(212, 175, 55, 0.1)), var(--brand-white);
 }
 
-/* =========================
-   10. Events
-   ========================= */
-
+/* Events */
 .event-date {
   min-width: 5rem;
-
-  strong {
-    font-size: 18px !important;
-  }
 }
 
-/* =========================
-   11. Gallery
-   ========================= */
+.event-date strong {
+  font-size: 18px !important;
+}
 
+/* Gallery */
 .gallery-image {
   height: 16rem;
   object-fit: cover;
@@ -403,20 +318,14 @@ body {
   right: 1rem;
 }
 
-/* =========================
-   12. Forms
-   ========================= */
-
+/* Forms */
 .form-control:focus,
 .form-select:focus {
   border-color: var(--brand-accent);
   box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.2);
 }
 
-/* =========================
-   13. Floating WhatsApp
-   ========================= */
-
+/* Floating WhatsApp */
 .whatsapp-float {
   position: fixed;
   right: 22px;
@@ -445,20 +354,15 @@ body {
   0% {
     box-shadow: 0 0 0 0 var(--brand-whatsapp-shadow);
   }
-
   70% {
     box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
   }
-
   100% {
     box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
   }
 }
 
-/* =========================
-   14. Bootstrap Adjustments
-   ========================= */
-
+/* Bootstrap Adjustments */
 .text-secondary {
   color: var(--brand-gray-700) !important;
 }
@@ -467,10 +371,7 @@ body {
   font-size: calc(1.475rem + 2vw);
 }
 
-/* =========================
-   15. Responsive
-   ========================= */
-
+/* Responsive */
 @media (min-width: 992px) {
   .content-rounded {
     border-top-left-radius: 1.5rem;
@@ -481,7 +382,6 @@ body {
   .gallery-feature img {
     height: 23rem;
   }
-
   .gallery-thumb,
   .gallery-wide-thumb {
     min-height: 12rem;
@@ -493,20 +393,16 @@ body {
   .gallery-feature img {
     height: 19rem;
   }
-
   .album-photo img {
     height: 14rem;
   }
-
   .gallery-nav {
     height: 2.75rem;
     width: 2.75rem;
   }
-
   .gallery-nav-prev {
     left: 0.5rem;
   }
-
   .gallery-nav-next {
     right: 0.5rem;
   }
