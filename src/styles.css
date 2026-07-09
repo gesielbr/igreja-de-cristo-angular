@@ -165,38 +165,16 @@ body {
     url('/assets/img/culto-igreja-de-cristo.png') center / cover;
 }
 
-/* Cards - APENAS O QUE É ESPECÍFICO DO MISSION CARD */
-.mission-card {
-  position: relative;
-  overflow: hidden;
+/* Hover Lift - Utilitário reutilizável */
+.hover-lift {
   transition:
-    transform var(--brand-transition-base),
-    box-shadow var(--brand-transition-base);
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-.mission-card::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto;
-  height: 0.35rem;
-  background: var(--brand-accent);
-}
-
-.mission-card:hover {
+.hover-lift:hover {
   transform: translateY(-0.35rem);
   box-shadow: var(--brand-shadow-soft) !important;
-}
-
-.mission-icon {
-  width: 4rem;
-  height: 4rem;
-  color: var(--brand-primary);
-  background: var(--brand-accent-soft);
-}
-
-.mission-card-feature {
-  background:
-    linear-gradient(135deg, rgba(22, 59, 103, 0.04), rgba(212, 175, 55, 0.1)), var(--brand-white);
 }
 
 /* Events */

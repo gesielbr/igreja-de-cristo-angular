@@ -1,0 +1,47 @@
+/* Estilos específicos do Church Card */
+
+/* Garantir fundo branco e altura uniforme */
+.card {
+  background-color: var(--brand-white) !important;
+  height: 100%;
+}
+
+/* Garantir que o footer fique sempre no final */
+.card-body {
+  flex: 1 1 auto;
+}
+
+/* Ajustes específicos do card footer */
+.card-footer {
+  background-color: var(--brand-white) !important;
+}
+
+/* Hover lift - efeito de elevação */
+.hover-lift {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-0.35rem);
+  box-shadow: var(--brand-shadow-soft) !important;
+}
+
+/* Animações dos ícones sociais */
+.social-link {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.social-link:hover {
+  transform: scale(1.1);
+}
+
+.social-link .bi {
+  transition: transform 0.2s ease;
+}
+
+.social-link:hover .bi {
+  transform: scale(1.1);
+}

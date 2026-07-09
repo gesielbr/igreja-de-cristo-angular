@@ -1,0 +1,89 @@
+<div class="card border-0 shadow-sm h-100 hover-lift w-100">
+  <div class="card-body p-4 d-flex flex-column">
+    <i aria-hidden="true" class="bi bi-geo-alt text-gold fs-1"></i>
+
+    <h4 class="h5 text-brand mt-3">
+      {{ churchName() }}
+    </h4>
+
+    <p class="text-secondary mb-3 flex-grow-1">
+      {{ churchDescription() }}
+    </p>
+
+    <address class="text-secondary small mb-4">
+      <i aria-hidden="true" class="bi bi-pin-map text-gold me-1"></i>
+      {{ churchAddress() }}
+    </address>
+
+    <a
+      aria-label="Conhecer a {{ churchName() }} em uma nova aba"
+      class="btn btn-outline-primary w-100 mt-auto align-self-start"
+      [href]="churchLink()"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Conhecer igreja
+    </a>
+  </div>
+
+  <footer class="card-footer bg-white border-0 pt-0 px-4 pb-4">
+    <nav
+      aria-label="Redes e contatos da {{ churchName() }}"
+      class="d-flex align-items-center gap-3 flex-wrap"
+    >
+      <a
+        aria-label="Site da {{ churchName() }} em uma nova aba"
+        class="text-brand fs-5"
+        [href]="churchLink()"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <i aria-hidden="true" class="bi bi-globe2"></i>
+      </a>
+
+      <a
+        aria-label="WhatsApp da {{ churchName() }} em uma nova aba"
+        class="text-brand fs-5"
+        [href]="whatsappLink()"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <i aria-hidden="true" class="bi bi-whatsapp"></i>
+      </a>
+
+      <a aria-label="E-mail da {{ churchName() }}" class="text-brand fs-5" [href]="emailLink()">
+        <i aria-hidden="true" class="bi bi-envelope"></i>
+      </a>
+
+      <a
+        aria-label="Instagram da {{ churchName() }} em uma nova aba"
+        class="text-brand fs-5"
+        [href]="instagramLink()"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <i aria-hidden="true" class="bi bi-instagram"></i>
+      </a>
+
+      <a
+        aria-label="Facebook da {{ churchName() }} em uma nova aba"
+        class="text-brand fs-5"
+        [href]="facebookLink()"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <i aria-hidden="true" class="bi bi-facebook"></i>
+      </a>
+
+      <a
+        aria-label="Abrir endereço da {{ churchName() }} no Google Maps em uma nova aba"
+        class="text-brand fs-5"
+        [href]="mapsLink()"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <i aria-hidden="true" class="bi bi-map"></i>
+      </a>
+    </nav>
+  </footer>
+</div>
