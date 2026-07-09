@@ -385,3 +385,21 @@ body {
     right: 0.5rem;
   }
 }
+
+.btn-outline-brand {
+  color: var(--brand-primary);
+  border: 1px solid var(--brand-primary);
+}
+
+.btn-outline-brand:hover,
+.btn-outline-brand:focus,
+.btn-outline-brand:active,
+.btn-outline-brand.active {
+  color: #fff;
+  background-color: var(--brand-primary);
+  border-color: var(--brand-primary);
+}
+
+.btn-outline-brand:focus {
+  box-shadow: 0 0 0 0.25rem rgba(var(--brand-primary-rgb), 0.25);
+}

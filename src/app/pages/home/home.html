@@ -12,21 +12,21 @@
   headerMaxWidth="46rem"
 >
   <div class="row g-4">
-    <div class="col">
+    <div class="col-12 col-md-6 col-lg-4 col-xl-4">
       <app-section-card
         icon="bi bi-plus-lg"
         title="Cristo"
         description="Jesus Cristo é o fundamento da nossa fé, da nossa esperança e da nossa missão."
       />
     </div>
-    <div class="col">
+    <div class="col-12 col-md-6 col-lg-4 col-xl-4">
       <app-section-card
         icon="bi bi-people"
         title="Evangelho"
         description="Anunciamos a boa notícia da salvação, chamando pessoas a conhecerem a graça e o amor de Deus."
       />
     </div>
-    <div class="col">
+    <div class="col-12 col-md-12 col-lg-4 col-xl-4">
       <app-section-card
         icon="bi bi-book"
         title="Bíblia"
@@ -47,15 +47,39 @@
   headerId="igrejas"
   headerMaxWidth="46rem"
 >
+  <!-- Grid de igrejas -->
   <div class="row g-4">
-    <div class="col-12 col-md-6 col-lg-4">
+    <div class="col-12 col-md-6 col-lg-4 col-xl-4">
       <app-church-card />
     </div>
-    <div class="col-12 col-md-6 col-lg-4">
+    <div class="col-12 col-md-6 col-lg-4 col-xl-4">
       <app-church-card />
     </div>
-    <div class="col-12 col-md-6 col-lg-4">
+    <div class="col-12 col-md-12 col-lg-4 col-xl-4">
       <app-church-card />
     </div>
+  </div>
+
+  <!-- Botão centralizado fora do grid -->
+  <div class="text-center mt-5">
+    <!-- Desktop e tablets -->
+    <a
+      aria-label="Ver todas as igrejas locais da Igreja de Cristo"
+      href="/igrejas"
+      class="btn btn-outline-primary btn-lg px-5 py-3 d-none d-md-inline-block"
+    >
+      <i aria-hidden="true" class="bi bi-geo-alt me-2"></i>
+      Ver todas as igrejas
+    </a>
+
+    <!-- Mobile -->
+    <a
+      aria-label="Ver todas as igrejas locais da Igreja de Cristo"
+      href="/igrejas"
+      class="btn btn-outline-primary w-100 py-2 d-inline-block d-md-none"
+    >
+      <i aria-hidden="true" class="bi bi-geo-alt me-2"></i>
+      Ver todas as igrejas
+    </a>
   </div>
 </app-section-container>

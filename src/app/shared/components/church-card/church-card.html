@@ -33,7 +33,7 @@
     >
       <a
         aria-label="Site da {{ churchName() }} em uma nova aba"
-        class="text-brand fs-5"
+        class="text-brand fs-5 social-link"
         [href]="churchLink()"
         rel="noopener noreferrer"
         target="_blank"
@@ -43,7 +43,7 @@
 
       <a
         aria-label="WhatsApp da {{ churchName() }} em uma nova aba"
-        class="text-brand fs-5"
+        class="text-brand fs-5 social-link"
         [href]="whatsappLink()"
         rel="noopener noreferrer"
         target="_blank"
@@ -51,13 +51,17 @@
         <i aria-hidden="true" class="bi bi-whatsapp"></i>
       </a>
 
-      <a aria-label="E-mail da {{ churchName() }}" class="text-brand fs-5" [href]="emailLink()">
+      <a
+        aria-label="E-mail da {{ churchName() }}"
+        class="text-brand fs-5 social-link"
+        [href]="emailLink()"
+      >
         <i aria-hidden="true" class="bi bi-envelope"></i>
       </a>
 
       <a
         aria-label="Instagram da {{ churchName() }} em uma nova aba"
-        class="text-brand fs-5"
+        class="text-brand fs-5 social-link"
         [href]="instagramLink()"
         rel="noopener noreferrer"
         target="_blank"
@@ -67,7 +71,7 @@
 
       <a
         aria-label="Facebook da {{ churchName() }} em uma nova aba"
-        class="text-brand fs-5"
+        class="text-brand fs-5 social-link"
         [href]="facebookLink()"
         rel="noopener noreferrer"
         target="_blank"
@@ -77,7 +81,7 @@
 
       <a
         aria-label="Abrir endereço da {{ churchName() }} no Google Maps em uma nova aba"
-        class="text-brand fs-5"
+        class="text-brand fs-5 social-link"
         [href]="mapsLink()"
         rel="noopener noreferrer"
         target="_blank"
