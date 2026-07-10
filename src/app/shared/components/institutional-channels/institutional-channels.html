@@ -1,0 +1,28 @@
+<div class="card border-0 shadow-sm p-4 bg-white">
+  <h3 class="h5 fw-semibold mb-4">{{ title$() }}</h3>
+
+  <div class="d-flex flex-column gap-3">
+    @for (channel of channels$(); track channel.url; let first = $first) {
+      <div>
+        @if (!first) {
+          <hr class="my-1" />
+        }
+
+        <a
+          class="channel-link d-flex align-items-center gap-3 text-decoration-none text-dark"
+          [href]="channel.url"
+          [target]="channel.target || '_self'"
+          [rel]="channel.rel || ''"
+          [attr.aria-label]="channel.ariaLabel || 'Acessar ' + channel.title"
+        >
+          <i [class]="'bi ' + channel.icon + ' fs-3 text-brand'" aria-hidden="true"></i>
+
+          <div>
+            <div class="fw-semibold">{{ channel.title }}</div>
+            <small class="text-muted">{{ channel.value }}</small>
+          </div>
+        </a>
+      </div>
+    }
+  </div>
+</div>

@@ -150,3 +150,33 @@
     </a>
   </div>
 </app-section-container>
+
+<app-section-container
+  bgClass="bg-soft"
+  sectionId="contato-home"
+  labelledBy="contato-home"
+  kicker="Fale conosco"
+  title="Quer saber mais sobre a Igreja de Cristo?"
+  description="Entre em contato para saber mais sobre nossa fé, nossas comunidades locais ou para receber orientação sobre uma Igreja de Cristo próxima de você."
+  headerId="contato-home"
+  headerMaxWidth="46rem"
+>
+  <div class="row align-items-center g-5">
+    <div class="col-lg-5">
+      <h2 class="fw-bold text-brand">Você é bem-vindo</h2>
+      <p class="text-secondary">
+        Se você busca uma comunidade para caminhar na fé, tirar dúvidas sobre a Palavra ou
+        simplesmente conhecer mais sobre a Igreja de Cristo, estamos aqui de portas abertas. Entre
+        em contato — será uma alegria receber você.
+      </p>
+      <p class="text-secondary">
+        Aqui você encontra irmãos dispostos a acolher, ensinar e caminhar ao seu lado. Não importa
+        em que ponto da sua caminhada você esteja — há sempre um lugar para você entre nós.
+      </p>
+    </div>
+
+    <div class="col-lg-7">
+      <app-institutional-channels [title]="canaisTitle" [channels]="canaisInstitucionais" />
+    </div>
+  </div>
+</app-section-container>

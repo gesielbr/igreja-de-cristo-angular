@@ -1,0 +1,18 @@
+/* institutional-channels.css */
+
+.channel-link {
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  margin: -0.25rem -0.5rem;
+  transition: background-color var(--brand-transition-fast);
+}
+
+.channel-link:hover,
+.channel-link:focus-visible {
+  background-color: var(--brand-primary-super-soft);
+}
+
+.channel-link:focus-visible {
+  outline: 0.15rem solid var(--brand-primary);
+  outline-offset: 0.1rem;
+}
