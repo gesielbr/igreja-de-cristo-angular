@@ -5,7 +5,7 @@
 >
   <div class="row g-5 align-items-center">
     <!-- Coluna da esquerda - Título e descrição -->
-    <article [class]="invertColumns() ? 'col-lg-6 order-lg-2' : 'col-lg-6'">
+    <article [class]="invertColumns() ? leftColumnClass() + ' order-lg-2' : leftColumnClass()">
       @if (kicker()) {
         <span class="section-kicker">{{ kicker() }}</span>
       }
@@ -26,7 +26,7 @@
     </article>
 
     <!-- Coluna da direita - Conteúdo projetado -->
-    <div [class]="invertColumns() ? 'col-lg-6 order-lg-1' : 'col-lg-6'">
+    <div [class]="invertColumns() ? rightColumnClass() + ' order-lg-1' : rightColumnClass()">
       <ng-content></ng-content>
     </div>
   </div>

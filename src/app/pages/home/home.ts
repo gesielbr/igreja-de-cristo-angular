@@ -11,7 +11,7 @@ import {
 import { HOME_HERO } from '../../shared/configs/hero-slide-config';
 import { PageLayout } from '../../shared/components/page-layout/page-layout';
 import { DOCUMENT } from '@angular/common';
-import { SideTitle } from '../../shared/components/side-title/side-title';
+import { SectionSideTitle } from '../../shared/components/side-title/section-side-title';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +22,7 @@ import { SideTitle } from '../../shared/components/side-title/side-title';
     ChurchCard,
     InstitutionalChannels,
     PageLayout,
-    SideTitle,
+    SectionSideTitle,
   ],
   templateUrl: './home.html',
   styleUrl: './home.css',
