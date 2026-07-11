@@ -9,10 +9,11 @@ import {
 } from '../../shared/components/institutional-channels/institutional-channels';
 import { HOME_HERO } from '../../shared/configs/hero-slide-config';
 import { Footer } from '../../layout/footer/footer';
+import { PageLayout } from '../../shared/components/page-layout/page-layout';
 
 @Component({
   selector: 'app-home',
-  imports: [Hero, SectionContainer, SectionCard, ChurchCard, InstitutionalChannels, Footer],
+  imports: [Hero, SectionContainer, SectionCard, ChurchCard, InstitutionalChannels, PageLayout],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

@@ -1,185 +1,176 @@
-<app-hero [slides]="heroSlides" />
+<app-page-layout>
+  <!-- Hero com seletor -->
+  <app-hero hero [slides]="heroSlides" />
 
-<!-- Seção: Nossa identidade -->
-<app-section-container
-  bgClass="bg-white"
-  sectionId="acolhimento"
-  labelledBy="acolhimento"
-  kicker="Nossa identidade"
-  title="Uma igreja firmada em Cristo e na Palavra de Deus"
-  description="A Igreja de Cristo existe para glorificar a Deus, anunciar o Evangelho de Jesus Cristo, ensinar a Bíblia e promover comunhão entre irmãos em diferentes comunidades locais."
-  headerId="acolhimento"
-  headerMaxWidth="46rem"
->
-  <div class="row g-4">
-    <div class="col-12 col-md-6 col-lg-4 col-xl-4">
-      <app-section-card
-        icon="bi bi-plus-lg"
-        title="Cristo"
-        description="Jesus Cristo é o fundamento da nossa fé, da nossa esperança e da nossa missão."
-      />
+  <!-- Seção: Nossa identidade -->
+  <app-section-container
+    bgClass="bg-white"
+    sectionId="acolhimento"
+    labelledBy="acolhimento"
+    kicker="Nossa identidade"
+    title="Uma igreja firmada em Cristo e na Palavra de Deus"
+    description="A Igreja de Cristo existe para glorificar a Deus, anunciar o Evangelho de Jesus Cristo, ensinar a Bíblia e promover comunhão entre irmãos em diferentes comunidades locais."
+    headerId="acolhimento"
+    headerMaxWidth="46rem"
+  >
+    <div class="row g-4">
+      <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+        <app-section-card
+          icon="bi bi-plus-lg"
+          title="Cristo"
+          description="Jesus Cristo é o fundamento da nossa fé, da nossa esperança e da nossa missão."
+        />
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+        <app-section-card
+          icon="bi bi-people"
+          title="Evangelho"
+          description="Anunciamos a boa notícia da salvação, chamando pessoas a conhecerem a graça e o amor de Deus."
+        />
+      </div>
+      <div class="col-12 col-md-12 col-lg-4 col-xl-4">
+        <app-section-card
+          icon="bi bi-book"
+          title="Bíblia"
+          description="Buscamos viver e ensinar a Palavra de Deus com fidelidade, simplicidade e amor."
+        />
+      </div>
     </div>
-    <div class="col-12 col-md-6 col-lg-4 col-xl-4">
-      <app-section-card
-        icon="bi bi-people"
-        title="Evangelho"
-        description="Anunciamos a boa notícia da salvação, chamando pessoas a conhecerem a graça e o amor de Deus."
-      />
-    </div>
-    <div class="col-12 col-md-12 col-lg-4 col-xl-4">
-      <app-section-card
-        icon="bi bi-book"
-        title="Bíblia"
-        description="Buscamos viver e ensinar a Palavra de Deus com fidelidade, simplicidade e amor."
-      />
-    </div>
-  </div>
-</app-section-container>
+  </app-section-container>
 
-<!-- Seção: Nossas igrejas -->
-<app-section-container
-  bgClass="bg-light"
-  sectionId="igrejas"
-  labelledBy="igrejas"
-  kicker="Nossas comunidades"
-  title="Igrejas da Igreja de Cristo no Brasil"
-  description="Conheça algumas das comunidades locais que fazem parte da Igreja de Cristo e compartilham da mesma fé e missão."
-  headerId="igrejas"
-  headerMaxWidth="46rem"
->
-  <!-- Grid de igrejas -->
-  <div class="row g-4">
-    <div class="col-12 col-md-6 col-lg-4 col-xl-4">
-      <app-church-card />
-    </div>
-    <div class="col-12 col-md-6 col-lg-4 col-xl-4">
-      <app-church-card />
-    </div>
-    <div class="col-12 col-md-12 col-lg-4 col-xl-4">
-      <app-church-card />
-    </div>
-  </div>
-
-  <!-- Botão centralizado fora do grid -->
-  <div class="text-center mt-5">
-    <!-- Desktop e tablets -->
-    <a
-      aria-label="Ver todas as igrejas locais da Igreja de Cristo"
-      routerLink="/igrejas"
-      class="btn btn-outline-primary btn-lg px-5 py-3 d-none d-md-inline-block"
-    >
-      <i aria-hidden="true" class="bi bi-geo-alt me-2"></i>
-      Ver todas as igrejas
-    </a>
-
-    <!-- Mobile -->
-    <a
-      aria-label="Ver todas as igrejas locais da Igreja de Cristo"
-      routerLink="/igrejas"
-      class="btn btn-outline-primary w-100 py-2 d-inline-block d-md-none"
-    >
-      <i aria-hidden="true" class="bi bi-geo-alt me-2"></i>
-      Ver todas as igrejas
-    </a>
-  </div>
-</app-section-container>
-
-<!-- NOVA SEÇÃO: Vida em comunidade (migrada do conteúdo estático) -->
-<app-section-container
-  bgClass="bg-white"
-  sectionId="galeria-home"
-  labelledBy="galeria-home"
-  kicker="Vida em comunidade"
-  title="Fé, comunhão e serviço ao próximo"
-  description="Momentos que expressam a caminhada cristã: adoração, estudo da Bíblia, comunhão, batismos e ações de amor."
-  headerId="galeria-home"
-  headerMaxWidth="46rem"
->
-  <div class="row g-3 mb-4">
-    <figure class="col-md-4 mb-0">
-      <img
-        alt="Batismo realizado por uma comunidade da Igreja de Cristo"
-        class="img-fluid rounded-3 gallery-image w-100"
-        loading="lazy"
-        src="/assets/img/garopaba/batismo_1.webp"
-        width="800"
-        height="600"
-      />
-    </figure>
-    <figure class="col-md-4 mb-0">
-      <img
-        alt="Momento de estudo bíblico em comunidade cristã"
-        class="img-fluid rounded-3 gallery-image w-100"
-        loading="lazy"
-        src="/assets/img/garopaba/estudo_biblico_03.webp"
-        width="800"
-        height="600"
-      />
-    </figure>
-    <figure class="col-md-4 mb-0">
-      <img
-        alt="Pessoas reunidas em comunhão cristã"
-        class="img-fluid rounded-3 gallery-image w-100"
-        loading="lazy"
-        src="/assets/img/garopaba/estudo_biblico_01.webp"
-        width="800"
-        height="600"
-      />
-    </figure>
-  </div>
-  <!-- Botão centralizado fora do grid -->
-  <div class="text-center mt-5">
-    <!-- Desktop e tablets -->
-    <a
-      aria-label="Ver a galeria completa"
-      routerLink="/galeria"
-      class="btn btn-outline-primary btn-lg px-5 py-3 d-none d-md-inline-block"
-    >
-      <i aria-hidden="true" class="bi bi-images me-2"></i>
-      Ver galeria completa
-    </a>
-
-    <!-- Mobile -->
-    <a
-      aria-label="Ver a galeria completa"
-      routerLink="/galeria"
-      class="btn btn-outline-primary w-100 py-2 d-inline-block d-md-none"
-    >
-      <i aria-hidden="true" class="bi bi-images me-2"></i>
-      Ver galeria completa
-    </a>
-  </div>
-</app-section-container>
-
-<app-section-container
-  bgClass="bg-soft"
-  sectionId="contato-home"
-  labelledBy="contato-home"
-  kicker="Fale conosco"
-  title="Quer saber mais sobre a Igreja de Cristo?"
-  description="Entre em contato para saber mais sobre nossa fé, nossas comunidades locais ou para receber orientação sobre uma Igreja de Cristo próxima de você."
-  headerId="contato-home"
-  headerMaxWidth="46rem"
->
-  <div class="row align-items-center">
-    <div class="col-12 col-lg-5">
-      <h2 class="fw-bold text-brand">Você é bem-vindo</h2>
-      <p class="text-secondary">
-        Se você busca uma comunidade para caminhar na fé, tirar dúvidas sobre a Palavra ou
-        simplesmente conhecer mais sobre a Igreja de Cristo, estamos aqui de portas abertas. Entre
-        em contato — será uma alegria receber você.
-      </p>
-      <p class="text-secondary">
-        Aqui você encontra irmãos dispostos a acolher, ensinar e caminhar ao seu lado. Não importa
-        em que ponto da sua caminhada você esteja — há sempre um lugar para você entre nós.
-      </p>
+  <!-- Seção: Nossas igrejas -->
+  <app-section-container
+    bgClass="bg-light"
+    sectionId="igrejas"
+    labelledBy="igrejas"
+    kicker="Nossas comunidades"
+    title="Igrejas da Igreja de Cristo no Brasil"
+    description="Conheça algumas das comunidades locais que fazem parte da Igreja de Cristo e compartilham da mesma fé e missão."
+    headerId="igrejas"
+    headerMaxWidth="46rem"
+  >
+    <div class="row g-4">
+      <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+        <app-church-card />
+      </div>
+      <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+        <app-church-card />
+      </div>
+      <div class="col-12 col-md-12 col-lg-4 col-xl-4">
+        <app-church-card />
+      </div>
     </div>
 
-    <div class="col-12 col-lg-7">
-      <app-institutional-channels [title]="canaisTitle" [channels]="canaisInstitucionais" />
+    <div class="text-center mt-5">
+      <a
+        aria-label="Ver todas as igrejas locais da Igreja de Cristo"
+        routerLink="/igrejas"
+        class="btn btn-outline-primary btn-lg px-5 py-3 d-none d-md-inline-block"
+      >
+        <i aria-hidden="true" class="bi bi-geo-alt me-2"></i>
+        Ver todas as igrejas
+      </a>
+      <a
+        aria-label="Ver todas as igrejas locais da Igreja de Cristo"
+        routerLink="/igrejas"
+        class="btn btn-outline-primary w-100 py-2 d-inline-block d-md-none"
+      >
+        <i aria-hidden="true" class="bi bi-geo-alt me-2"></i>
+        Ver todas as igrejas
+      </a>
     </div>
-  </div>
-</app-section-container>
+  </app-section-container>
 
-<!-- ✅ FOOTER AQUI - DENTRO DO MAIN -->
-<app-footer></app-footer>
+  <!-- Seção: Galeria -->
+  <app-section-container
+    bgClass="bg-white"
+    sectionId="galeria-home"
+    labelledBy="galeria-home"
+    kicker="Vida em comunidade"
+    title="Fé, comunhão e serviço ao próximo"
+    description="Momentos que expressam a caminhada cristã: adoração, estudo da Bíblia, comunhão, batismos e ações de amor."
+    headerId="galeria-home"
+    headerMaxWidth="46rem"
+  >
+    <div class="row g-3 mb-4">
+      <figure class="col-md-4 mb-0">
+        <img
+          alt="Batismo realizado por uma comunidade da Igreja de Cristo"
+          class="img-fluid rounded-3 gallery-image w-100"
+          loading="lazy"
+          src="/assets/img/garopaba/batismo_1.webp"
+          width="800"
+          height="600"
+        />
+      </figure>
+      <figure class="col-md-4 mb-0">
+        <img
+          alt="Momento de estudo bíblico em comunidade cristã"
+          class="img-fluid rounded-3 gallery-image w-100"
+          loading="lazy"
+          src="/assets/img/garopaba/estudo_biblico_03.webp"
+          width="800"
+          height="600"
+        />
+      </figure>
+      <figure class="col-md-4 mb-0">
+        <img
+          alt="Pessoas reunidas em comunhão cristã"
+          class="img-fluid rounded-3 gallery-image w-100"
+          loading="lazy"
+          src="/assets/img/garopaba/estudo_biblico_01.webp"
+          width="800"
+          height="600"
+        />
+      </figure>
+    </div>
+    <div class="text-center mt-5">
+      <a
+        aria-label="Ver a galeria completa"
+        routerLink="/galeria"
+        class="btn btn-outline-primary btn-lg px-5 py-3 d-none d-md-inline-block"
+      >
+        <i aria-hidden="true" class="bi bi-images me-2"></i>
+        Ver galeria completa
+      </a>
+      <a
+        aria-label="Ver a galeria completa"
+        routerLink="/galeria"
+        class="btn btn-outline-primary w-100 py-2 d-inline-block d-md-none"
+      >
+        <i aria-hidden="true" class="bi bi-images me-2"></i>
+        Ver galeria completa
+      </a>
+    </div>
+  </app-section-container>
+
+  <!-- Seção: Contato -->
+  <app-section-container
+    bgClass="bg-soft"
+    sectionId="contato-home"
+    labelledBy="contato-home"
+    kicker="Fale conosco"
+    title="Quer saber mais sobre a Igreja de Cristo?"
+    description="Entre em contato para saber mais sobre nossa fé, nossas comunidades locais ou para receber orientação sobre uma Igreja de Cristo próxima de você."
+    headerId="contato-home"
+    headerMaxWidth="46rem"
+  >
+    <div class="row align-items-center">
+      <div class="col-12 col-lg-5">
+        <h2 class="fw-bold text-brand">Você é bem-vindo</h2>
+        <p class="text-secondary">
+          Se você busca uma comunidade para caminhar na fé, tirar dúvidas sobre a Palavra ou
+          simplesmente conhecer mais sobre a Igreja de Cristo, estamos aqui de portas abertas. Entre
+          em contato — será uma alegria receber você.
+        </p>
+        <p class="text-secondary">
+          Aqui você encontra irmãos dispostos a acolher, ensinar e caminhar ao seu lado. Não importa
+          em que ponto da sua caminhada você esteja — há sempre um lugar para você entre nós.
+        </p>
+      </div>
+      <div class="col-12 col-lg-7">
+        <app-institutional-channels [title]="canaisTitle" [channels]="canaisInstitucionais" />
+      </div>
+    </div>
+  </app-section-container>
+</app-page-layout>
