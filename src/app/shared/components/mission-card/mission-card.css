@@ -1,0 +1,48 @@
+/* Mission Card */
+.mission-card {
+  background-color: var(--brand-white);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Linha dourada no topo */
+.mission-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.35rem;
+  background: var(--brand-accent);
+  border-radius: 1rem 1rem 0 0;
+}
+
+.mission-card:hover {
+  transform: translateY(-0.35rem);
+  box-shadow: var(--brand-shadow-soft) !important;
+}
+
+/* Ícone circular */
+.mission-icon {
+  background-color: var(--brand-accent-soft);
+  color: var(--brand-accent);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.mission-card:hover .mission-icon {
+  background-color: var(--brand-accent);
+  color: var(--brand-white);
+  transform: scale(1.05);
+}
+
+/* Acessibilidade - foco visível */
+.mission-card:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}
