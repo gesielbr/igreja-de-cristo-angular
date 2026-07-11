@@ -176,6 +176,11 @@ export class Home implements OnInit {
    * Isso ajuda o Google a entender melhor o conteúdo do site
    */
   private addJsonLd(): void {
+    // VERIFICA SE ESTÁ NO NAVEGADOR
+    if (typeof document === 'undefined' || typeof window === 'undefined') {
+      return; // Sai da função se não estiver no navegador
+    }
+
     // Remove JSON-LD antigo se existir (evita duplicação)
     const oldScript = document.querySelector('script[type="application/ld+json"]');
     if (oldScript) {
