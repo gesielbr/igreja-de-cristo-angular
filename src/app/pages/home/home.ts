@@ -11,10 +11,19 @@ import {
 import { HOME_HERO } from '../../shared/configs/hero-slide-config';
 import { PageLayout } from '../../shared/components/page-layout/page-layout';
 import { DOCUMENT } from '@angular/common';
+import { SideTitle } from '../../shared/components/side-title/side-title';
 
 @Component({
   selector: 'app-home',
-  imports: [Hero, SectionContainer, SectionCard, ChurchCard, InstitutionalChannels, PageLayout],
+  imports: [
+    Hero,
+    SectionContainer,
+    SectionCard,
+    ChurchCard,
+    InstitutionalChannels,
+    PageLayout,
+    SideTitle,
+  ],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

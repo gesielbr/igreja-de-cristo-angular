@@ -1,0 +1,33 @@
+<section
+  [id]="sectionId()"
+  [attr.aria-labelledby]="labelledBy()"
+  [class]="bgClass() + ' py-5 px-2 px-md-5'"
+>
+  <div class="row g-5 align-items-center">
+    <!-- Coluna da esquerda - Título e descrição -->
+    <article [class]="invertColumns() ? 'col-lg-6 order-lg-2' : 'col-lg-6'">
+      @if (kicker()) {
+        <span class="section-kicker">{{ kicker() }}</span>
+      }
+
+      <h2 class="fw-bold text-brand" [id]="headerId()">
+        {{ title() }}
+      </h2>
+
+      <span aria-hidden="true" class="gold-rule d-block my-3"></span>
+
+      @if (description()) {
+        <p>{{ description() }}</p>
+      }
+
+      @if (subDescription()) {
+        <p class="text-secondary">{{ subDescription() }}</p>
+      }
+    </article>
+
+    <!-- Coluna da direita - Conteúdo projetado -->
+    <div [class]="invertColumns() ? 'col-lg-6 order-lg-1' : 'col-lg-6'">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</section>
