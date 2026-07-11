@@ -1,0 +1,171 @@
+<footer role="contentinfo" class="bg-brand text-white pt-5 pb-3 mt-auto">
+  <div aria-label="Rodapé institucional" class="container-fluid px-4 px-md-5">
+    <div class="row g-4 pb-2">
+      <!-- 1º - BRAND -->
+      <div aria-labelledby="footer-brand" class="col-md-6 col-xl-3">
+        <h2 class="h5 text-white mb-3" id="footer-brand">
+          <i aria-hidden="true" class="bi bi-bookmark-star-fill text-white me-1"></i>
+          Igreja de Cristo
+        </h2>
+
+        <p class="text-white">
+          A Igreja de Cristo é uma comunidade cristã comprometida com Jesus Cristo, com o Evangelho,
+          com a Bíblia, com a comunhão e com o amor.
+        </p>
+      </div>
+
+      <!-- 2º - NAVEGAÇÃO -->
+      <nav aria-labelledby="footer-links" class="col-6 col-md-3 col-xl-2">
+        <h3 class="h6 text-white mb-3" id="footer-links">Navegação</h3>
+
+        <ul class="list-unstyled small d-grid gap-2">
+          <li>
+            <a
+              routerLink="/quem-somos"
+              routerLinkActive="fw-bold"
+              #rla1="routerLinkActive"
+              class="link-light text-decoration-none"
+              [attr.aria-current]="rla1.isActive ? 'page' : null"
+              accesskey="2"
+            >
+              Quem Somos <span class="visually-hidden">(Alt+2)</span>
+            </a>
+          </li>
+          <li>
+            <a
+              routerLink="/eventos"
+              routerLinkActive="fw-bold"
+              #rla2="routerLinkActive"
+              class="link-light text-decoration-none"
+              [attr.aria-current]="rla2.isActive ? 'page' : null"
+              accesskey="3"
+            >
+              Eventos <span class="visually-hidden">(Alt+3)</span>
+            </a>
+          </li>
+          <li>
+            <a
+              routerLink="/galeria"
+              routerLinkActive="fw-bold"
+              #rla3="routerLinkActive"
+              class="link-light text-decoration-none"
+              [attr.aria-current]="rla3.isActive ? 'page' : null"
+              accesskey="4"
+            >
+              Galeria <span class="visually-hidden">(Alt+4)</span>
+            </a>
+          </li>
+          <li>
+            <a
+              routerLink="/contato"
+              routerLinkActive="fw-bold"
+              #rla4="routerLinkActive"
+              class="link-light text-decoration-none"
+              [attr.aria-current]="rla4.isActive ? 'page' : null"
+              accesskey="5"
+            >
+              Contato <span class="visually-hidden">(Alt+5)</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- 3º - IGREJAS LOCAIS -->
+      <div aria-labelledby="footer-cultos" class="col-6 col-md-3 col-xl-3">
+        <h3 class="h6 text-white mb-3" id="footer-cultos">Igrejas locais</h3>
+
+        <ul class="list-unstyled text-white small d-grid gap-2">
+          @for (igreja of igrejasLocais(); track igreja.rota) {
+            <li>
+              <a
+                class="link-light text-decoration-none"
+                [routerLink]="igreja.rota"
+                routerLinkActive="fw-bold"
+                #rla="routerLinkActive"
+                [attr.aria-current]="rla.isActive ? 'page' : null"
+              >
+                {{ igreja.nome }}
+              </a>
+            </li>
+          } @empty {
+            <li class="text-white-50">Carregando igrejas locais...</li>
+          }
+        </ul>
+      </div>
+
+      <!-- 4º - CONTATO -->
+      <section aria-labelledby="footer-contact" class="col-xl-4">
+        <h3 class="h6 text-white mb-3" id="footer-contact">Contato</h3>
+
+        <address class="text-white small lh-lg mb-3">
+          <dl class="mb-0">
+            <dt class="visually-hidden">E-mail</dt>
+            <dd class="mb-2">
+              <i aria-hidden="true" class="bi bi-envelope me-2 text-white"></i>
+              <a
+                class="link-light text-decoration-none"
+                href="mailto:contato@igrejadecristo.net.br"
+              >
+                contato@igrejadecristo.net.br
+              </a>
+            </dd>
+
+            <dt class="visually-hidden">Website</dt>
+            <dd class="mb-0">
+              <i aria-hidden="true" class="bi bi-globe me-2 text-white"></i>
+              <a
+                class="link-light text-decoration-none"
+                href="https://www.igrejadecristo.net.br/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                www.igrejadecristo.net.br
+              </a>
+            </dd>
+          </dl>
+        </address>
+      </section>
+    </div>
+
+    <!-- REDES SOCIAIS -->
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center">
+        <nav aria-label="Redes sociais" class="d-flex gap-4">
+          @for (social of socialLinks(); track social.nome) {
+            <a
+              [href]="social.url"
+              class="link-light social-icon"
+              target="_blank"
+              rel="noopener noreferrer"
+              [attr.aria-label]="social.nome"
+            >
+              <i [attr.aria-hidden]="true" [class]="'bi ' + social.icone"></i>
+              <span class="visually-hidden">{{ social.nome }}</span>
+            </a>
+          }
+        </nav>
+      </div>
+    </div>
+
+    <!-- COPYRIGHT - UMA LINHA -->
+    <div class="pt-4 d-md-flex justify-content-between align-items-center text-white">
+      <p class="mb-2 mb-md-0 small">
+        <small> &copy; {{ anoAtual() }} Igreja de Cristo. Todos os direitos reservados. </small>
+      </p>
+
+      <p class="mb-0 me-0 me-lg-5 small">
+        <span class="visually-hidden">Desenvolvido por</span>
+        Feito com ❤️ e para a Glória de Deus por
+        <a
+          class="link-light text-decoration-underline"
+          href="https://gesieloliveira.com.br"
+          rel="noopener noreferrer"
+          target="_blank"
+          aria-label="Site do desenvolvedor Gesiel Oliveira"
+        >
+          GO
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>

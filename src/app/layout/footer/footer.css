@@ -1,0 +1,58 @@
+/* Estilo dos ícones sociais - SEM LINHA E SEM MOVIMENTO DE SUBIR */
+.social-icon {
+  font-size: 2.2rem;
+  transition: all 0.3s ease;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Hover - cores específicas por rede social */
+.social-icon:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Instagram */
+.social-icon:hover .bi-instagram {
+  color: #e4405f;
+}
+
+/* Facebook */
+.social-icon:hover .bi-facebook {
+  color: #1877f2;
+}
+
+/* YouTube */
+.social-icon:hover .bi-youtube {
+  color: #ff0000;
+}
+
+/* E-mail */
+.social-icon:hover .bi-envelope {
+  color: #ea4335;
+}
+
+/* WhatsApp */
+.social-icon:hover .bi-whatsapp {
+  color: #25d366;
+}
+
+.social-icon:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .social-icon {
+    font-size: 1.8rem;
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+}

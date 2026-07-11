@@ -49,8 +49,8 @@
   /* Typography */
   --brand-font-family:
     'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --brand-font-size-base: 1rem;
-  --brand-line-height-base: 1.5;
+  --brand-font-size-base: 1.125rem;
+  --brand-line-height-base: 1.8;
 
   /* Bootstrap Overrides */
   --bs-primary: var(--brand-primary);
@@ -403,4 +403,23 @@ body {
 
 .btn-outline-brand:focus {
   box-shadow: 0 0 0 0.25rem rgba(var(--brand-primary-rgb), 0.25);
+}
+
+/* Melhor foco visível para acessibilidade */
+a:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
