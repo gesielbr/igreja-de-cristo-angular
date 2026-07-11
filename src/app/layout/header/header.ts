@@ -1,5 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router'; // ← ADICIONE AQUI
 import { filter } from 'rxjs';
 
 import { HOME_CTA } from '../../shared/configs/home-cta';
@@ -9,7 +9,11 @@ import { PageData } from '../../shared/models/page-data.model';
 
 @Component({
   selector: 'app-header',
-  imports: [CtaAsideComponent],
+  imports: [
+    CtaAsideComponent,
+    RouterLink, // ← ADICIONE
+    RouterLinkActive, // ← ADICIONE
+  ],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
@@ -53,11 +57,8 @@ export class Header {
 
     this.pageData.set({
       section: data.section ?? 'main',
-
       pageType: data.pageType ?? 'home',
-
       churchSlug: data.churchSlug,
-
       churchName: data.churchName,
     });
   }

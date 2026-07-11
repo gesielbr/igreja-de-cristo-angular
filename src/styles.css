@@ -159,13 +159,6 @@ body {
   border-left: 0.25rem solid var(--brand-accent);
 }
 
-/* Page Hero */
-.page-hero {
-  background:
-    linear-gradient(100deg, rgba(32, 78, 124, 0.82), rgba(73, 124, 174, 0.5)),
-    url('/assets/img/culto-igreja-de-cristo.png') center / cover;
-}
-
 /* Hover Lift - Utilitário reutilizável */
 .hover-lift {
   transition:

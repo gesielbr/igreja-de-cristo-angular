@@ -1,3 +1,4 @@
+<!-- Skip link -->
 <a
   class="visually-hidden-focusable btn btn-gold position-absolute top-0 start-0 m-2 z-3"
   href="#conteudo-principal"
@@ -14,7 +15,7 @@
     <a
       aria-label="Igreja de Cristo - página inicial"
       class="navbar-brand d-flex align-items-center me-2 mb-0 flex-shrink-1"
-      href="/"
+      routerLink="/"
     >
       <img
         class="img-fluid"
@@ -56,42 +57,68 @@
     <nav aria-label="Menu mobile" class="offcanvas-body">
       <ul class="nav flex-column gap-1">
         <li class="nav-item">
-          <a aria-current="page" class="nav-link sidebar-link rounded-3 px-3 py-2 active" href="/">
+          <a
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="nav-link sidebar-link rounded-3 px-3 py-2"
+            aria-current="page"
+          >
             <i aria-hidden="true" class="bi bi-house-door me-2"></i>
             Início
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link sidebar-link rounded-3 px-3 py-2" href="/quem-somos">
+          <a
+            routerLink="/quem-somos"
+            routerLinkActive="active"
+            class="nav-link sidebar-link rounded-3 px-3 py-2"
+          >
             <i aria-hidden="true" class="bi bi-people me-2"></i>
             Quem Somos
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link sidebar-link rounded-3 px-3 py-2" href="/igrejas">
+          <a
+            routerLink="/igrejas"
+            routerLinkActive="active"
+            class="nav-link sidebar-link rounded-3 px-3 py-2"
+          >
             <i aria-hidden="true" class="bi bi-geo-alt me-2"></i>
             Encontre sua igreja
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link sidebar-link rounded-3 px-3 py-2" href="/eventos">
+          <a
+            routerLink="/eventos"
+            routerLinkActive="active"
+            class="nav-link sidebar-link rounded-3 px-3 py-2"
+          >
             <i aria-hidden="true" class="bi bi-calendar-event me-2"></i>
             Eventos
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link sidebar-link rounded-3 px-3 py-2" href="/galeria">
+          <a
+            routerLink="/galeria"
+            routerLinkActive="active"
+            class="nav-link sidebar-link rounded-3 px-3 py-2"
+          >
             <i aria-hidden="true" class="bi bi-images me-2"></i>
             Galeria
           </a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link sidebar-link rounded-3 px-3 py-2" href="/contato">
+          <a
+            routerLink="/contato"
+            routerLinkActive="active"
+            class="nav-link sidebar-link rounded-3 px-3 py-2"
+          >
             <i aria-hidden="true" class="bi bi-chat-dots me-2"></i>
             Contato
           </a>
@@ -115,7 +142,7 @@
       <a
         aria-label="Igreja de Cristo - página inicial"
         class="d-flex align-items-center justify-content-center gap-3 text-white text-decoration-none mb-3"
-        href="/"
+        routerLink="/"
       >
         <img
           alt="Logo Igreja de Cristo"
@@ -128,48 +155,75 @@
       <nav aria-label="Navegação principal">
         <ul class="nav flex-column gap-1">
           <li class="nav-item">
-            <a class="nav-link sidebar-link rounded-3 px-3 py-2 active" href="/">
+            <a
+              routerLink="/"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="nav-link sidebar-link rounded-3 px-3 py-2"
+              aria-current="page"
+            >
               <i class="bi bi-house-door me-2"></i>
               Início
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link sidebar-link rounded-3 px-3 py-2" href="/quem-somos">
+            <a
+              routerLink="/quem-somos"
+              routerLinkActive="active"
+              class="nav-link sidebar-link rounded-3 px-3 py-2"
+            >
               <i class="bi bi-people me-2"></i>
               Quem Somos
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link sidebar-link rounded-3 px-3 py-2" href="/igrejas">
+            <a
+              routerLink="/igrejas"
+              routerLinkActive="active"
+              class="nav-link sidebar-link rounded-3 px-3 py-2"
+            >
               <i class="bi bi-geo-alt me-2"></i>
               Encontre sua igreja
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link sidebar-link rounded-3 px-3 py-2" href="/eventos">
+            <a
+              routerLink="/eventos"
+              routerLinkActive="active"
+              class="nav-link sidebar-link rounded-3 px-3 py-2"
+            >
               <i class="bi bi-calendar-event me-2"></i>
               Eventos
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link sidebar-link rounded-3 px-3 py-2" href="/galeria">
+            <a
+              routerLink="/galeria"
+              routerLinkActive="active"
+              class="nav-link sidebar-link rounded-3 px-3 py-2"
+            >
               <i class="bi bi-images me-2"></i>
               Galeria
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link sidebar-link rounded-3 px-3 py-2" href="/contato">
+            <a
+              routerLink="/contato"
+              routerLinkActive="active"
+              class="nav-link sidebar-link rounded-3 px-3 py-2"
+            >
               <i class="bi bi-chat-dots me-2"></i>
               Contato
             </a>
           </li>
         </ul>
       </nav>
+
       <app-cta-aside [sections]="ctaSections"></app-cta-aside>
     </aside>
 

@@ -1,0 +1,32 @@
+:host {
+  display: block;
+}
+
+.page-hero {
+  background:
+    linear-gradient(100deg, rgba(32, 78, 124, 0.82), rgba(73, 124, 174, 0.5)),
+    url('/assets/img/culto-igreja-de-cristo.png') center / cover;
+}
+
+.breadcrumb {
+  margin-bottom: 0;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.link-light {
+  text-decoration: none;
+  transition: opacity var(--brand-transition-base);
+}
+
+.link-light:hover,
+.link-light:focus-visible {
+  opacity: 0.85;
+  text-decoration: underline;
+}
+
+.page-hero .lead {
+  max-width: 48rem;
+}

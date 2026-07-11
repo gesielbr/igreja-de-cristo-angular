@@ -1,0 +1,17 @@
+<header class="page-hero text-white px-4 px-md-5 py-5">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb small">
+      <li class="breadcrumb-item">
+        <a class="link-light" [routerLink]="homeRoute">Início</a>
+      </li>
+      <li aria-current="page" class="breadcrumb-item active text-white-50">
+        {{ currentPage }}
+      </li>
+    </ol>
+  </nav>
+  <p class="text-gold text-uppercase fw-semibold letter-spacing mt-4 mb-2">
+    {{ subtitle }}
+  </p>
+  <h1 class="display-5 fw-bold">{{ title }}</h1>
+  <p class="lead col-xl-8">{{ description }}</p>
+</header>
