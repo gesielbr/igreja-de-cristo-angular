@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { PageLayout } from '../../../shared/components/page-layout/page-layout';
-import { SectionContainer } from '../../../shared/components/section-container/section-container';
-import { SectionSideTitle } from '../../../shared/components/side-title/section-side-title';
-import { SectionCard } from '../../../shared/components/section-card/section-card';
-import { ContentHeroComponent } from '../../../shared/components/content-hero/content-hero';
-import { MissionCard } from '../../../shared/components/mission-card/mission-card';
+import { PageLayout } from '../../shared/components/page-layout/page-layout';
+import { SectionContainer } from '../../shared/components/section-container/section-container';
+import { SectionSideTitle } from '../../shared/components/side-title/section-side-title';
+import { SectionCard } from '../../shared/components/section-card/section-card';
+import { ContentHeroComponent } from '../../shared/components/content-hero/content-hero';
+import { MissionCard } from '../../shared/components/mission-card/mission-card';
 
 @Component({
   selector: 'app-quem-somos',

@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { Home } from './pages/home/home';
-import { QuemSomos } from './pages/pages/quem-somos/quem-somos';
+import { QuemSomos } from './pages/quem-somos/quem-somos';
+import { Igrejas } from './pages/igrejas/igrejas';
 
 export const routes: Routes = [
   {
@@ -16,6 +17,14 @@ export const routes: Routes = [
     component: QuemSomos,
     data: {
       pageType: 'about',
+      section: 'main',
+    },
+  },
+  {
+    path: 'igrejas',
+    component: Igrejas,
+    data: {
+      pageType: 'churches',
       section: 'main',
     },
   },
