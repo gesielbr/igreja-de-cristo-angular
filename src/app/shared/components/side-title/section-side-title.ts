@@ -21,8 +21,8 @@ export class SectionSideTitle {
 
   // Propriedades de layout
   invertColumns = input<boolean>(false);
-  leftColumnClass = input<string>('col-lg-6');
-  rightColumnClass = input<string>('col-lg-6');
+  leftColumnClass = input<string>('col-12 col-lg-6');
+  rightColumnClass = input<string>('col-12 col-lg-6');
 }
 
 /**

@@ -32,7 +32,29 @@
                 </p>
               }
 
-              <a class="btn btn-gold mt-3" [routerLink]="slide.buttonLink">
+              <!-- Versão Desktop -->
+              <a
+                aria-label="{{ slide.buttonAriaLabel || slide.buttonText }}"
+                [routerLink]="slide.buttonLink"
+                class="btn btn-gold mt-3 btn-lg px-5 py-3 d-none d-md-inline-block"
+              >
+                <i
+                  aria-hidden="true"
+                  class="bi bi-{{ slide.buttonIcon || 'chevron-right' }} me-2"
+                ></i>
+                {{ slide.buttonText }}
+              </a>
+
+              <!-- Versão Mobile -->
+              <a
+                aria-label="{{ slide.buttonAriaLabel || slide.buttonText }}"
+                [routerLink]="slide.buttonLink"
+                class="btn btn-gold mt-3 w-100 py-2 d-inline-block d-md-none"
+              >
+                <i
+                  aria-hidden="true"
+                  class="bi bi-{{ slide.buttonIcon || 'chevron-right' }} me-2"
+                ></i>
                 {{ slide.buttonText }}
               </a>
             </div>
