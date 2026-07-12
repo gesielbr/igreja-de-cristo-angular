@@ -8,6 +8,7 @@ export const routes: Routes = [
     component: Home,
     data: {
       pageType: 'home',
+      section: 'main',
     },
   },
   {
@@ -15,6 +16,7 @@ export const routes: Routes = [
     component: QuemSomos,
     data: {
       pageType: 'about',
+      section: 'main',
     },
   },
 ];

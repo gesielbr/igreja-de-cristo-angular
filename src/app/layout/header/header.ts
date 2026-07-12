@@ -1,25 +1,26 @@
 import { Component, computed, inject, signal } from '@angular/core';
-import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router'; // ← ADICIONE AQUI
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { filter } from 'rxjs';
 
-import { HOME_CTA } from '../../shared/configs/home-cta';
 import { CtaAsideComponent } from '../../shared/components/cta-aside/cta-aside';
-
+import { CTA_CONFIGS } from '../../shared/configs/cta-configs'; // ← MUDEI AQUI
 import { PageData } from '../../shared/models/page-data.model';
 
 @Component({
   selector: 'app-header',
-  imports: [
-    CtaAsideComponent,
-    RouterLink, // ← ADICIONE
-    RouterLinkActive, // ← ADICIONE
-  ],
+  imports: [CtaAsideComponent, RouterLink, RouterLinkActive],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
 export class Header {
   private readonly router = inject(Router);
-  ctaSections = HOME_CTA;
+
+  // REMOVA esta linha: ctaSections = HOME_CTA;
+  // E SUBSTITUA por isso:
+  protected readonly ctaSections = computed(() => {
+    const pageType = this.pageData().pageType;
+    return CTA_CONFIGS[pageType as keyof typeof CTA_CONFIGS] || CTA_CONFIGS.home;
+  });
 
   protected readonly pageData = signal<PageData>({
     section: 'main',

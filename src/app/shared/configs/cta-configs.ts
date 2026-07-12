@@ -1,6 +1,6 @@
 import { CtaAsideSection } from '../models/cta-aside-section.model';
 
-// CONFIGURAÇÃO DA HOME (IGUAL AO QUE JÁ EXISTE)
+// CONFIGURAÇÃO DA HOME
 export const HOME_CTA: CtaAsideSection[] = [
   {
     title: 'Igrejas perto de você',
@@ -11,7 +11,7 @@ export const HOME_CTA: CtaAsideSection[] = [
         href: '#igrejas-locais',
         ariaLabel: 'Encontrar uma Igreja de Cristo no Brasil',
         icon: 'bi-geo-alt',
-        variant: 'outline',
+        variant: 'outline', // ← ESSE É O ESTILO QUE VOCÊ QUER
       },
     ],
   },
@@ -31,7 +31,7 @@ export const HOME_CTA: CtaAsideSection[] = [
   },
 ];
 
-// CONFIGURAÇÃO PARA IGREJAS (ATUALIZADA)
+// CONFIGURAÇÃO PARA IGREJAS
 export const CHURCH_CTA: CtaAsideSection[] = [
   {
     title: 'Igrejas Locais',
@@ -43,7 +43,7 @@ export const CHURCH_CTA: CtaAsideSection[] = [
         ariaLabel:
           'Cadastrar uma congregação no site da Igreja de Cristo pelo WhatsApp em uma nova aba',
         icon: 'bi-plus-circle',
-        variant: 'outline',
+        variant: 'outline', // ← MESMO ESTILO DO BOTÃO "Encontre uma igreja"
         external: true,
       },
     ],
@@ -104,10 +104,10 @@ export const EVENTS_CTA: CtaAsideSection[] = [
 // MAPEAMENTO: cada página usa qual CTA
 export const CTA_CONFIGS = {
   home: HOME_CTA,
-  about: HOME_CTA, // Quem Somos = igual à home
+  about: HOME_CTA,
   churches: CHURCH_CTA,
   events: EVENTS_CTA,
-  gallery: HOME_CTA, // Galeria = igual à home
-  contact: HOME_CTA, // Contato = igual à home (depois customizamos)
-  church: CHURCH_CTA, // Página de igreja específica
+  gallery: HOME_CTA,
+  contact: HOME_CTA,
+  church: CHURCH_CTA,
 };

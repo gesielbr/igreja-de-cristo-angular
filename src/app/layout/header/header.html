@@ -127,7 +127,8 @@
 
       <hr class="border-secondary my-4" />
 
-      <app-cta-aside [sections]="ctaSections" variant="mobile"></app-cta-aside>
+      <!-- CORRIGIDO: adicionado () -->
+      <app-cta-aside [sections]="ctaSections()" variant="mobile"></app-cta-aside>
     </nav>
   </div>
 </header>
@@ -224,7 +225,8 @@
         </ul>
       </nav>
 
-      <app-cta-aside [sections]="ctaSections"></app-cta-aside>
+      <!-- CORRIGIDO: adicionado () -->
+      <app-cta-aside [sections]="ctaSections()"></app-cta-aside>
     </aside>
 
     <!-- Conteúdo principal -->
