@@ -9,4 +9,5 @@ export class SectionCard {
   icon = input<string>('');
   title = input<string>('');
   description = input<string>('');
+  bgClass = input<string>('bg-white');
 }

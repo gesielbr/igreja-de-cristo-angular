@@ -1,0 +1,157 @@
+<app-page-layout>
+  <app-content-hero
+    currentPage="Quem Somos"
+    subtitle="Nossa identidade"
+    title="Quem Somos"
+    description="Uma igreja que existe para amar a Deus, acolher pessoas e servir a Cristo."
+  />
+
+  <app-section-side-title
+    bgClass="bg-light"
+    sectionId="declaracao-fe"
+    labelledBy="declaracao-fe"
+    kicker="No que cremos"
+    title="Nossa declaração de fé"
+    description="Cremos nas verdades centrais da fé cristã, reveladas nas Escrituras Sagradas e vividas em comunidade."
+    subDescription='"Essas verdades nos unem como comunidade e guiam cada aspecto da nossa vida — no culto e no cuidado uns com os outros."'
+    headerId="declaracao-fe"
+  >
+    <ul class="list-unstyled m-0">
+      <li class="d-flex gap-3 mb-3">
+        <i aria-hidden="true" class="bi bi-check-circle-fill text-gold fs-5"></i>
+        <span
+          ><strong>A Bíblia</strong> como Palavra inspirada de Deus e regra de fé e prática.</span
+        >
+      </li>
+      <li class="d-flex gap-3 mb-3">
+        <i aria-hidden="true" class="bi bi-check-circle-fill text-gold fs-5"></i>
+        <span
+          ><strong>Um só Deus</strong>, eterno e existente em três pessoas: Pai, Filho e Espírito
+          Santo.</span
+        >
+      </li>
+      <li class="d-flex gap-3 mb-3">
+        <i aria-hidden="true" class="bi bi-check-circle-fill text-gold fs-5"></i>
+        <span
+          ><strong>Jesus Cristo</strong>, plenamente Deus e homem, morto e ressuscitado pela nossa
+          salvação.</span
+        >
+      </li>
+      <li class="d-flex gap-3 mb-3">
+        <i aria-hidden="true" class="bi bi-check-circle-fill text-gold fs-5"></i>
+        <span><strong>A salvação</strong> pela graça, mediante a fé, e não por obras.</span>
+      </li>
+      <li class="d-flex gap-3 mb-0">
+        <i aria-hidden="true" class="bi bi-check-circle-fill text-gold fs-5"></i>
+        <span
+          ><strong>A Igreja</strong> como corpo de Cristo, chamada a amar, servir e anunciar o
+          evangelho.</span
+        >
+      </li>
+    </ul>
+  </app-section-side-title>
+
+  <!-- Seção: Missão, Visão e Propósito -->
+  <app-section-container
+    bgClass="bg-soft"
+    sectionId="missao-visao-proposito"
+    labelledBy="missao-visao-proposito"
+    kicker="Nossa essência"
+    title="Missão, visão e propósito"
+    description="Esses princípios expressam quem somos, para onde caminhamos e o que nos move como comunidade cristã."
+    headerId="missao-visao-proposito"
+    headerMaxWidth="46rem"
+  >
+    <div class="row g-4">
+      <div class="col-md-6 col-xl-4">
+        <app-mission-card
+          icon="bi bi-compass"
+          title="Missão"
+          description="Levar pessoas a conhecer Cristo, viver em comunidade e servir com amor."
+        />
+      </div>
+      <div class="col-md-6 col-xl-4">
+        <app-mission-card
+          icon="bi bi-eye"
+          title="Visão"
+          description="Ser uma igreja acolhedora, transformadora e comprometida com o crescimento espiritual de cada pessoa."
+        />
+      </div>
+      <div class="col-md-12 col-xl-4">
+        <app-mission-card
+          icon="bi bi-heart"
+          title="Propósito"
+          description="Glorificar a Deus por meio da fé, da família, da comunhão e do cuidado com o próximo."
+        />
+      </div>
+    </div>
+  </app-section-container>
+
+  <!-- Seção: Uma comunidade de portas abertas -->
+  <app-section-side-title
+    [invertColumns]="true"
+    bgClass="bg-white"
+    sectionId="comunidade-portas-abertas"
+    labelledBy="comunidade-portas-abertas"
+    kicker="Nossa comunidade"
+    title="Uma comunidade de portas abertas"
+    description="Somos uma comunidade cristã comprometida com a Bíblia, com a adoração e com relacionamentos que edificam."
+    subDescription="Nossa missão é comunicar o amor de Cristo de forma acolhedora e relevante, oferecendo um lugar para famílias, jovens e crianças crescerem na fé."
+    headerId="comunidade-portas-abertas"
+    leftColumnClass="col-12 col-lg-6"
+    rightColumnClass="col-12 col-lg-6"
+  >
+    <figure class="mb-0">
+      <img
+        alt="Comunidade reunida em adoração"
+        class="img-fluid rounded-4 shadow object-cover w-100"
+        src="/assets/img/pexels-israwmx-24023591.jpg"
+        style="height: 26rem"
+        loading="lazy"
+      />
+    </figure>
+  </app-section-side-title>
+
+  <!-- Seção: Nossos valores -->
+  <app-section-container
+    bgClass="bg-soft"
+    sectionId="valores"
+    labelledBy="valores"
+    kicker="Nossos valores"
+    title="O que nos guia e nos move"
+    description="Nossos valores são fundamentados na Bíblia e refletem o caráter de Cristo em nossa caminhada."
+    headerId="valores"
+    headerMaxWidth="46rem"
+  >
+    <div class="row g-4">
+      <div class="col-md-6 col-xl-3">
+        <app-section-card
+          icon="bi bi-book-half"
+          title="Bíblia"
+          description="A Palavra orienta nossa fé e prática."
+        />
+      </div>
+      <div class="col-md-6 col-xl-3">
+        <app-section-card
+          icon="bi bi-person-hearts"
+          title="Acolhimento"
+          description="Cada pessoa é recebida com amor e respeito."
+        />
+      </div>
+      <div class="col-md-6 col-xl-3">
+        <app-section-card
+          icon="bi bi-people-fill"
+          title="Comunhão"
+          description="Crescemos juntos por meio de Cristo."
+        />
+      </div>
+      <div class="col-md-6 col-xl-3">
+        <app-section-card
+          icon="bi bi-brightness-high"
+          title="Discipulado"
+          description="Crescemos na fé por meio do ensino e da vida em comunidade."
+        />
+      </div>
+    </div>
+  </app-section-container>
+</app-page-layout>
