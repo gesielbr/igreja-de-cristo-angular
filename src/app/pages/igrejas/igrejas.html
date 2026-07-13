@@ -15,8 +15,6 @@
     description="A Igreja de Cristo está presente em comunidades locais que se reúnem para adorar a Deus, estudar a Bíblia, servir pessoas e anunciar o evangelho de Jesus Cristo."
     subDescription="Esta página organiza as igrejas por Estado para ajudar você a encontrar uma comunidade próxima, conhecer sua programação e entrar em contato com uma igreja local."
     headerId="intro-igrejas"
-    leftColumnClass="col-12 col-lg-7"
-    rightColumnClass="col-12 col-lg-5"
   >
     <app-section-card
       icon="bi bi-geo-alt-fill"
@@ -25,8 +23,9 @@
       bgClass="bg-soft"
     />
   </app-section-side-title>
+
   <app-section-container
-    bgClass="bg-light"
+    bgClass="bg-white"
     sectionId="igrejas-por-estado"
     labelledBy="igrejas-por-estado"
     kicker="Por Estado"
@@ -35,9 +34,40 @@
     headerId="igrejas-por-estado"
     headerMaxWidth="48rem"
   >
-    <!-- Aqui virá o conteúdo das igrejas organizadas por estado -->
-    <div class="row g-4">
-      <p class="text-center text-muted">Listagem de igrejas por estado em breve...</p>
+    <div class="accordion d-grid gap-4" id="accordionEstados">
+      <app-accordion-estado
+        [estado]="igrejasData.santaCatarina.estado"
+        [igrejas]="igrejasData.santaCatarina.igrejas"
+        [aberto]="igrejasData.santaCatarina.aberto"
+        [id]="'santa-catarina'"
+      >
+        <!-- Aqui virá o SectionCard para cada igreja -->
+        <ng-template let-igreja>
+          <app-section-card
+            [icon]="'bi bi-geo-alt'"
+            [title]="igreja.nome"
+            [description]="igreja.descricao"
+            [bgClass]="'bg-white'"
+          />
+        </ng-template>
+      </app-accordion-estado>
     </div>
   </app-section-container>
+  <app-section-side-title
+    bgClass="bg-white"
+    sectionId="cadastrar-congregacao"
+    labelledBy="cadastrar-congregacao"
+    kicker="Sua congregação"
+    title="Quer colocar sua igreja nesta página?"
+    description="Se você participa de uma congregação da Igreja de Cristo e deseja incluir as informações da comunidade neste site, entre em contato pelo WhatsApp."
+    subDescription="A ideia é manter uma página organizada, clara e útil para quem procura uma Igreja de Cristo no Brasil."
+    headerId="cadastrar-congregacao"
+  >
+    <app-section-card
+      icon="bi bi-plus-circle"
+      title="Cadastrar congregação"
+      description="Envie uma mensagem para solicitar a inclusão da sua igreja local ou atualizar as informações."
+      bgClass="bg-soft"
+    />
+  </app-section-side-title>
 </app-page-layout>

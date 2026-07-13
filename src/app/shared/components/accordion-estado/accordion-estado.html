@@ -1,0 +1,35 @@
+<section class="accordion-item border-0 shadow-sm rounded-4 overflow-hidden">
+  <h3 class="accordion-header" [id]="'heading-' + id()">
+    <button
+      type="button"
+      class="accordion-button bg-white text-brand fw-bold"
+      [class.collapsed]="!aberto()"
+      [attr.aria-expanded]="aberto()"
+      [attr.aria-controls]="'collapse-' + id()"
+      [attr.data-bs-target]="'#collapse-' + id()"
+      data-bs-toggle="collapse"
+      (click)="onToggle()"
+    >
+      <i aria-hidden="true" class="bi bi-map text-gold me-2"></i>
+      {{ estado() }}
+    </button>
+  </h3>
+
+  <div
+    [id]="'collapse-' + id()"
+    class="accordion-collapse collapse"
+    [class.show]="aberto()"
+    [attr.aria-labelledby]="'heading-' + id()"
+  >
+    <div class="accordion-body bg-soft">
+      <div class="row g-4 align-items-stretch">
+        @for (igreja of igrejas(); track igreja.nome) {
+          <article class="col-md-6 col-xl-4 d-flex">
+            <!-- Aqui virá o componente SectionCard -->
+            <ng-content></ng-content>
+          </article>
+        }
+      </div>
+    </div>
+  </div>
+</section>
