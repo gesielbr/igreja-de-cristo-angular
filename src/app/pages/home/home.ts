@@ -95,7 +95,7 @@ export class Home implements OnInit {
     // ============================================
     // TÍTULO DA PÁGINA
     // ============================================
-    this.title.setTitle('Igreja de Cristo | Comunidade Cristã, Evangelho e Bíblia no Brasil');
+    this.title.setTitle('Igrejas de Cristo no Brasil | Encontre uma Comunidade Cristã Próxima');
 
     // ============================================
     // METADADOS BÁSICOS
@@ -103,12 +103,12 @@ export class Home implements OnInit {
     this.meta.updateTag({
       name: 'description',
       content:
-        'A Igreja de Cristo é uma comunidade cristã comprometida com Jesus Cristo, o Evangelho e a Bíblia. Encontre uma igreja perto de você no Brasil.',
+        'Encontre igrejas da Igreja de Cristo no Brasil por Estado e cidade. Veja endereço, contato, horários de cultos, estudos bíblicos e informações sobre comunidades cristãs locais.',
     });
     this.meta.updateTag({
       name: 'keywords',
       content:
-        'Igreja de Cristo, igreja cristã, evangelho, bíblia, comunhão, fé cristã, Jesus Cristo, cultos, comunidade cristã Brasil',
+        'Igrejas de Cristo no Brasil, encontrar igreja, comunidade cristã, cultos evangélicos, estudos bíblicos, igreja local, congregação cristã, Igreja de Cristo endereço, igreja perto de mim',
     });
     this.meta.updateTag({
       name: 'robots',
@@ -127,25 +127,28 @@ export class Home implements OnInit {
     this.meta.updateTag({ property: 'og:type', content: 'website' });
     this.meta.updateTag({
       property: 'og:title',
-      content: 'Igreja de Cristo | Comunidade Cristã, Evangelho e Bíblia no Brasil',
+      content: 'Igrejas de Cristo no Brasil | Encontre uma Comunidade Cristã Próxima',
     });
     this.meta.updateTag({
       property: 'og:description',
       content:
-        'A Igreja de Cristo é uma comunidade cristã comprometida com Jesus Cristo, o Evangelho e a Bíblia. Encontre uma igreja perto de você no Brasil.',
+        'Encontre igrejas da Igreja de Cristo no Brasil por Estado e cidade. Comunidades cristãs locais com endereço, contato e informações de cultos.',
     });
-    this.meta.updateTag({ property: 'og:url', content: 'https://www.igrejadecristo.net.br/' });
+    this.meta.updateTag({
+      property: 'og:url',
+      content: 'https://www.igrejadecristo.net.br/igrejas',
+    });
     this.meta.updateTag({ property: 'og:site_name', content: 'Igreja de Cristo' });
     this.meta.updateTag({ property: 'og:locale', content: 'pt_BR' });
     this.meta.updateTag({
       property: 'og:image',
-      content: 'https://www.igrejadecristo.net.br/assets/img/og-image.jpg',
+      content: 'https://www.igrejadecristo.net.br/assets/img/og-image-igrejas.jpg',
     });
     this.meta.updateTag({ property: 'og:image:width', content: '1200' });
     this.meta.updateTag({ property: 'og:image:height', content: '630' });
     this.meta.updateTag({
       property: 'og:image:alt',
-      content: 'Igreja de Cristo - Comunidade cristã no Brasil',
+      content: 'Igrejas de Cristo no Brasil - Encontre uma comunidade cristã próxima',
     });
 
     // ============================================
@@ -154,16 +157,16 @@ export class Home implements OnInit {
     this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({
       name: 'twitter:title',
-      content: 'Igreja de Cristo | Comunidade Cristã, Evangelho e Bíblia no Brasil',
+      content: 'Igrejas de Cristo no Brasil | Encontre uma Comunidade Cristã Próxima',
     });
     this.meta.updateTag({
       name: 'twitter:description',
       content:
-        'A Igreja de Cristo é uma comunidade cristã comprometida com Jesus Cristo, o Evangelho e a Bíblia.',
+        'Encontre igrejas da Igreja de Cristo no Brasil por Estado e cidade. Comunidades cristãs locais com endereço, contato e informações de cultos.',
     });
     this.meta.updateTag({
       name: 'twitter:image',
-      content: 'https://www.igrejadecristo.net.br/assets/img/og-image.jpg',
+      content: 'https://www.igrejadecristo.net.br/assets/img/og-image-igrejas.jpg',
     });
     this.meta.updateTag({ name: 'twitter:site', content: '@igrejadecristo' });
 
@@ -213,7 +216,7 @@ export class Home implements OnInit {
             url: 'https://www.igrejadecristo.net.br/assets/img/logo.svg',
           },
           description:
-            'A Igreja de Cristo é uma comunidade cristã comprometida com Jesus Cristo, o Evangelho e a Bíblia. Encontre uma igreja perto de você no Brasil.',
+            'Igreja de Cristo no Brasil - Comunidades cristãs locais comprometidas com Jesus Cristo, o Evangelho e a Bíblia. Encontre uma igreja perto de você.',
           sameAs: [
             'https://www.instagram.com/igrejadecristogaropabasc/',
             'https://www.facebook.com/IgrejadeCristoCuritibaCentro',
@@ -246,33 +249,42 @@ export class Home implements OnInit {
           },
         },
         {
-          '@type': 'CollectionPage',
-          '@id': 'https://www.igrejadecristo.net.br/#igrejas-locais',
+          '@type': 'WebPage',
+          '@id': 'https://www.igrejadecristo.net.br/igrejas#webpage',
           name: 'Igrejas de Cristo no Brasil',
           description:
-            'Conheça as comunidades locais da Igreja de Cristo no Brasil. Encontre cultos, estudos bíblicos e comunhão perto de você.',
-          url: 'https://www.igrejadecristo.net.br/',
+            'Encontre igrejas da Igreja de Cristo no Brasil por Estado e cidade. Veja endereço, contato, horários de cultos e estudos bíblicos.',
+          url: 'https://www.igrejadecristo.net.br/igrejas',
+          inLanguage: 'pt-BR',
+          isPartOf: {
+            '@id': 'https://www.igrejadecristo.net.br/#website',
+          },
           about: {
-            '@type': 'Thing',
-            name: 'Igrejas Cristãs',
+            '@id': 'https://www.igrejadecristo.net.br/#organization',
           },
-          mainEntity: {
-            '@type': 'ItemList',
-            itemListElement: [
-              {
-                '@type': 'ListItem',
-                position: 1,
-                name: 'Igreja de Cristo em Garopaba',
-                url: 'https://www.igrejadecristo.net.br/garopaba/',
-              },
-              {
-                '@type': 'ListItem',
-                position: 2,
-                name: 'Igreja de Cristo em Lucas de Oliveira',
-                url: 'https://www.igrejadecristo.net.br/lucasdeoliveira/',
-              },
-            ],
+          breadcrumb: {
+            '@id': 'https://www.igrejadecristo.net.br/igrejas#breadcrumb',
           },
+        },
+        {
+          '@type': 'BreadcrumbList',
+          '@id': 'https://www.igrejadecristo.net.br/igrejas#breadcrumb',
+          name: 'Breadcrumbs da página de Igrejas',
+          description: 'Caminho de navegação para a página de Igrejas locais.',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: 'Início',
+              item: 'https://www.igrejadecristo.net.br/',
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: 'Igrejas',
+              item: 'https://www.igrejadecristo.net.br/igrejas',
+            },
+          ],
         },
       ],
     };
