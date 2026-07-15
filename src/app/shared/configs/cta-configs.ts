@@ -71,19 +71,19 @@ export const EVENTS_CTA: CtaAsideSection[] = [
     id: 'encontros-aside',
     links: [
       {
-        label: 'Domingo · 9h30',
+        label: 'Quarta · 19h - Domingo · 9h30',
         href: '/eventos/domingo',
         ariaLabel: 'Culto de domingo às 9h30',
         icon: 'bi-calendar-event',
         variant: 'outline',
       },
-      {
+      /* {
         label: 'Quarta-feira · 19h',
         href: '/eventos/quarta',
         ariaLabel: 'Culto de quarta-feira às 19h',
         icon: 'bi-calendar-event',
         variant: 'outline',
-      },
+      }, */
     ],
   },
   {

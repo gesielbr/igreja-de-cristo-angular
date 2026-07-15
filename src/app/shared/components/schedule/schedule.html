@@ -1,0 +1,24 @@
+<table class="table-custom table table-striped">
+  <!-- <caption>
+    {{
+      caption()
+    }}
+  </caption> -->
+  <thead>
+    <tr>
+      @for (column of columns(); track column.key) {
+        <th scope="col">{{ column.label }}</th>
+      }
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of scheduleItems(); track item.day) {
+      <tr>
+        <td data-label="Dia">{{ item.day }}</td>
+        <td data-label="Encontro">{{ item.meeting }}</td>
+        <td data-label="Horário">{{ item.time }}</td>
+        <td data-label="Local">{{ item.location }}</td>
+      </tr>
+    }
+  </tbody>
+</table>

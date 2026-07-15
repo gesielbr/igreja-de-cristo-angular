@@ -1,0 +1,28 @@
+<article class="h-100">
+  <div class="card h-100 border-0 shadow-sm hover-lift">
+    <div class="card-body p-4 d-flex gap-4">
+      <time
+        class="event-date text-center rounded-3 bg-brand text-white p-2 d-flex align-items-center justify-content-center"
+        [attr.datetime]="event().time"
+      >
+        <strong class="d-block fs-2 lh-1">{{ event().day }}</strong>
+      </time>
+
+      <div>
+        <p class="text-uppercase text-gold fw-semibold small mb-2">
+          {{ event().frequency }}
+        </p>
+        <h3 class="h4 text-brand">{{ event().title }}</h3>
+        <p class="text-secondary mb-2">
+          <i aria-hidden="true" class="bi bi-clock me-2"></i>{{ event().time }}
+        </p>
+        <p class="text-secondary mb-3">
+          <i aria-hidden="true" class="bi bi-geo-alt me-2"></i>{{ event().address }}
+        </p>
+        <a class="btn btn-outline-primary btn-sm" [href]="event().buttonLink">
+          {{ event().buttonText }}
+        </a>
+      </div>
+    </div>
+  </div>
+</article>
