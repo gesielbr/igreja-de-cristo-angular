@@ -27,7 +27,7 @@
 /* Responsividade - mantida exatamente como você tinha */
 @media screen and (max-width: 600px) {
   .table-custom {
-    /* border: 0; */
+    border: 0;
   }
 
   .table-custom caption {
