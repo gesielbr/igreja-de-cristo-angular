@@ -18,8 +18,8 @@
     <app-gallery-feature-left [photos]="galeriaDestaque"></app-gallery-feature-left>
 
     <div class="row g-3">
-      <!-- Foto principal -->
-      <figure class="col-12 col-lg-7 mb-0">
+      <!-- primeiro destque -->
+      <!--  <figure class="col-12 col-lg-7 mb-0">
         <div
           class="gallery-photo gallery-photo-feature gallery-photo-center rounded-4 overflow-hidden"
         >
@@ -33,8 +33,6 @@
           />
         </div>
       </figure>
-
-      <!-- Fotos menores -->
       <div class="col-12 col-lg-5">
         <div class="row g-3">
           <figure class="col-6 mb-0">
@@ -76,10 +74,11 @@
             </div>
           </figure>
         </div>
-      </div>
+      </div> -->
+      <!-- fim primeiro destque -->
 
-      <!-- Fotos menores -->
-      <div class="col-12 col-lg-5">
+      <!-- segundo destaque -->
+      <!-- <div class="col-12 col-lg-5">
         <div class="row g-3">
           <figure class="col-12 mb-0">
             <div class="gallery-photo gallery-photo-small rounded-4 overflow-hidden">
@@ -107,9 +106,7 @@
             </div>
           </figure>
         </div>
-      </div>
-
-      <!-- Segunda foto principal -->
+      </div>      
       <figure class="col-12 col-lg-7 mb-0">
         <div
           class="gallery-photo gallery-photo-feature gallery-photo-top rounded-4 overflow-hidden"
@@ -123,29 +120,14 @@
             height="650"
           />
         </div>
-      </figure>
+      </figure> -->
+
+      <!-- fim segundo destaque -->
     </div>
 
     <app-gallery-feature-right [photos]="galeriaDestaqueRight"></app-gallery-feature-right>
   </app-section-container>
 
-  <!--  <app-section-container
-    bgClass="bg-soft"
-    sectionId="albuns"
-    labelledBy="albuns"
-    kicker="Álbuns"
-    title="Momentos especiais da igreja"
-    description="Cada álbum reúne registros de fé, comunhão, estudo da Palavra e celebrações vividas pela nossa comunidade."
-    headerId="albuns"
-    headerMaxWidth="46rem"
-  >
-    <app-album-card
-      kicker="Celebração e fé"
-      title="Batismos"
-      description="Momentos de entrega, alegria e testemunho público da fé em Cristo."
-      [photos]="batismos"
-    />
-  </app-section-container> -->
   <app-section-container
     bgClass="bg-soft"
     sectionId="albuns"

@@ -1,6 +1,8 @@
 <div class="row g-3">
-  <figure class="col-12 col-lg-7 mb-0">
-    <div class="gallery-photo gallery-photo-feature gallery-photo-center rounded-4 overflow-hidden">
+  <div class="col-12 col-lg-7">
+    <figure
+      class="gallery-photo gallery-photo-feature gallery-photo-center rounded-4 overflow-hidden mb-0"
+    >
       <img
         [src]="photos()[0].src"
         [alt]="photos()[0].alt"
@@ -9,13 +11,13 @@
         width="900"
         height="650"
       />
-    </div>
-  </figure>
+    </figure>
+  </div>
 
   <div class="col-12 col-lg-5">
     <div class="row g-3">
-      <figure class="col-6 mb-0">
-        <div class="gallery-photo gallery-photo-small rounded-4 overflow-hidden">
+      <div class="col-6">
+        <figure class="gallery-photo gallery-photo-small rounded-4 overflow-hidden mb-0">
           <img
             [src]="photos()[1].src"
             [alt]="photos()[1].alt"
@@ -24,11 +26,11 @@
             width="600"
             height="400"
           />
-        </div>
-      </figure>
+        </figure>
+      </div>
 
-      <figure class="col-6 mb-0">
-        <div class="gallery-photo gallery-photo-small rounded-4 overflow-hidden">
+      <div class="col-6">
+        <figure class="gallery-photo gallery-photo-small rounded-4 overflow-hidden mb-0">
           <img
             [src]="photos()[2].src"
             [alt]="photos()[2].alt"
@@ -37,11 +39,11 @@
             width="600"
             height="400"
           />
-        </div>
-      </figure>
+        </figure>
+      </div>
 
-      <figure class="col-12 mb-0">
-        <div class="gallery-photo gallery-photo-small rounded-4 overflow-hidden">
+      <div class="col-12">
+        <figure class="gallery-photo gallery-photo-small rounded-4 overflow-hidden mb-0">
           <img
             [src]="photos()[3].src"
             [alt]="photos()[3].alt"
@@ -50,8 +52,8 @@
             width="700"
             height="420"
           />
-        </div>
-      </figure>
+        </figure>
+      </div>
     </div>
   </div>
 </div>
