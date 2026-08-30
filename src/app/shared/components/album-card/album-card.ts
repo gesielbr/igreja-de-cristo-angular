@@ -1,4 +1,5 @@
-import { Component, input } from '@angular/core';
+import { Component, input, signal, viewChild } from '@angular/core';
+import { Lightbox } from '../lightbox/lightbox';
 
 export interface AlbumPhoto {
   src: string;
@@ -10,7 +11,7 @@ export interface AlbumPhoto {
 @Component({
   selector: 'app-album-card',
   standalone: true,
-  imports: [],
+  imports: [Lightbox],
   templateUrl: './album-card.html',
   styleUrl: './album-card.css',
 })
@@ -19,4 +20,12 @@ export class AlbumCard {
   readonly title = input('');
   readonly description = input('');
   readonly photos = input<AlbumPhoto[]>([]);
+
+  readonly selectedPhotoIndex = signal(0);
+  readonly lightbox = viewChild(Lightbox);
+
+  openLightbox(index: number): void {
+    this.selectedPhotoIndex.set(index);
+    this.lightbox()?.open();
+  }
 }

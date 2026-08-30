@@ -23,17 +23,13 @@
   </header>
 
   <div class="row g-0">
-    @for (photo of photos(); track photo.src) {
+    @for (photo of photos(); track photo.src; let index = $index) {
       <figure class="col-12 col-md-4 mb-0">
         <button
           type="button"
           class="gallery-trigger album-photo border-0 p-0 w-100 position-relative"
           [attr.aria-label]="'Ampliar foto: ' + photo.alt"
-          [attr.data-alt]="photo.alt"
-          [attr.data-caption]="photo.caption"
-          [attr.data-gallery]="title()"
-          [attr.data-src]="photo.src"
-          [attr.data-title]="photo.title"
+          (click)="openLightbox(index)"
         >
           <img [src]="photo.src" [alt]="photo.alt" class="w-100" loading="lazy" decoding="async" />
 
@@ -45,3 +41,5 @@
     }
   </div>
 </article>
+
+<app-lightbox [photos]="photos()" [currentIndex]="selectedPhotoIndex()" />

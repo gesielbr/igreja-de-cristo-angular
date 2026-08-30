@@ -1,0 +1,70 @@
+@if (isOpen()) {
+  <div
+    class="lightbox position-fixed top-0 start-0 w-100 h-100 p-2 p-md-3"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="photos()[activeIndex()].title"
+  >
+    <div
+      class="lightbox-backdrop position-absolute top-0 start-0 w-100 h-100"
+      (click)="close()"
+    ></div>
+
+    <div class="lightbox-content position-relative z-1 w-100 h-100">
+      <button
+        type="button"
+        class="lightbox-close btn btn-dark rounded-circle position-absolute top-0 end-0 m-2 m-md-3"
+        aria-label="Fechar"
+        (click)="close()"
+      >
+        <i aria-hidden="true" class="bi bi-x-lg"></i>
+      </button>
+
+      <button
+        type="button"
+        class="lightbox-navigation lightbox-navigation-prev btn btn-dark rounded-circle position-absolute top-50 start-0 translate-middle-y ms-2 ms-md-3"
+        aria-label="Foto anterior"
+        (click)="previous()"
+      >
+        <i aria-hidden="true" class="bi bi-chevron-left"></i>
+      </button>
+
+      <figure
+        class="lightbox-figure d-flex flex-column align-items-center justify-content-center w-100 h-100 mb-0"
+      >
+        <img
+          class="lightbox-image img-fluid"
+          [src]="photos()[activeIndex()].src"
+          [alt]="photos()[activeIndex()].alt"
+        />
+
+        <figcaption
+          class="lightbox-caption position-absolute bottom-0 start-0 w-100 text-center px-5 pb-3 pb-md-4"
+        >
+          <h2 class="h5 mb-1 text-white">
+            {{ photos()[activeIndex()].title }}
+          </h2>
+
+          <p class="mb-3 lightbox-caption-description">
+            {{ photos()[activeIndex()].caption }}
+          </p>
+        </figcaption>
+      </figure>
+
+      <button
+        type="button"
+        class="lightbox-navigation lightbox-navigation-next btn btn-dark rounded-circle position-absolute top-50 end-0 translate-middle-y me-2 me-md-3"
+        aria-label="Próxima foto"
+        (click)="next()"
+      >
+        <i aria-hidden="true" class="bi bi-chevron-right"></i>
+      </button>
+
+      <span
+        class="lightbox-counter badge text-bg-dark position-absolute bottom-0 start-50 translate-middle-x mb-1"
+      >
+        {{ activeIndex() + 1 }} de {{ photos().length }}
+      </span>
+    </div>
+  </div>
+}
