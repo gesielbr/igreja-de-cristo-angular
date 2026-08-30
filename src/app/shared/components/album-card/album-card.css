@@ -1,0 +1,59 @@
+.album-card {
+  overflow: hidden;
+}
+
+.album-photo {
+  width: 100%;
+  height: 18rem;
+  overflow: hidden;
+  position: relative;
+  display: block;
+  background-color: var(--brand-gray-100);
+}
+
+.album-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.gallery-zoom {
+  align-items: center;
+  background-color: rgba(16, 41, 69, 0.7);
+  border: 1px solid var(--brand-border-light);
+  border-radius: 50%;
+  bottom: 1rem;
+  color: var(--brand-white);
+  display: inline-flex;
+  height: 2.6rem;
+  justify-content: center;
+  opacity: 0;
+  position: absolute;
+  right: 1rem;
+  transition: opacity var(--brand-transition-base);
+  width: 2.6rem;
+}
+
+.album-photo:hover .gallery-zoom,
+.album-photo:focus-visible .gallery-zoom {
+  opacity: 1;
+}
+
+.album-photo:focus-visible {
+  outline: 0.2rem solid var(--brand-accent);
+  outline-offset: -0.2rem;
+}
+
+@media (max-width: 767.98px) {
+  .album-photo {
+    height: 16rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .album-photo {
+    height: 14rem;
+  }
+}

@@ -124,4 +124,22 @@
       </figure>
     </div>
   </app-section-container>
+
+  <app-section-container
+    bgClass="bg-soft"
+    sectionId="albuns"
+    labelledBy="albuns"
+    kicker="Álbuns"
+    title="Momentos especiais da igreja"
+    description="Cada álbum reúne registros de fé, comunhão, estudo da Palavra e celebrações vividas pela nossa comunidade."
+    headerId="albuns"
+    headerMaxWidth="46rem"
+  >
+    <app-album-card
+      kicker="Celebração e fé"
+      title="Batismos"
+      description="Momentos de entrega, alegria e testemunho público da fé em Cristo."
+      [photos]="batismos"
+    />
+  </app-section-container>
 </app-page-layout>

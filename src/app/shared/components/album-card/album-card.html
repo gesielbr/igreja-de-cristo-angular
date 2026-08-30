@@ -1,0 +1,47 @@
+<article
+  [attr.aria-labelledby]="'album-title-' + title()"
+  class="album-card bg-white rounded-4 shadow-sm overflow-hidden mb-5"
+>
+  <header class="p-4 p-md-5 pb-md-4 d-md-flex justify-content-between align-items-end">
+    <div>
+      <p class="text-uppercase text-gold fw-semibold letter-spacing mb-2">
+        {{ kicker() }}
+      </p>
+
+      <h3 class="h2 text-brand fw-bold mb-2" [id]="'album-title-' + title()">
+        {{ title() }}
+      </h3>
+
+      <p class="text-secondary mb-0">
+        {{ description() }}
+      </p>
+    </div>
+
+    <span class="badge rounded-pill text-bg-light border text-brand px-3 py-2 mt-3 mt-md-0">
+      {{ photos().length }} {{ photos().length === 1 ? 'foto' : 'fotos' }}
+    </span>
+  </header>
+
+  <div class="row g-0">
+    @for (photo of photos(); track photo.src) {
+      <figure class="col-12 col-md-4 mb-0">
+        <button
+          type="button"
+          class="gallery-trigger album-photo border-0 p-0 w-100 position-relative"
+          [attr.aria-label]="'Ampliar foto: ' + photo.alt"
+          [attr.data-alt]="photo.alt"
+          [attr.data-caption]="photo.caption"
+          [attr.data-gallery]="title()"
+          [attr.data-src]="photo.src"
+          [attr.data-title]="photo.title"
+        >
+          <img [src]="photo.src" [alt]="photo.alt" class="w-100" loading="lazy" decoding="async" />
+
+          <span class="gallery-zoom">
+            <i aria-hidden="true" class="bi bi-arrows-fullscreen"></i>
+          </span>
+        </button>
+      </figure>
+    }
+  </div>
+</article>
