@@ -1,0 +1,57 @@
+<div class="row g-3">
+  <figure class="col-12 col-lg-7 mb-0">
+    <div class="gallery-photo gallery-photo-feature gallery-photo-center rounded-4 overflow-hidden">
+      <img
+        [src]="photos()[0].src"
+        [alt]="photos()[0].alt"
+        loading="eager"
+        decoding="async"
+        width="900"
+        height="650"
+      />
+    </div>
+  </figure>
+
+  <div class="col-12 col-lg-5">
+    <div class="row g-3">
+      <figure class="col-6 mb-0">
+        <div class="gallery-photo gallery-photo-small rounded-4 overflow-hidden">
+          <img
+            [src]="photos()[1].src"
+            [alt]="photos()[1].alt"
+            loading="lazy"
+            decoding="async"
+            width="600"
+            height="400"
+          />
+        </div>
+      </figure>
+
+      <figure class="col-6 mb-0">
+        <div class="gallery-photo gallery-photo-small rounded-4 overflow-hidden">
+          <img
+            [src]="photos()[2].src"
+            [alt]="photos()[2].alt"
+            loading="lazy"
+            decoding="async"
+            width="600"
+            height="400"
+          />
+        </div>
+      </figure>
+
+      <figure class="col-12 mb-0">
+        <div class="gallery-photo gallery-photo-small rounded-4 overflow-hidden">
+          <img
+            [src]="photos()[3].src"
+            [alt]="photos()[3].alt"
+            loading="lazy"
+            decoding="async"
+            width="700"
+            height="420"
+          />
+        </div>
+      </figure>
+    </div>
+  </div>
+</div>

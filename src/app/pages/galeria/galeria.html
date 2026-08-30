@@ -15,6 +15,8 @@
     headerId="album-destaque"
     headerMaxWidth="46rem"
   >
+    <app-gallery-feature-left [photos]="galeriaDestaque"></app-gallery-feature-left>
+
     <div class="row g-3">
       <!-- Foto principal -->
       <figure class="col-12 col-lg-7 mb-0">
@@ -123,8 +125,27 @@
         </div>
       </figure>
     </div>
+
+    <app-gallery-feature-right [photos]="galeriaDestaqueRight"></app-gallery-feature-right>
   </app-section-container>
 
+  <!--  <app-section-container
+    bgClass="bg-soft"
+    sectionId="albuns"
+    labelledBy="albuns"
+    kicker="Álbuns"
+    title="Momentos especiais da igreja"
+    description="Cada álbum reúne registros de fé, comunhão, estudo da Palavra e celebrações vividas pela nossa comunidade."
+    headerId="albuns"
+    headerMaxWidth="46rem"
+  >
+    <app-album-card
+      kicker="Celebração e fé"
+      title="Batismos"
+      description="Momentos de entrega, alegria e testemunho público da fé em Cristo."
+      [photos]="batismos"
+    />
+  </app-section-container> -->
   <app-section-container
     bgClass="bg-soft"
     sectionId="albuns"
@@ -140,6 +161,13 @@
       title="Batismos"
       description="Momentos de entrega, alegria e testemunho público da fé em Cristo."
       [photos]="batismos"
+    />
+
+    <app-album-card
+      kicker="Palavra e comunhão"
+      title="Estudo bíblico e oração"
+      description="Encontros dedicados ao estudo da Palavra, à oração e ao fortalecimento da fé em comunidade."
+      [photos]="estudoBiblico"
     />
   </app-section-container>
 </app-page-layout>
