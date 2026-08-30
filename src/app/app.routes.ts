@@ -3,6 +3,7 @@ import { Home } from './pages/home/home';
 import { QuemSomos } from './pages/quem-somos/quem-somos';
 import { Igrejas } from './pages/igrejas/igrejas';
 import { Eventos } from './pages/eventos/eventos';
+import { Galeria } from './pages/galeria/galeria';
 
 export const routes: Routes = [
   {
@@ -34,6 +35,14 @@ export const routes: Routes = [
     component: Eventos,
     data: {
       pageType: 'events',
+      section: 'main',
+    },
+  },
+  {
+    path: 'galeria',
+    component: Galeria,
+    data: {
+      pageType: 'gallery',
       section: 'main',
     },
   },
