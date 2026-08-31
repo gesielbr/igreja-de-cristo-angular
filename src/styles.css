@@ -298,3 +298,25 @@ a:focus-visible {
   white-space: nowrap !important;
   border: 0 !important;
 }
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(16, 41, 69, 0.45) transparent;
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: rgba(16, 41, 69, 0.45);
+  border-radius: 999px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background-color: var(--brand-accent);
+}

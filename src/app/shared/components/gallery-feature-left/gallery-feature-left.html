@@ -1,59 +1,86 @@
 <div class="row g-3">
   <div class="col-12 col-lg-7">
-    <figure
-      class="gallery-photo gallery-photo-feature gallery-photo-center rounded-4 overflow-hidden mb-0"
-    >
-      <img
-        [src]="photos()[0].src"
-        [alt]="photos()[0].alt"
-        loading="eager"
-        decoding="async"
-        width="900"
-        height="650"
-      />
+    <figure class="mb-0">
+      <button
+        type="button"
+        class="gallery-trigger gallery-photo gallery-photo-feature gallery-photo-center border-0 p-0 rounded-4 overflow-hidden w-100"
+        [attr.aria-label]="'Ampliar foto: ' + photos()[0].alt"
+        (click)="openLightbox(0)"
+      >
+        <img
+          [src]="photos()[0].src"
+          [alt]="photos()[0].alt"
+          loading="eager"
+          decoding="async"
+          width="900"
+          height="650"
+        />
+      </button>
     </figure>
   </div>
 
   <div class="col-12 col-lg-5">
     <div class="row g-3">
       <div class="col-6">
-        <figure class="gallery-photo gallery-photo-small rounded-4 overflow-hidden mb-0">
-          <img
-            [src]="photos()[1].src"
-            [alt]="photos()[1].alt"
-            loading="lazy"
-            decoding="async"
-            width="600"
-            height="400"
-          />
+        <figure class="mb-0">
+          <button
+            type="button"
+            class="gallery-trigger gallery-photo gallery-photo-small border-0 p-0 rounded-4 overflow-hidden w-100"
+            [attr.aria-label]="'Ampliar foto: ' + photos()[1].alt"
+            (click)="openLightbox(1)"
+          >
+            <img
+              [src]="photos()[1].src"
+              [alt]="photos()[1].alt"
+              loading="lazy"
+              decoding="async"
+              width="600"
+              height="400"
+            />
+          </button>
         </figure>
       </div>
 
       <div class="col-6">
-        <figure class="gallery-photo gallery-photo-small rounded-4 overflow-hidden mb-0">
-          <img
-            [src]="photos()[2].src"
-            [alt]="photos()[2].alt"
-            loading="lazy"
-            decoding="async"
-            width="600"
-            height="400"
-          />
+        <figure class="mb-0">
+          <button
+            type="button"
+            class="gallery-trigger gallery-photo gallery-photo-small border-0 p-0 rounded-4 overflow-hidden w-100"
+            [attr.aria-label]="'Ampliar foto: ' + photos()[2].alt"
+            (click)="openLightbox(2)"
+          >
+            <img
+              [src]="photos()[2].src"
+              [alt]="photos()[2].alt"
+              loading="lazy"
+              decoding="async"
+              width="600"
+              height="400"
+            />
+          </button>
         </figure>
       </div>
 
       <div class="col-12">
-        <figure class="gallery-photo gallery-photo-small rounded-4 overflow-hidden mb-0">
-          <img
-            [src]="photos()[3].src"
-            [alt]="photos()[3].alt"
-            loading="lazy"
-            decoding="async"
-            width="700"
-            height="420"
-          />
+        <figure class="mb-0">
+          <button
+            type="button"
+            class="gallery-trigger gallery-photo gallery-photo-small border-0 p-0 rounded-4 overflow-hidden w-100"
+            [attr.aria-label]="'Ampliar foto: ' + photos()[3].alt"
+            (click)="openLightbox(3)"
+          >
+            <img
+              [src]="photos()[3].src"
+              [alt]="photos()[3].alt"
+              loading="lazy"
+              decoding="async"
+              width="700"
+              height="420"
+            />
+          </button>
         </figure>
       </div>
     </div>
   </div>
 </div>
+<app-lightbox [photos]="photos()" />

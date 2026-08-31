@@ -1,5 +1,5 @@
 import { Component, input, signal } from '@angular/core';
-import { AlbumPhoto } from '../album-card/album-card';
+import { AlbumPhoto } from '../../models/album-photo';
 
 @Component({
   selector: 'app-lightbox',
@@ -17,8 +17,8 @@ export class Lightbox {
   readonly isOpen = signal(false);
   readonly activeIndex = signal(0);
 
-  open(): void {
-    this.activeIndex.set(this.currentIndex());
+  open(index?: number): void {
+    this.activeIndex.set(index ?? this.currentIndex());
     this.isOpen.set(true);
   }
 

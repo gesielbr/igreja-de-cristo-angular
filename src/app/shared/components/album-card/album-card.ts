@@ -1,12 +1,6 @@
 import { Component, input, signal, viewChild } from '@angular/core';
 import { Lightbox } from '../lightbox/lightbox';
-
-export interface AlbumPhoto {
-  src: string;
-  alt: string;
-  caption: string;
-  title: string;
-}
+import { AlbumPhoto } from '../../models/album-photo';
 
 @Component({
   selector: 'app-album-card',

@@ -1,4 +1,5 @@
 import { Component, input } from '@angular/core';
+import { AlbumPhoto } from '../../models/album-photo';
 
 @Component({
   selector: 'app-gallery-feature-right',
@@ -7,5 +8,5 @@ import { Component, input } from '@angular/core';
   styleUrl: './gallery-feature-right.css',
 })
 export class GalleryFeatureRight {
-  photos = input<{ src: string; alt: string }[]>([]);
+  photos = input<AlbumPhoto[]>([]);
 }

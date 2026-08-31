@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { PageLayout } from '../../shared/components/page-layout/page-layout';
 import { ContentHeroComponent } from '../../shared/components/content-hero/content-hero';
 import { SectionContainer } from '../../shared/components/section-container/section-container';
-import { AlbumCard, AlbumPhoto } from '../../shared/components/album-card/album-card';
+import { AlbumCard } from '../../shared/components/album-card/album-card';
+import { AlbumPhoto } from '../../shared/models/album-photo';
 import { GalleryFeatureLeft } from '../../shared/components/gallery-feature-left/gallery-feature-left';
 import { GalleryFeatureRight } from '../../shared/components/gallery-feature-right/gallery-feature-right';
 
@@ -60,36 +61,52 @@ export class Galeria {
       title: 'Estudo da Palavra',
     },
   ];
-  galeriaDestaque = [
+  galeriaDestaque: AlbumPhoto[] = [
     {
       src: '/assets/img/garopaba/irmao_paulo_pregando.jpeg',
       alt: 'Irmão pregando a Palavra de Deus durante culto.',
+      title: 'Pregação da Palavra',
+      caption: 'Momento de adoração e ensino da Palavra de Deus durante o culto.',
     },
     {
       src: '/assets/img/garopaba/congregacao_01.jpg',
       alt: 'Irmãos e visitantes reunidos em adoração e estudos.',
+      title: 'Comunidade reunida',
+      caption: 'Irmãos e visitantes reunidos para adoração, comunhão e estudo da Palavra.',
     },
     {
       src: '/assets/img/garopaba/congregacao_02.jpg',
       alt: 'Pessoas reunidas após reunião.',
+      title: 'Comunhão após a reunião',
+      caption: 'Momentos de convivência e comunhão entre os irmãos após a reunião.',
     },
     {
       src: '/assets/img/garopaba/evento_1.png',
       alt: 'Irmãos reunidos numa mesa em evento cristão.',
+      title: 'Comunhão à mesa',
+      caption: 'Irmãos reunidos à mesa em um momento de comunhão e confraternização.',
     },
   ];
-  galeriaDestaqueRight = [
+  galeriaDestaqueRight: AlbumPhoto[] = [
     {
       src: '/assets/img/garopaba/congregacao_06.jpg',
       alt: 'Pessoas em frente ao lindo muro com folhagens.',
+      title: 'Comunidade reunida',
+      caption: 'Irmãos reunidos em um momento de comunhão e convivência.',
     },
     {
       src: '/assets/img/garopaba/congregacao_05.jpeg',
       alt: 'Grupo da igreja reunido em comunhão e estudos.',
+      title: 'Comunhão e estudo',
+      caption:
+        'A comunidade reunida para fortalecer a fé por meio da comunhão e do estudo da Palavra.',
     },
     {
       src: '/assets/img/garopaba/caderno_de_pedido_de_oracao.jpg',
       alt: 'Irmão entregando um caderno de pedidos de oração para outro irmão da igreja.',
+      title: 'Pedidos de oração',
+      caption:
+        'Um momento de cuidado e oração, compartilhando pedidos entre os irmãos da comunidade.',
     },
   ];
 }
