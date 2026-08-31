@@ -1,4 +1,4 @@
-import { Component, input, signal, viewChild } from '@angular/core';
+import { Component, input, viewChild } from '@angular/core';
 import { Lightbox } from '../lightbox/lightbox';
 import { AlbumPhoto } from '../../models/album-photo';
 
@@ -15,11 +15,9 @@ export class AlbumCard {
   readonly description = input('');
   readonly photos = input<AlbumPhoto[]>([]);
 
-  readonly selectedPhotoIndex = signal(0);
   readonly lightbox = viewChild(Lightbox);
 
   openLightbox(index: number): void {
-    this.selectedPhotoIndex.set(index);
-    this.lightbox()?.open();
+    this.lightbox()?.open(index);
   }
 }

@@ -320,3 +320,111 @@ html::-webkit-scrollbar-thumb {
 html::-webkit-scrollbar-thumb:hover {
   background-color: var(--brand-accent);
 }
+
+/* =========================================================
+   Gallery
+   ========================================================= */
+
+.gallery-photo {
+  width: 100%;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.gallery-photo-feature {
+  height: 28rem;
+}
+
+.gallery-photo-small {
+  height: 13.5rem;
+}
+
+/*
+ * Image positioning
+ *
+ * 0%   = top
+ * 20%  = closer to the top
+ * 50%  = center
+ * 80%  = closer to the bottom
+ * 100% = bottom
+ */
+
+.gallery-photo-top {
+  img {
+    object-position: center 20%;
+  }
+}
+
+.gallery-photo-center {
+  img {
+    object-position: center 30%;
+  }
+}
+
+/*
+ * Interactive gallery images
+ */
+
+.gallery-trigger {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  background: transparent;
+  position: relative;
+}
+
+.gallery-trigger:focus-visible {
+  outline: 0.2rem solid var(--brand-accent);
+  outline-offset: -0.2rem;
+}
+
+/*
+ * Gallery zoom indicator
+ */
+
+.gallery-zoom {
+  align-items: center;
+  background-color: rgba(16, 41, 69, 0.7);
+  border: 1px solid var(--brand-border-light);
+  border-radius: 50%;
+  bottom: 1rem;
+  color: var(--brand-white);
+  display: inline-flex;
+  height: 2.6rem;
+  justify-content: center;
+  opacity: 1;
+  pointer-events: none;
+  position: absolute;
+  right: 1rem;
+  width: 2.6rem;
+}
+
+/* Tablet */
+
+@media (max-width: 991.98px) {
+  .gallery-photo-feature {
+    height: 24rem;
+  }
+
+  .gallery-photo-small {
+    height: 13rem;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 575.98px) {
+  .gallery-photo-feature {
+    height: 20rem;
+  }
+
+  .gallery-photo-small {
+    height: 12rem;
+  }
+}
