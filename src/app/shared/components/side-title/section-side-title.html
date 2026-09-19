@@ -4,7 +4,7 @@
   [class]="bgClass() + ' py-5 px-2 px-md-5'"
 >
   <div class="row g-3 g-md-5 align-items-center">
-    <!-- Coluna da esquerda - Título e descrição -->
+    <!-- Coluna da esquerda - Título, descrição e conteúdo opcional -->
     <article [class]="invertColumns() ? leftColumnClass() + ' order-lg-2' : leftColumnClass()">
       @if (kicker()) {
         <span class="section-kicker">{{ kicker() }}</span>
@@ -23,11 +23,13 @@
       @if (subDescription()) {
         <p class="text-secondary">{{ subDescription() }}</p>
       }
+
+      <ng-content select="[section-side-title-bottom]"></ng-content>
     </article>
 
-    <!-- Coluna da direita - Conteúdo projetado -->
+    <!-- Coluna oposta - Conteúdo projetado -->
     <div [class]="invertColumns() ? rightColumnClass() + ' order-lg-1' : rightColumnClass()">
-      <ng-content></ng-content>
+      <ng-content select=":not([section-side-title-bottom])"></ng-content>
     </div>
   </div>
 </section>

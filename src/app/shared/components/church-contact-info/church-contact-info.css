@@ -1,0 +1,10 @@
+.list-group-item {
+  padding-left: 0.7rem !important;
+  text-decoration: none;
+  background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity));
+  margin-bottom: 0.5rem;
+  border-width: 0 0 var(--bs-list-group-border-width);
+  &:last-child {
+    border-width: 0 0 var(--bs-list-group-border-width);
+  }
+}

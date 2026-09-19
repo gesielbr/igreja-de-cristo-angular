@@ -4,6 +4,7 @@ import { QuemSomos } from './pages/quem-somos/quem-somos';
 import { Igrejas } from './pages/igrejas/igrejas';
 import { Eventos } from './pages/eventos/eventos';
 import { Galeria } from './pages/galeria/galeria';
+import { Contato } from './pages/contato/contato';
 
 export const routes: Routes = [
   {
@@ -43,6 +44,14 @@ export const routes: Routes = [
     component: Galeria,
     data: {
       pageType: 'gallery',
+      section: 'main',
+    },
+  },
+  {
+    path: 'contato',
+    component: Contato,
+    data: {
+      pageType: 'contact',
       section: 'main',
     },
   },

@@ -1,0 +1,27 @@
+<section aria-labelledby="informacoes-contato-titulo">
+  <h3 class="h5 fw-semibold mb-4" id="informacoes-contato-titulo">
+    {{ title() }}
+  </h3>
+
+  <address class="list-group list-group-flush">
+    @for (contact of contacts(); track contact.id) {
+      <div class="list-group-item px-0">
+        <div class="d-flex align-items-start gap-3">
+          <i [class]="contact.icon" aria-hidden="true"></i>
+
+          @if (contact.href) {
+            <a [href]="contact.href">
+              <span class="visually-hidden">{{ contact.label }}: </span>
+              {{ contact.value }}
+            </a>
+          } @else {
+            <span>
+              <span class="visually-hidden">{{ contact.label }}: </span>
+              {{ contact.value }}
+            </span>
+          }
+        </div>
+      </div>
+    }
+  </address>
+</section>

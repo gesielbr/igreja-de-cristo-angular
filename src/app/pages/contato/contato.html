@@ -1,0 +1,25 @@
+<app-page-layout>
+  <app-content-hero
+    currentPage="Contato"
+    subtitle="Estamos aqui para receber você"
+    title="Contato"
+    description="Fale conosco, envie seu pedido de oração ou planeje sua visita à Igreja de Cristo em Garopaba."
+  >
+  </app-content-hero>
+
+  <app-section-side-title
+    bgClass="bg-light"
+    sectionId="fale-conosco"
+    labelledBy="fale-conosco"
+    kicker="Fale conosco"
+    title="Será uma alegria ouvirmos você!"
+    description="Estamos à disposição para receber sua mensagem, pedido de oração ou dúvida sobre os cultos e encontros da Igreja de Cristo."
+    headerId="fale-conosco"
+  >
+    <div section-side-title-bottom>
+      <app-church-contact-info [contacts]="contatos" />
+    </div>
+
+    <app-institutional-channels [title]="canaisTitle" [channels]="canaisInstitucionais" />
+  </app-section-side-title>
+</app-page-layout>
