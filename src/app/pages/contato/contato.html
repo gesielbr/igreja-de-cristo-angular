@@ -10,11 +10,11 @@
   <app-section-side-title
     bgClass="bg-light"
     sectionId="fale-conosco"
-    labelledBy="fale-conosco"
+    labelledBy="fale-conosco-titulo"
     kicker="Fale conosco"
     title="Será uma alegria ouvirmos você!"
     description="Estamos à disposição para receber sua mensagem, pedido de oração ou dúvida sobre os cultos e encontros da Igreja de Cristo."
-    headerId="fale-conosco"
+    headerId="fale-conosco-titulo"
   >
     <div section-side-title-bottom>
       <app-church-contact-info [contacts]="contatos" />
@@ -22,4 +22,48 @@
 
     <app-institutional-channels [title]="canaisTitle" [channels]="canaisInstitucionais" />
   </app-section-side-title>
+  <app-section-side-title
+    bgClass="bg-white"
+    sectionId="como-chegar"
+    labelledBy="como-chegar-titulo"
+    kicker="Como chegar"
+    title="Estamos em Garopaba"
+    description="A Igreja de Cristo em Garopaba fica na Rua Pinguirito, 41, no bairro Pinguirito. Será uma alegria receber você em nossos encontros."
+    headerId="como-chegar-titulo"
+  >
+    <div class="text-center">
+      <a
+        href="https://www.google.com/maps/search/?api=1&query=Rua%20Pinguirito%2C%2041%20-%20Pinguirito%2C%20Garopaba%20-%20SC"
+        aria-label="Abrir no Google Maps"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-outline-primary btn-lg px-5 py-3 d-none d-md-inline-block"
+        ><i aria-hidden="true" class="bi bi-geo-alt me-2"></i> Abrir no Google Maps
+      </a>
+    </div>
+  </app-section-side-title>
+
+  <app-section-container
+    bgClass="bg-light"
+    sectionId="localizacao"
+    labelledBy="localizacao"
+    kicker="Localização"
+    title="Mapa"
+    headerId="mapa"
+    headerMaxWidth="46rem"
+  >
+    <div class="row">
+      <div class="co">
+        <div class="ratio ratio-21x9 rounded-4 overflow-hidden shadow-sm">
+          <iframe
+            title="Mapa com a localização da Igreja de Cristo em Garopaba"
+            src="https://www.google.com/maps?q=Rua%20Pinguirito%2C%2041%20-%20Pinguirito%2C%20Garopaba%20-%20SC&amp;output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen=""
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </app-section-container>
 </app-page-layout>

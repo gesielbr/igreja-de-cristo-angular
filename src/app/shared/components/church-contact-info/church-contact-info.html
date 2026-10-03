@@ -6,7 +6,7 @@
   <address class="list-group list-group-flush">
     @for (contact of contacts(); track contact.id) {
       <div class="list-group-item px-0">
-        <div class="d-flex align-items-start gap-3">
+        <p class="d-flex align-items-start gap-3 mb-0">
           <i [class]="contact.icon" aria-hidden="true"></i>
 
           @if (contact.href) {
@@ -20,7 +20,7 @@
               {{ contact.value }}
             </span>
           }
-        </div>
+        </p>
       </div>
     }
   </address>

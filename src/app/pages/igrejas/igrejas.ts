@@ -30,7 +30,7 @@ export class Igrejas implements OnInit {
     subtitle: 'Localidades',
     title: 'Igrejas de Cristo no Brasil',
     description:
-      'Encontre comunidades locais da Igreja de Cristo, conheça páginas regionais, informações de cultos, estudos bíblicos, endereço e contato.',
+      'Encontre a Igreja de Cristo, conheça as igrejas, informações de cultos, estudos bíblicos, endereço e contato.',
   };
 
   // Dados das igrejas por estado
