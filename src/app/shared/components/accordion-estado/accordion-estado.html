@@ -23,10 +23,9 @@
   >
     <div class="accordion-body bg-soft">
       <div class="row g-4 align-items-stretch">
-        @for (igreja of igrejas(); track igreja.nome) {
+        @for (igreja of igrejas(); track igreja.id) {
           <article class="col-md-6 col-xl-4 d-flex">
-            <!-- Aqui virá o componente SectionCard -->
-            <ng-content></ng-content>
+            <app-church-card class="w-100" [church]="igreja" />
           </article>
         }
       </div>

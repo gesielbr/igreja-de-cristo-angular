@@ -1,12 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Meta, Title } from '@angular/platform-browser';
+
 import { PageLayout } from '../../shared/components/page-layout/page-layout';
 import { ContentHeroComponent } from '../../shared/components/content-hero/content-hero';
 import { SectionSideTitle } from '../../shared/components/side-title/section-side-title';
 import { SectionCard } from '../../shared/components/section-card/section-card';
 import { SectionContainer } from '../../shared/components/section-container/section-container';
 import { AccordionEstado } from '../../shared/components/accordion-estado/accordion-estado';
+
+import { IgrejasService } from '../../shared/services/igrejas.service';
+import { Church } from '../../shared/models/church.model';
 
 @Component({
   selector: 'app-igrejas',
@@ -24,7 +28,8 @@ import { AccordionEstado } from '../../shared/components/accordion-estado/accord
   styleUrl: './igrejas.css',
 })
 export class Igrejas implements OnInit {
-  // Dados estáticos para o componente
+  private readonly igrejasService = inject(IgrejasService);
+
   readonly pageConfig = {
     currentPage: 'Igrejas locais',
     subtitle: 'Localidades',
@@ -33,41 +38,17 @@ export class Igrejas implements OnInit {
       'Encontre a Igreja de Cristo, conheça as igrejas, informações de cultos, estudos bíblicos, endereço e contato.',
   };
 
-  // Dados das igrejas por estado
-  readonly igrejasData = {
-    santaCatarina: {
-      estado: 'Santa Catarina',
-      aberto: true,
-      igrejas: [
-        {
-          nome: 'Igreja de Cristo em Florianópolis',
-          descricao: 'Comunidade da Igreja de Cristo em Florianópolis, Santa Catarina.',
-          endereco: 'Rua Prefeito Dib Cherem, 2897 - Capoeiras, Florianópolis - SC, 88090-001',
-          link: 'https://linktr.ee/cebfloripa',
-          linkExterno: true,
-          whatsapp: '5548992222897',
-          instagram: 'cebfloripa',
-          facebook: 'igrejadecristofloripa',
-          site: 'https://linktr.ee/cebfloripa',
-          email: 'cebfloripa@gmail.com',
-          maps: 'Rua Prefeito Dib Cherem, 2897 - Capoeiras, Florianópolis - SC, 88090-001',
-        },
-        {
-          nome: 'Igreja de Cristo em Garopaba',
-          descricao: 'Comunidade da Igreja de Cristo em Garopaba, Santa Catarina.',
-          endereco: 'Rua Pinguirito, 41 - Pinguirito, Garopaba - SC, 88495-000',
-          link: 'garopaba/',
-          linkExterno: false,
-          whatsapp: '5551997032022',
-          instagram: 'igrejadecristogaropabasc',
-          facebook: '',
-          site: '',
-          email: '',
-          maps: 'Rua Pinguirito, 41 - Pinguirito, Garopaba - SC, 88495-000',
-        },
-      ],
-    },
-  };
+  // Igrejas carregadas pela API
+  igrejas: Church[] = [];
+
+  estados = signal<
+    {
+      nome: string;
+      uf: string;
+      igrejas: Church[];
+      aberto: boolean;
+    }[]
+  >([]);
 
   constructor(
     private title: Title,
@@ -76,7 +57,68 @@ export class Igrejas implements OnInit {
 
   ngOnInit(): void {
     this.setupSEO();
-    this.addJsonLd();
+    this.loadIgrejas();
+  }
+
+  /**
+   * Carrega as igrejas através da API
+   */
+  private loadIgrejas(): void {
+    this.igrejasService.getIgrejas().subscribe({
+      next: (igrejas) => {
+        this.igrejas = igrejas;
+        this.organizarPorEstado();
+
+        this.addJsonLd();
+      },
+      error: (error) => {
+        console.error('Erro ao carregar igrejas:', error);
+      },
+    });
+  }
+
+  buscarIgrejas(valor: string, event?: Event): void {
+    event?.preventDefault();
+
+    const termo = valor.trim();
+
+    if (!termo) {
+      this.loadIgrejas();
+      return;
+    }
+
+    this.igrejasService.buscarIgrejas(termo).subscribe({
+      next: (igrejas) => {
+        this.igrejas = igrejas;
+        this.organizarPorEstado();
+      },
+      error: (error) => {
+        console.error('Erro ao buscar igrejas:', error);
+      },
+    });
+  }
+
+  private organizarPorEstado(): void {
+    const estadosMap = new Map<string, Church[]>();
+
+    this.igrejas.forEach((igreja) => {
+      if (!estadosMap.has(igreja.uf)) {
+        estadosMap.set(igreja.uf, []);
+      }
+
+      estadosMap.get(igreja.uf)!.push(igreja);
+    });
+
+    this.estados.set(
+      Array.from(estadosMap.entries())
+        .map(([uf, igrejas]) => ({
+          nome: igrejas[0]?.estado || uf,
+          uf,
+          igrejas,
+          aberto: false,
+        }))
+        .sort((a, b) => a.nome.localeCompare(b.nome)),
+    );
   }
 
   /**
@@ -222,6 +264,7 @@ export class Igrejas implements OnInit {
 
     // Remove JSON-LD antigo se existir
     const oldScript = document.querySelector('script[type="application/ld+json"]');
+
     if (oldScript) {
       oldScript.remove();
     }
@@ -230,35 +273,23 @@ export class Igrejas implements OnInit {
     const script = document.createElement('script');
     script.type = 'application/ld+json';
 
-    // Pega as igrejas de Santa Catarina para o JSON-LD
-    const igrejasSC = this.igrejasData.santaCatarina.igrejas;
-
-    // Constrói o ItemList com as igrejas
-    const itemListElement = igrejasSC.map((igreja, index) => ({
+    // Constrói o ItemList com as igrejas vindas da API
+    const itemListElement = this.igrejas.map((igreja, index) => ({
       '@type': 'ListItem',
       position: index + 1,
       item: {
         '@type': 'Church',
-        name: igreja.nome,
-        description: igreja.descricao,
-        url: igreja.linkExterno ? igreja.link : `https://www.igrejadecristo.net.br/${igreja.link}`,
-        ...(igreja.email && { email: igreja.email }),
-        ...(igreja.whatsapp && { telephone: `+55 ${igreja.whatsapp}` }),
+        name: igreja.nomeCongregacao,
         address: {
           '@type': 'PostalAddress',
-          streetAddress: igreja.endereco.split(',')[0],
-          addressLocality: igreja.endereco.split('-')[1]?.trim()?.split(',')[0] || '',
-          addressRegion: igreja.endereco.split('-')[1]?.trim()?.split(',')[1]?.trim() || '',
-          addressCountry: 'BR',
+          streetAddress: [igreja.enderecoLogradouro, igreja.numero, igreja.complemento]
+            .filter(Boolean)
+            .join(', '),
+          addressLocality: igreja.cidade,
+          addressRegion: igreja.uf,
+          postalCode: igreja.cep || undefined,
+          addressCountry: igreja.pais || 'BR',
         },
-        ...(igreja.instagram && {
-          sameAs: [
-            ...(igreja.instagram ? [`https://www.instagram.com/${igreja.instagram}/`] : []),
-            ...(igreja.facebook ? [`https://www.facebook.com/${igreja.facebook}/`] : []),
-            ...(igreja.whatsapp ? [`https://wa.me/55${igreja.whatsapp}`] : []),
-            ...(igreja.site ? [igreja.site] : []),
-          ],
-        }),
       },
     }));
 

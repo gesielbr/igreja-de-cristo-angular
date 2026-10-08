@@ -5,7 +5,6 @@
     [title]="pageConfig.title"
     [description]="pageConfig.description"
   />
-
   <app-section-side-title
     bgClass="bg-white"
     sectionId="intro-igrejas"
@@ -23,7 +22,6 @@
       bgClass="bg-soft"
     />
   </app-section-side-title>
-
   <app-section-container
     bgClass="bg-white"
     sectionId="igrejas-por-estado"
@@ -34,23 +32,40 @@
     headerId="igrejas-por-estado"
     headerMaxWidth="48rem"
   >
+    <div class="mb-4">
+      <label for="busca-igrejas" class="form-label"> <h3>Encontre uma igreja</h3> </label>
+      <div class="input-group">
+        <input
+          #campoBusca
+          id="busca-igrejas"
+          type="search"
+          class="form-control"
+          placeholder="Digite cidade, estado, bairro, nome da igreja..."
+          (keydown.enter)="buscarIgrejas(campoBusca.value, $event)"
+        />
+        <button type="button" class="btn btn-primary" (click)="buscarIgrejas(campoBusca.value)">
+          Buscar
+        </button>
+      </div>
+    </div>
     <div class="accordion d-grid gap-4" id="accordionEstados">
-      <app-accordion-estado
-        [estado]="igrejasData.santaCatarina.estado"
-        [igrejas]="igrejasData.santaCatarina.igrejas"
-        [aberto]="igrejasData.santaCatarina.aberto"
-        [id]="'santa-catarina'"
-      >
-        <!-- Aqui virá o SectionCard para cada igreja -->
-        <ng-template let-igreja>
-          <app-section-card
-            [icon]="'bi bi-geo-alt'"
-            [title]="igreja.nome"
-            [description]="igreja.descricao"
-            [bgClass]="'bg-white'"
-          />
-        </ng-template>
-      </app-accordion-estado>
+      @for (estado of estados(); track estado.uf) {
+        <app-accordion-estado
+          [estado]="estado.nome"
+          [igrejas]="estado.igrejas"
+          [aberto]="estado.aberto"
+          [id]="'estado-' + estado.uf.toLowerCase()"
+        >
+          <ng-template let-igreja>
+            <app-section-card
+              [icon]="'bi bi-geo-alt'"
+              [title]="igreja.nomeCongregacao"
+              [description]=" [ igreja.enderecoLogradouro, igreja.numero, igreja.bairro, igreja.cidade, igreja.uf ] .filter((valor) => !!valor) .join(', ') "
+              [bgClass]="'bg-white'"
+            />
+          </ng-template>
+        </app-accordion-estado>
+      }
     </div>
   </app-section-container>
   <app-section-side-title
