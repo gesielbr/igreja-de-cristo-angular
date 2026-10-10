@@ -2,6 +2,8 @@ import { Component, input, signal } from '@angular/core';
 
 import { Church } from '../../models/church.model';
 
+import { Contact } from '../../models/contact-model';
+
 @Component({
   selector: 'app-church-card',
   standalone: true,
@@ -13,6 +15,8 @@ export class ChurchCard {
   // Igreja recebida da API.
   // É opcional porque a Home ainda utiliza o card com dados estáticos.
   readonly church = input<Church | null>(null);
+
+  readonly contatos = input<Contact[]>([]);
 
   // Dados estáticos usados pela Home
   churchName = signal('Igreja de Cristo em Florianópolis');

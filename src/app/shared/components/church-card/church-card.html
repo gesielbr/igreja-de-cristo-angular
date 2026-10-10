@@ -17,6 +17,61 @@
       {{ endereco }}
     </address>
 
+    @if (
+      church() &&
+  contatos().some(
+    (contato) =>
+      !!(
+        contato.telefonePadronizado?.trim() ||
+        contato.telefoneOriginal?.trim() ||
+        contato.email?.trim()
+      )
+  )
+    ) {
+      <div class="church-contacts mt-auto">
+        <h5 class="h6 text-brand mb-3">
+          <i aria-hidden="true" class="bi bi-person-lines-fill text-gold me-2"></i>
+          Contato{{ contatos().length > 1 ? 's' : '' }}
+        </h5>
+
+        @for (contato of contatos(); track $index) {
+          <div class="contact-item small mb-1">
+            @if (contato.nomeContato) {
+              <p class="fw-semibold small text-brand mb-1">
+                {{ contato.nomeContato }}
+              </p>
+            }
+
+            @if (contato.telefonePadronizado || contato.telefoneOriginal) {
+              <p class="mb-2">
+                <i aria-hidden="true" class="bi bi-telephone small text-gold me-2"></i>
+                <a
+                  class="small contact-link"
+                  [href]="'tel:' + (contato.telefonePadronizado || contato.telefoneOriginal)"
+                >
+                  {{ contato.telefonePadronizado || contato.telefoneOriginal }}
+                </a>
+              </p>
+            }
+
+            @if (contato.email) {
+              <p class="mb-2">
+                <i aria-hidden="true" class="bi bi-envelope text-gold me-2"></i>
+                <a class="small contact-link" [href]="'mailto:' + contato.email">
+                  {{ contato.email }}
+                </a>
+              </p>
+            }
+          </div>
+        }
+      </div>
+    } @else if (church()) {
+      <p class="text-secondary small mb-0 mt-auto">
+        <i aria-hidden="true" class="bi bi-info-circle me-1"></i>
+        Nenhum contato cadastrado.
+      </p>
+    }
+
     @if (!church()) {
       <a
         [attr.aria-label]="'Conhecer a ' + nome + ' em uma nova aba'"

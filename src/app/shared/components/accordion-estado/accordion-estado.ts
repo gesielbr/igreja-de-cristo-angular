@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { Church } from '../../models/church.model';
 import { ChurchCard } from '../church-card/church-card';
+import { Contact } from '../../models/contact-model';
 
 @Component({
   selector: 'app-accordion-estado',
@@ -14,6 +15,7 @@ import { ChurchCard } from '../church-card/church-card';
 export class AccordionEstado {
   readonly estado = input.required<string>();
   readonly igrejas = input.required<Church[]>();
+  readonly contatos = input.required<Contact[]>();
   readonly aberto = input<boolean>(false);
   readonly id = input<string>('');
 
@@ -21,5 +23,9 @@ export class AccordionEstado {
 
   onToggle(): void {
     this.toggle.emit();
+  }
+
+  contatosDaIgreja(igrejaId: number): Contact[] {
+    return this.contatos().filter((contato) => contato.congregacaoId === igrejaId);
   }
 }

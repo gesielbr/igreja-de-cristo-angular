@@ -25,7 +25,11 @@
       <div class="row g-4 align-items-stretch">
         @for (igreja of igrejas(); track igreja.id) {
           <article class="col-md-6 col-xl-4 d-flex">
-            <app-church-card class="w-100" [church]="igreja" />
+            <app-church-card
+              class="w-100"
+              [church]="igreja"
+              [contatos]="contatosDaIgreja(igreja.id)"
+            />
           </article>
         }
       </div>

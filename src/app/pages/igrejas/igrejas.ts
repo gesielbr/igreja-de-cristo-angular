@@ -11,6 +11,7 @@ import { AccordionEstado } from '../../shared/components/accordion-estado/accord
 
 import { IgrejasService } from '../../shared/services/igrejas.service';
 import { Church } from '../../shared/models/church.model';
+import { Contact } from '../../shared/models/contact-model';
 
 @Component({
   selector: 'app-igrejas',
@@ -29,6 +30,7 @@ import { Church } from '../../shared/models/church.model';
 })
 export class Igrejas implements OnInit {
   private readonly igrejasService = inject(IgrejasService);
+  readonly contatos = signal<Contact[]>([]);
 
   readonly pageConfig = {
     currentPage: 'Igrejas locais',
@@ -61,8 +63,8 @@ export class Igrejas implements OnInit {
 
     this.igrejasService.getContatos().subscribe({
       next: (contatos) => {
-        console.log('Contatos recebidos da API:', contatos);
-        console.log('Quantidade de contatos:', contatos.length);
+        this.contatos.set(contatos);
+        console.log('Contatos recebidos:', contatos.length, contatos);
       },
       error: (erro) => {
         console.error('Erro ao buscar contatos:', erro);

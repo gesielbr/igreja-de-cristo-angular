@@ -53,6 +53,7 @@
         <app-accordion-estado
           [estado]="estado.nome"
           [igrejas]="estado.igrejas"
+          [contatos]="contatos()"
           [aberto]="estado.aberto"
           [id]="'estado-' + estado.uf.toLowerCase()"
         >
