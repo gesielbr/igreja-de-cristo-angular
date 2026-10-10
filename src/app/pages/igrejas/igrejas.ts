@@ -58,6 +58,16 @@ export class Igrejas implements OnInit {
   ngOnInit(): void {
     this.setupSEO();
     this.loadIgrejas();
+
+    this.igrejasService.getContatos().subscribe({
+      next: (contatos) => {
+        console.log('Contatos recebidos da API:', contatos);
+        console.log('Quantidade de contatos:', contatos.length);
+      },
+      error: (erro) => {
+        console.error('Erro ao buscar contatos:', erro);
+      },
+    });
   }
 
   /**
