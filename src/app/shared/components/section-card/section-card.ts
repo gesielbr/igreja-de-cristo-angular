@@ -10,4 +10,5 @@ export class SectionCard {
   title = input<string>('');
   description = input<string>('');
   bgClass = input<string>('bg-white');
+  href = input<string>('');
 }

@@ -39,9 +39,10 @@
           #campoBusca
           id="busca-igrejas"
           type="search"
-          class="form-control"
+          class="form-control p-3"
           placeholder="Digite cidade, estado, bairro, nome da igreja..."
           (keydown.enter)="buscarIgrejas(campoBusca.value, $event)"
+          (search)="buscarIgrejas(campoBusca.value)"
         />
         <button type="button" class="btn btn-primary" (click)="buscarIgrejas(campoBusca.value)">
           Buscar
@@ -84,6 +85,7 @@
       title="Cadastrar congregação"
       description="Envie uma mensagem para solicitar a inclusão da sua igreja local ou atualizar as informações."
       bgClass="bg-soft"
+      href="https://wa.me/5551997032022?text=Eu%20gostaria%20de%20saber%20informa%C3%A7%C3%B5es%20de%20como%20cadastrar%20ou%20atualizar%20uma%20congrega%C3%A7%C3%A3o%20da%20Igreja%20de%20Cristo"
     />
   </app-section-side-title>
 </app-page-layout>
