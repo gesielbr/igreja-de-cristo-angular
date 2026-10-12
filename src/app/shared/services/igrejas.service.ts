@@ -8,17 +8,6 @@ import { Contact } from '../models/contact-model';
 @Injectable({
   providedIn: 'root',
 })
-/* export class IgrejasService {
-  private readonly http = inject(HttpClient);
-
-  private readonly apiUrl = 'https://igreja-cristo-net-api.vercel.app/api/igrejas';
-
-  private readonly igrejas$ = this.http.get<Church[]>(this.apiUrl).pipe(shareReplay(1));
-
-  getIgrejas(): Observable<Church[]> {
-    return this.igrejas$;
-  }
-} */
 export class IgrejasService {
   private readonly http = inject(HttpClient);
 

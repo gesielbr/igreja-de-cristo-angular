@@ -64,7 +64,6 @@ export class Igrejas implements OnInit {
     this.igrejasService.getContatos().subscribe({
       next: (contatos) => {
         this.contatos.set(contatos);
-        console.log('Contatos recebidos:', contatos.length, contatos);
       },
       error: (erro) => {
         console.error('Erro ao buscar contatos:', erro);
