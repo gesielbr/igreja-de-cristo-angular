@@ -56,3 +56,14 @@
     height: 2.8rem;
   }
 }
+
+/* Setas nos links ativos do footer */
+/* footer a.active::before,
+footer a[aria-current='page']::before {
+  content: '» ';
+} */
+
+footer a.active::after,
+footer a[aria-current='page']::after {
+  content: ' «';
+}

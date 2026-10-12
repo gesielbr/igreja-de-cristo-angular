@@ -15,10 +15,25 @@
       </div>
 
       <!-- 2º - NAVEGAÇÃO -->
+      <!-- 2º - NAVEGAÇÃO -->
       <nav aria-labelledby="footer-links" class="col-6 col-md-3 col-xl-2">
         <h3 class="h6 text-white mb-3" id="footer-links">Navegação</h3>
 
         <ul class="list-unstyled small d-grid gap-2">
+          <li>
+            <a
+              routerLink="/"
+              routerLinkActive="fw-bold"
+              [routerLinkActiveOptions]="{ exact: true }"
+              #rlaInicio="routerLinkActive"
+              class="link-light text-decoration-none"
+              [attr.aria-current]="rlaInicio.isActive ? 'page' : null"
+              accesskey="1"
+            >
+              Início <span class="visually-hidden">(Alt+1)</span>
+            </a>
+          </li>
+
           <li>
             <a
               routerLink="/quem-somos"
@@ -31,6 +46,20 @@
               Quem Somos <span class="visually-hidden">(Alt+2)</span>
             </a>
           </li>
+
+          <li>
+            <a
+              routerLink="/igrejas"
+              routerLinkActive="fw-bold"
+              #rlaIgrejas="routerLinkActive"
+              class="link-light text-decoration-none"
+              [attr.aria-current]="rlaIgrejas.isActive ? 'page' : null"
+              accesskey="6"
+            >
+              Igrejas <span class="visually-hidden">(Alt+6)</span>
+            </a>
+          </li>
+
           <li>
             <a
               routerLink="/eventos"
@@ -43,6 +72,7 @@
               Eventos <span class="visually-hidden">(Alt+3)</span>
             </a>
           </li>
+
           <li>
             <a
               routerLink="/galeria"
@@ -55,6 +85,7 @@
               Galeria <span class="visually-hidden">(Alt+4)</span>
             </a>
           </li>
+
           <li>
             <a
               routerLink="/contato"
