@@ -21,7 +21,7 @@ export const HOME_HERO: HeroSlideModel[] = [
     title: 'Cristo no centro de tudo',
     description:
       'Cremos na autoridade das Escrituras, na graça de Deus, na comunhão dos santos e na vida transformada pelo Evangelho.',
-    buttonText: 'Conheça nossa fé',
+    buttonText: 'Nossa fé',
     buttonLink: 'quem-somos',
     imageClass: 'hero-slide-mobile-right',
     loading: 'lazy',
