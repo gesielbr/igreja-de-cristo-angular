@@ -35,8 +35,8 @@
 @media (max-width: 767.98px) {
   .hero-slide {
     height: calc(100vh - 88px); /* Desconta altura do header mobile */
-    min-height: 560px;
-    max-height: none;
+    /* min-height: 560px;
+    max-height: none; */
     object-fit: cover;
     object-position: center center;
   }
