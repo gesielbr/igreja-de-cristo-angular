@@ -8,7 +8,6 @@ import {
 } from '../../shared/components/institutional-channels/institutional-channels';
 import { ChurchContactInfo as ChurchContactInfoModel } from '../../shared/models/church-contact-info';
 import { ChurchContactInfo } from '../../shared/components/church-contact-info/church-contact-info';
-import { SectionCard } from '../../shared/components/section-card/section-card';
 import { SectionContainer } from '../../shared/components/section-container/section-container';
 import { Meta, Title } from '@angular/platform-browser';
 
@@ -199,8 +198,8 @@ export class Contato {
     {
       icon: 'bi-globe2',
       title: 'Site',
-      value: 'igrejadecristo.net.br/garopaba',
-      url: 'https://www.igrejadecristo.net.br/garopaba/',
+      value: 'igrejadecristo.net.br/',
+      url: 'https://www.igrejadecristo.net.br/',
       target: '_blank',
       rel: 'noopener noreferrer',
       ariaLabel: 'Visitar site da igreja',

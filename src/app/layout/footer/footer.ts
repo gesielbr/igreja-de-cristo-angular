@@ -1,12 +1,9 @@
 import { Component, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { IgrejaLocal } from '../../shared/models/churh-footer-model';
 
 // 🔥 DEFINIÇÃO DA INTERFACE AQUI
-interface IgrejaLocal {
-  nome: string;
-  rota: string;
-}
 
 @Component({
   selector: 'app-footer',
@@ -19,11 +16,13 @@ export class Footer {
   private igrejasLocaisSignal = signal<IgrejaLocal[]>([
     {
       nome: 'Igreja de Cristo em Garopaba',
-      rota: '/garopaba',
+      tipo: 'interno',
+      url: '/',
     },
     {
-      nome: 'Igreja de Cristo em Lucas de Oliveira',
-      rota: '/lucasdeoliveira',
+      nome: 'Igreja de Cristo em Curitiba',
+      tipo: 'externo',
+      url: 'https://www.igrejadecristo-curitiba.org.br/',
     },
   ]);
 
@@ -61,7 +60,7 @@ export class Footer {
   ]);
 
   // Método para adicionar novas igrejas (quando vierem do banco)
-  adicionarIgrejaLocal(nome: string, rota: string) {
-    this.igrejasLocaisSignal.update((current) => [...current, { nome, rota }]);
+  adicionarIgrejaLocal(nome: string, tipo: 'interno' | 'externo', endereco: string) {
+    this.igrejasLocaisSignal.update((current) => [...current, { nome, tipo, url: endereco }]);
   }
 }

@@ -8,7 +8,7 @@ export const HOME_CTA: CtaAsideSection[] = [
     links: [
       {
         label: 'Encontre uma igreja',
-        href: '#igrejas-locais',
+        href: 'igrejas',
         ariaLabel: 'Encontrar uma Igreja de Cristo no Brasil',
         icon: 'bi-geo-alt',
         variant: 'outline', // ← ESSE É O ESTILO QUE VOCÊ QUER
@@ -72,7 +72,7 @@ export const EVENTS_CTA: CtaAsideSection[] = [
     links: [
       {
         label: 'Quarta · 19h - Domingo · 9h30',
-        href: '/eventos/domingo',
+        href: '/eventos',
         ariaLabel: 'Culto de domingo às 9h30',
         icon: 'bi-calendar-event',
         variant: 'outline',
@@ -92,7 +92,7 @@ export const EVENTS_CTA: CtaAsideSection[] = [
     links: [
       {
         label: 'Ver endereço',
-        href: '/eventos/local',
+        href: '/eventos',
         ariaLabel: 'Ver endereço dos eventos',
         icon: 'bi-geo-alt',
         variant: 'outline',

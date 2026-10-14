@@ -10,8 +10,8 @@ import {
 } from '../../shared/components/institutional-channels/institutional-channels';
 import { HOME_HERO } from '../../shared/configs/hero-slide-config';
 import { PageLayout } from '../../shared/components/page-layout/page-layout';
-import { DOCUMENT } from '@angular/common';
 import { SectionSideTitle } from '../../shared/components/side-title/section-side-title';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +23,7 @@ import { SectionSideTitle } from '../../shared/components/side-title/section-sid
     InstitutionalChannels,
     PageLayout,
     SectionSideTitle,
+    RouterLink,
   ],
   templateUrl: './home.html',
   styleUrl: './home.css',
@@ -37,7 +38,7 @@ export class Home implements OnInit {
       icon: 'bi-globe2',
       title: 'Site',
       value: 'igrejadecristo.net.br/garopaba',
-      url: 'https://www.igrejadecristo.net.br/garopaba/',
+      url: 'https://www.igrejadecristo.net.br/',
       target: '_blank',
       rel: 'noopener noreferrer',
       ariaLabel: 'Visitar site da igreja',
@@ -58,7 +59,7 @@ export class Home implements OnInit {
       url: 'mailto:gesiel.br@gmail.com',
       ariaLabel: 'Enviar e-mail',
     },
-    {
+    /* {
       icon: 'bi-facebook',
       title: 'Facebook',
       value: '/IgrejadeCristoCuritibaCentro',
@@ -66,7 +67,7 @@ export class Home implements OnInit {
       target: '_blank',
       rel: 'noopener noreferrer',
       ariaLabel: 'Visitar página do Facebook',
-    },
+    }, */
     {
       icon: 'bi-instagram',
       title: 'Instagram',

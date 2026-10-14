@@ -9,7 +9,7 @@ export const HOME_HERO: HeroSlideModel[] = [
     description:
       'Uma comunidade cristã comprometida com Jesus Cristo, com a Palavra de Deus e com a missão de anunciar o Evangelho.',
     buttonText: 'Encontrar igreja',
-    buttonLink: '#igrejas-locais',
+    buttonLink: 'igrejas',
     imageClass: 'hero-slide-mobile-right',
     loading: 'eager',
     fetchPriority: 'high',
@@ -34,7 +34,7 @@ export const HOME_HERO: HeroSlideModel[] = [
     description:
       'A Igreja de Cristo se reúne em diferentes cidades para adorar a Deus, servir pessoas e proclamar a Palavra.',
     buttonText: 'Ver igrejas',
-    buttonLink: '#igrejas-locais',
+    buttonLink: 'igrejas',
     loading: 'lazy',
   },
 ];

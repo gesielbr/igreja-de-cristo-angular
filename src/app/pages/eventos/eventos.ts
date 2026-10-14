@@ -47,7 +47,7 @@ export class Eventos implements OnInit {
       buttonText: 'Saber mais',
       buttonLink: '/contato',
     },
-    {
+    /*  {
       id: 'culto-jovem-garopaba',
       day: 'SÁB',
       time: '19h30',
@@ -66,7 +66,7 @@ export class Eventos implements OnInit {
       address: 'Rua Pinguirito, 41 - Garopaba - SC',
       buttonText: 'Conhecer',
       buttonLink: '/contato',
-    },
+    }, */
   ]);
 
   constructor(

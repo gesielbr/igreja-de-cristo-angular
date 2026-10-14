@@ -106,17 +106,29 @@
         <h3 class="h6 text-white mb-3" id="footer-cultos">Igrejas locais</h3>
 
         <ul class="list-unstyled text-white small d-grid gap-2">
-          @for (igreja of igrejasLocais(); track igreja.rota) {
+          @for (igreja of igrejasLocais(); track igreja.url) {
             <li>
-              <a
-                class="link-light text-decoration-none"
-                [routerLink]="igreja.rota"
-                routerLinkActive="fw-bold"
-                #rla="routerLinkActive"
-                [attr.aria-current]="rla.isActive ? 'page' : null"
-              >
-                {{ igreja.nome }}
-              </a>
+              @if (igreja.tipo === 'interno') {
+                <a
+                  class="link-light text-decoration-none"
+                  [routerLink]="igreja.url"
+                  routerLinkActive="fw-bold"
+                  #rla="routerLinkActive"
+                  [attr.aria-current]="rla.isActive ? 'page' : null"
+                >
+                  {{ igreja.nome }}
+                </a>
+              } @else {
+                <a
+                  class="link-light text-decoration-none"
+                  [href]="igreja.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {{ igreja.nome }}
+                  <span class="visually-hidden">(abre em nova aba)</span>
+                </a>
+              }
             </li>
           } @empty {
             <li class="text-white-50">Carregando igrejas locais...</li>
@@ -133,11 +145,8 @@
             <dt class="visually-hidden">E-mail</dt>
             <dd class="mb-2">
               <i aria-hidden="true" class="bi bi-envelope me-2 text-white"></i>
-              <a
-                class="link-light text-decoration-none"
-                href="mailto:contato@igrejadecristo.net.br"
-              >
-                contato@igrejadecristo.net.br
+              <a class="link-light text-decoration-none" href="mailto:gesiel.br@gmail.com">
+                gesiel.br@gmail.com
               </a>
             </dd>
 
