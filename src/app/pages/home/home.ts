@@ -10,7 +10,6 @@ import {
 } from '../../shared/components/institutional-channels/institutional-channels';
 import { HOME_HERO } from '../../shared/configs/hero-slide-config';
 import { PageLayout } from '../../shared/components/page-layout/page-layout';
-import { SectionSideTitle } from '../../shared/components/side-title/section-side-title';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -22,7 +21,6 @@ import { RouterLink } from '@angular/router';
     ChurchCard,
     InstitutionalChannels,
     PageLayout,
-    SectionSideTitle,
     RouterLink,
   ],
   templateUrl: './home.html',
@@ -37,7 +35,7 @@ export class Home implements OnInit {
     {
       icon: 'bi-globe2',
       title: 'Site',
-      value: 'igrejadecristo.net.br/garopaba',
+      value: 'igrejadecristo.net.br',
       url: 'https://www.igrejadecristo.net.br/',
       target: '_blank',
       rel: 'noopener noreferrer',

@@ -8,3 +8,7 @@
   transform: translateY(-0.2rem);
   box-shadow: var(--bs-box-shadow-lg) !important;
 }
+
+.text-brand {
+  font-weight: 700;
+}
