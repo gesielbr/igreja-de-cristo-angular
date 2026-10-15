@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Hero } from '../../shared/components/hero/hero';
 import { SectionContainer } from '../../shared/components/section-container/section-container';
@@ -11,6 +11,9 @@ import {
 import { HOME_HERO } from '../../shared/configs/hero-slide-config';
 import { PageLayout } from '../../shared/components/page-layout/page-layout';
 import { RouterLink } from '@angular/router';
+import { IgrejasService } from '../../shared/services/igrejas.service';
+import { Church } from '../../shared/models/church.model';
+import { Contact } from '../../shared/models/contact-model';
 
 @Component({
   selector: 'app-home',
@@ -27,6 +30,9 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home.css',
 })
 export class Home implements OnInit {
+  get(arg0: number): Contact[] {
+    throw new Error('Method not implemented.');
+  }
   heroSlides = HOME_HERO;
 
   canaisTitle = 'Canais institucionais';
@@ -77,14 +83,68 @@ export class Home implements OnInit {
     },
   ];
 
+  igrejasFixas = signal<Church[]>([]);
+  igrejasAleatorias = signal<Church[]>([]);
+  contatos = signal<Contact[]>([]);
+
   constructor(
     private title: Title,
     private meta: Meta,
+    private igrejasService: IgrejasService,
   ) {}
 
   ngOnInit(): void {
     this.setupSEO();
     this.addJsonLd();
+
+    this.igrejasService.getIgrejasFixas().subscribe({
+      next: (igrejas) => {
+        this.igrejasFixas.set(igrejas);
+      },
+      error: (erro) => {
+        console.error('Erro ao buscar igrejas fixas:', erro);
+      },
+    });
+
+    this.igrejasService.getIgrejasAleatorias().subscribe({
+      next: (igrejas) => {
+        this.igrejasFixas.set(igrejas);
+      },
+      error: (erro) => {
+        console.error('Erro ao buscar igrejas aleatórias:', erro);
+      },
+    });
+
+    this.igrejasService.getIgrejasFixas().subscribe({
+      next: (igrejas) => {
+        this.igrejasFixas.set(igrejas);
+      },
+      error: (erro) => {
+        console.error('Erro ao buscar igrejas fixas:', erro);
+      },
+    });
+
+    this.igrejasService.getIgrejasAleatorias().subscribe({
+      next: (igrejas) => {
+        this.igrejasAleatorias.set(igrejas);
+      },
+      error: (erro) => {
+        console.error('Erro ao buscar igrejas aleatórias:', erro);
+      },
+    });
+
+    this.igrejasService.getContatos().subscribe({
+      next: (contatos) => {
+        this.contatos.set(contatos);
+      },
+      error: (erro) => {
+        console.error('Erro ao buscar contatos:', erro);
+      },
+    });
+  }
+
+  getContatosDaIgreja(congregacaoId: number): Contact[] {
+    return this.contatos().filter((contato) => contato.congregacaoId === congregacaoId);
   }
 
   /**

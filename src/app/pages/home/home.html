@@ -42,7 +42,7 @@
   </app-section-container>
 
   <!-- Seção: Nossas igrejas -->
-  <app-section-container
+  <!-- <app-section-container
     bgClass="bg-light"
     sectionId="igrejas"
     labelledBy="igrejas"
@@ -73,14 +73,44 @@
         <i aria-hidden="true" class="bi bi-geo-alt me-2"></i>
         Ver todas as igrejas
       </a>
-      <!--  <a
+    </div>
+  </app-section-container> -->
+
+  <app-section-container
+    bgClass="bg-light"
+    sectionId="igrejas"
+    labelledBy="igrejas"
+    kicker="Nossas comunidades"
+    title="Igrejas de Cristo no Brasil"
+    description="Conheça as igrejas que fazem parte da Igreja de Cristo no Brasil e compartilham da mesma fé e missão."
+    headerId="igrejas"
+    headerMaxWidth="46rem"
+  >
+    <div class="row g-4">
+      @for (igreja of igrejasFixas(); track igreja.id) {
+        <div class="col-12 col-md-6 col-lg-4">
+          <app-church-card [church]="igreja" [contatos]="getContatosDaIgreja(igreja.id)" />
+        </div>
+      }
+    </div>
+
+    <div class="row g-4 mt-1">
+      @for (igreja of igrejasAleatorias(); track igreja.id) {
+        <div class="col-12 col-md-6 col-lg-4">
+          <app-church-card [church]="igreja" [contatos]="getContatosDaIgreja(igreja.id)" />
+        </div>
+      }
+    </div>
+
+    <div class="text-center mt-5">
+      <a
         aria-label="Ver todas as igrejas locais da Igreja de Cristo"
         routerLink="/igrejas"
-        class="btn btn-outline-primary w-100 py-2 d-inline-block d-md-none"
+        class="btn btn-outline-primary btn-lg px-3 px-md-5 py-3 d-inline-block btn-cta-secoes-home"
       >
         <i aria-hidden="true" class="bi bi-geo-alt me-2"></i>
         Ver todas as igrejas
-      </a> -->
+      </a>
     </div>
   </app-section-container>
 
