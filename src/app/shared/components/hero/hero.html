@@ -22,9 +22,15 @@
                 {{ slide.kicker }}
               </p>
 
-              <h1 class="display-4 fw-bold text-white">
-                {{ slide.title }}
-              </h1>
+              @if (first) {
+                <h1 class="display-4 fw-bold text-white">
+                  {{ slide.title }}
+                </h1>
+              } @else {
+                <h2 class="display-4 fw-bold text-white">
+                  {{ slide.title }}
+                </h2>
+              }
 
               @if (slide.description) {
                 <p class="lead text-white">
