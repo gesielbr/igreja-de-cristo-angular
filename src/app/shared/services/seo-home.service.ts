@@ -2,7 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Injectable, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
-export interface SeoHome {
+export interface PageSeo {
   title: string;
   description: string;
   path: string; // ex: '/' ou '/igrejas'
@@ -20,7 +20,7 @@ export class SeoService {
   private readonly baseUrl = 'https://www.igrejadecristo.net.br';
   private readonly defaultImage = `${this.baseUrl}/assets/img/og-image-home.jpg`;
 
-  update(c: SeoHome): void {
+  update(c: PageSeo): void {
     const url = this.baseUrl + c.path;
     const image = c.image ?? this.defaultImage;
     const imageAlt = c.imageAlt ?? c.title;

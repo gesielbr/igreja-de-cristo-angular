@@ -2,9 +2,9 @@
   <div class="card-body p-4 d-flex flex-column">
     <i aria-hidden="true" class="bi bi-geo-alt text-gold fs-1"></i>
 
-    <h4 class="h5 text-brand mt-3">
+    <h3 class="mt-3 text-brand">
       {{ nome }}
-    </h4>
+    </h3>
 
     @if (!church()) {
       <p class="text-secondary mb-3 flex-grow-1">
@@ -29,10 +29,10 @@
   )
     ) {
       <div class="church-contacts mt-auto">
-        <h5 class="h6 text-brand mb-3">
+        <h4 class="mb-3 text-brand">
           <i aria-hidden="true" class="bi bi-person-lines-fill text-gold me-2"></i>
           Contato{{ contatos().length > 1 ? 's' : '' }}
-        </h5>
+        </h4>
 
         @for (contato of contatos(); track $index) {
           <div class="contact-item small mb-1">

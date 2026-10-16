@@ -1,28 +1,36 @@
 import { CtaAsideSection } from '../models/cta-aside-section.model';
 
+/**
+ * Regras de acessibilidade usadas neste arquivo:
+ * - cada `id` é único: padrão `cta-<página>-<seção>`
+ * - o `ariaLabel` sempre COMEÇA com o texto visível do botão (WCAG 2.5.3, "Label in Name")
+ * - links externos avisam "(abre em nova aba)"
+ * - hrefs internos começam com "/" para funcionar de qualquer rota
+ */
+
 // CONFIGURAÇÃO DA HOME
 export const HOME_CTA: CtaAsideSection[] = [
   {
     title: 'Igrejas perto de você',
-    id: 'igrejas-aside',
+    id: 'cta-home-igrejas',
     links: [
       {
         label: 'Encontre uma igreja',
-        href: 'igrejas',
-        ariaLabel: 'Encontrar uma Igreja de Cristo no Brasil',
+        href: '/igrejas',
+        ariaLabel: 'Encontre uma igreja de Cristo no Brasil',
         icon: 'bi-geo-alt',
-        variant: 'outline', // ← ESSE É O ESTILO QUE VOCÊ QUER
+        variant: 'outline',
       },
     ],
   },
   {
     title: 'Precisa de oração?',
-    id: 'oracao-aside',
+    id: 'cta-home-oracao',
     links: [
       {
         label: 'Pedido de oração',
         href: 'https://wa.me/5551997032022?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido%20de%20ora%C3%A7%C3%A3o.',
-        ariaLabel: 'Enviar pedido de oração pelo WhatsApp em uma nova aba',
+        ariaLabel: 'Pedido de oração pelo WhatsApp (abre em nova aba)',
         icon: 'bi-whatsapp',
         variant: 'gold',
         external: true,
@@ -35,27 +43,27 @@ export const HOME_CTA: CtaAsideSection[] = [
 export const CHURCH_CTA: CtaAsideSection[] = [
   {
     title: 'Igrejas Locais',
-    id: 'igrejas-locais-aside',
+    id: 'cta-igrejas-cadastro',
     links: [
       {
         label: 'Cadastrar congregação',
         href: 'https://wa.me/5551997032022?text=Quero%20colocar%20a%20minha%20congrega%C3%A7%C3%A3o%20no%20site%20da%20Igreja%20de%20Cristo.',
         ariaLabel:
-          'Cadastrar uma congregação no site da Igreja de Cristo pelo WhatsApp em uma nova aba',
+          'Cadastrar congregação no site da Igreja de Cristo pelo WhatsApp (abre em nova aba)',
         icon: 'bi-plus-circle',
-        variant: 'outline', // ← MESMO ESTILO DO BOTÃO "Encontre uma igreja"
+        variant: 'outline',
         external: true,
       },
     ],
   },
   {
     title: 'Precisa de oração?',
-    id: 'oracao-church-aside',
+    id: 'cta-igrejas-oracao',
     links: [
       {
         label: 'Pedido de oração',
         href: 'https://wa.me/5551997032022?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20pedido%20de%20ora%C3%A7%C3%A3o.',
-        ariaLabel: 'Enviar pedido de oração pelo WhatsApp em uma nova aba',
+        ariaLabel: 'Pedido de oração pelo WhatsApp (abre em nova aba)',
         icon: 'bi-whatsapp',
         variant: 'gold',
         external: true,
@@ -68,32 +76,25 @@ export const CHURCH_CTA: CtaAsideSection[] = [
 export const EVENTS_CTA: CtaAsideSection[] = [
   {
     title: 'Encontros',
-    id: 'encontros-aside',
+    id: 'cta-eventos-encontros',
     links: [
       {
         label: 'Quarta · 19h - Domingo · 9h30',
         href: '/eventos',
-        ariaLabel: 'Culto de domingo às 9h30',
+        ariaLabel: 'Quarta · 19h - Domingo · 9h30: ver a programação dos encontros',
         icon: 'bi-calendar-event',
         variant: 'outline',
       },
-      /* {
-        label: 'Quarta-feira · 19h',
-        href: '/eventos/quarta',
-        ariaLabel: 'Culto de quarta-feira às 19h',
-        icon: 'bi-calendar-event',
-        variant: 'outline',
-      }, */
     ],
   },
   {
     title: 'Como chegar',
-    id: 'endereco-aside',
+    id: 'cta-eventos-endereco',
     links: [
       {
         label: 'Ver endereço',
         href: '/eventos',
-        ariaLabel: 'Ver endereço dos eventos',
+        ariaLabel: 'Ver endereço dos encontros',
         icon: 'bi-geo-alt',
         variant: 'outline',
       },

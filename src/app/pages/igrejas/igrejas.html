@@ -5,50 +5,80 @@
     [title]="pageConfig.title"
     [description]="pageConfig.description"
   />
+
   <app-section-side-title
     bgClass="bg-white"
     sectionId="intro-igrejas"
-    labelledBy="intro-igrejas"
+    labelledBy="intro-igrejas-titulo"
     kicker="Comunidades locais"
     title="Uma fé vivida em comunidade"
     description="A Igreja de Cristo está presente em comunidades locais que se reúnem para adorar a Deus, estudar a Bíblia, servir pessoas e anunciar o evangelho de Jesus Cristo."
     subDescription="Esta página organiza as igrejas por Estado para ajudar você a encontrar uma comunidade próxima, conhecer sua programação e entrar em contato com uma igreja local."
-    headerId="intro-igrejas"
+    headerId="intro-igrejas-titulo"
   >
     <app-section-card
       icon="bi bi-geo-alt-fill"
       title="Encontre uma igreja local"
-      description="As comunidades estão organizadas por Estado. Conforme o site crescer, novas igrejas locais poderão ser adicionadas nesta página."
+      description="Escolha o Estado, abra a lista e veja o endereço e o contato de cada congregação."
       bgClass="bg-soft"
     />
   </app-section-side-title>
+
   <app-section-container
     bgClass="bg-white"
     sectionId="igrejas-por-estado"
-    labelledBy="igrejas-por-estado"
+    labelledBy="igrejas-por-estado-titulo"
     kicker="Por Estado"
     title="Localidades da Igreja de Cristo"
     description="Veja abaixo comunidades locais da Igreja de Cristo já cadastradas no site, organizadas por Estado, com endereço, contato e canais oficiais."
-    headerId="igrejas-por-estado"
+    headerId="igrejas-por-estado-titulo"
     headerMaxWidth="48rem"
   >
-    <div class="mb-4">
-      <label for="busca-igrejas" class="form-label"> <h3>Encontre uma igreja</h3> </label>
+    <form
+      class="mb-4"
+      role="search"
+      aria-labelledby="busca-igrejas-titulo"
+      (submit)="buscarIgrejas(campoBusca.value, $event)"
+    >
+      <h3 id="busca-igrejas-titulo">Encontre uma igreja</h3>
+      <label for="busca-igrejas" class="form-label visually-hidden">
+        Buscar igreja por cidade, Estado, bairro ou nome
+      </label>
       <div class="input-group">
         <input
           #campoBusca
           id="busca-igrejas"
+          name="busca"
           type="search"
           class="form-control p-3"
+          autocomplete="off"
+          enterkeyhint="search"
           placeholder="Digite cidade, estado, bairro, nome da igreja..."
-          (keydown.enter)="buscarIgrejas(campoBusca.value, $event)"
-          (search)="buscarIgrejas(campoBusca.value)"
+          aria-describedby="busca-igrejas-ajuda"
+          (search)="!campoBusca.value && buscarIgrejas('')"
         />
-        <button type="button" class="btn btn-primary" (click)="buscarIgrejas(campoBusca.value)">
-          Buscar
-        </button>
+        <button type="submit" class="btn btn-primary">Buscar</button>
       </div>
-    </div>
+      <p id="busca-igrejas-ajuda" class="visually-hidden">
+        Digite e pressione Enter ou use o botão Buscar. Apague o campo para ver todas as igrejas.
+      </p>
+    </form>
+
+    <!-- Anuncia o resultado da busca para leitores de tela -->
+    <p class="visually-hidden" role="status" aria-live="polite" aria-atomic="true">
+      {{ mensagemBusca() }}
+    </p>
+
+    @if (!carregando() && estados().length === 0) {
+      <p class="text-secondary mb-0">
+        @if (erro()) {
+          Não foi possível carregar as igrejas agora. Tente novamente em instantes.
+        } @else {
+          Nenhuma igreja encontrada. Tente buscar por outra cidade, Estado ou bairro.
+        }
+      </p>
+    }
+
     <div class="accordion d-grid gap-4" id="accordionEstados">
       @for (estado of estados(); track estado.uf) {
         <app-accordion-estado
@@ -62,7 +92,7 @@
             <app-section-card
               [icon]="'bi bi-geo-alt'"
               [title]="igreja.nomeCongregacao"
-              [description]=" [ igreja.enderecoLogradouro, igreja.numero, igreja.bairro, igreja.cidade, igreja.uf ] .filter((valor) => !!valor) .join(', ') "
+              [description]="formatarEndereco(igreja)"
               [bgClass]="'bg-white'"
             />
           </ng-template>
@@ -70,15 +100,16 @@
       }
     </div>
   </app-section-container>
+
   <app-section-side-title
     bgClass="bg-white"
     sectionId="cadastrar-congregacao"
-    labelledBy="cadastrar-congregacao"
+    labelledBy="cadastrar-congregacao-titulo"
     kicker="Sua congregação"
     title="Quer colocar sua igreja nesta página?"
     description="Se você participa de uma congregação da Igreja de Cristo e deseja incluir as informações da comunidade neste site, entre em contato pelo WhatsApp."
     subDescription="A ideia é manter uma página organizada, clara e útil para quem procura uma Igreja de Cristo no Brasil."
-    headerId="cadastrar-congregacao"
+    headerId="cadastrar-congregacao-titulo"
   >
     <app-section-card
       icon="bi bi-plus-circle"
