@@ -26,7 +26,18 @@ export class SeoService {
   private readonly baseUrl = 'https://www.igrejadecristo.net.br';
   private readonly defaultImage = `${this.baseUrl}/assets/img/og-image-home.jpg`;
 
+  private readonly organizationId = `${this.baseUrl}/#organization`;
+  private readonly websiteId = `${this.baseUrl}/#website`;
+
+  /**
+   * Atualiza os metadados da página e limpa os JSON-LD
+   * gerenciados pelo serviço antes de configurar a nova página.
+   *
+   * Os componentes devem chamar update() antes de setJsonLd().
+   */
   update(c: PageSeo): void {
+    this.clearPageJsonLd();
+
     const path = c.path.startsWith('/') ? c.path : `/${c.path}`;
     const url = `${this.baseUrl}${path}`;
     const image = c.image ?? this.defaultImage;
@@ -76,6 +87,57 @@ export class SeoService {
     this.setCanonical(url);
   }
 
+  /**
+   * Define os dados estruturados globais do site.
+   *
+   * Deve ser chamado depois de update() e antes dos
+   * dados estruturados específicos de cada página.
+   */
+  setGlobalJsonLd(): void {
+    const jsonLd = {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Organization',
+          '@id': this.organizationId,
+          name: 'Igreja de Cristo',
+          alternateName: ['Igreja de Cristo no Brasil', 'Comunidade Cristã Igreja de Cristo'],
+          url: `${this.baseUrl}/`,
+          logo: {
+            '@type': 'ImageObject',
+            url: `${this.baseUrl}/assets/img/novo-logo-white-300x120.webp`,
+          },
+          description:
+            'Comunidades cristãs locais comprometidas com Jesus Cristo, o Evangelho e a Bíblia.',
+          sameAs: [
+            'https://www.instagram.com/igrejadecristogaropabasc/',
+            'https://www.facebook.com/IgrejadeCristoCuritibaCentro',
+            'https://www.youtube.com/@IgrejadeCristoCuritiba',
+          ],
+        },
+        {
+          '@type': 'WebSite',
+          '@id': this.websiteId,
+          name: 'Igreja de Cristo',
+          alternateName: 'Igreja de Cristo no Brasil',
+          url: `${this.baseUrl}/`,
+          inLanguage: 'pt-BR',
+          publisher: {
+            '@id': this.organizationId,
+          },
+        },
+      ],
+    };
+
+    this.setJsonLd(jsonLd, 'json-ld-global');
+  }
+
+  /**
+   * Cria ou atualiza um JSON-LD gerenciado pelo serviço.
+   *
+   * Mantém a assinatura existente para não quebrar
+   * os componentes que já utilizam setJsonLd(data, id).
+   */
   setJsonLd(data: object, id = 'json-ld-page'): void {
     let script = this.doc.getElementById(id) as HTMLScriptElement | null;
 
@@ -86,7 +148,32 @@ export class SeoService {
       this.doc.head.appendChild(script);
     }
 
+    script.type = 'application/ld+json';
+    script.setAttribute('data-seo-jsonld', 'true');
     script.textContent = JSON.stringify(data);
+  }
+
+  /**
+   * Remove um JSON-LD específico pelo ID.
+   */
+  clearJsonLd(id: string): void {
+    const script = this.doc.getElementById(id);
+
+    if (script?.getAttribute('data-seo-jsonld') === 'true') {
+      script.remove();
+    }
+  }
+
+  /**
+   * Remove os JSON-LD específicos da página atual,
+   * preservando as entidades globais do site.
+   */
+  clearPageJsonLd(): void {
+    const scripts = this.doc.head.querySelectorAll<HTMLScriptElement>(
+      'script[data-seo-jsonld="true"]:not(#json-ld-global)',
+    );
+
+    scripts.forEach((script) => script.remove());
   }
 
   private setMeta(attribute: 'name' | 'property', key: string, content: string): void {

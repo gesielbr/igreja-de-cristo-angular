@@ -33,6 +33,15 @@ export class Home implements OnInit {
   private readonly igrejasService = inject(IgrejasService);
   private readonly seo = inject(SeoService);
 
+  private readonly baseUrl = 'https://www.igrejadecristo.net.br';
+
+  private readonly homeTitle = 'Igreja de Cristo | Bíblia, Evangelho e Comunhão';
+
+  private readonly homeDescription =
+    'Conheça a Igreja de Cristo, sua fé baseada no Amor, na Bíblia e no Evangelho de Jesus. Encontre congregações, informações de contato e comunidades cristãs.';
+
+  private readonly homeImage = `${this.baseUrl}/assets/img/og-image-home.jpg`;
+
   heroSlides = HOME_HERO;
 
   canaisTitle = 'Canais institucionais';
@@ -103,50 +112,43 @@ export class Home implements OnInit {
   }
 
   private setupSeo(): void {
+    // 1. Metadados específicos da Home.
     this.seo.update({
-      title: 'Igreja de Cristo | Bíblia, Evangelho e Comunhão',
-      description:
-        'Conheça a Igreja de Cristo, sua fé baseada no Amor, na Bíblia e no Evangelho de Jesus. Encontre congregações, informações de contato e comunidades cristãs.',
+      title: this.homeTitle,
+      description: this.homeDescription,
       path: '/',
-      imageAlt: 'Igreja de Cristo - Bíblia, Evangelho e comunhão em Cristo',
+      image: this.homeImage,
+      imageAlt: 'Igreja de Cristo — Bíblia, Evangelho e comunhão em Cristo',
     });
 
-    const base = 'https://www.igrejadecristo.net.br';
+    // 2. Entidades globais compartilhadas pelas páginas do site.
+    this.seo.setGlobalJsonLd();
 
+    // 3. Dados estruturados exclusivos da página inicial.
     this.seo.setJsonLd({
       '@context': 'https://schema.org',
-      '@graph': [
-        {
-          '@type': 'Organization',
-          '@id': `${base}/#organization`,
-          name: 'Igreja de Cristo',
-          url: `${base}/`,
-          logo: {
-            '@type': 'ImageObject',
-            url: `${base}/assets/img/novo-logo-white-300x120.webp`,
-          },
-          description:
-            'Comunidades cristãs locais comprometidas com Jesus Cristo, o Evangelho e a Bíblia.',
-          sameAs: ['https://www.instagram.com/igrejadecristogaropabasc/'],
-        },
-        {
-          '@type': 'WebSite',
-          '@id': `${base}/#website`,
-          name: 'Igreja de Cristo',
-          url: `${base}/`,
-          inLanguage: 'pt-BR',
-          publisher: { '@id': `${base}/#organization` },
-        },
-        {
-          '@type': 'WebPage',
-          '@id': `${base}/#webpage`,
-          url: `${base}/`,
-          name: 'Igreja de Cristo no Brasil',
-          inLanguage: 'pt-BR',
-          isPartOf: { '@id': `${base}/#website` },
-          about: { '@id': `${base}/#organization` },
-        },
-      ],
+      '@type': 'WebPage',
+      '@id': `${this.baseUrl}/#webpage`,
+      url: `${this.baseUrl}/`,
+      name: this.homeTitle,
+      description: this.homeDescription,
+      inLanguage: 'pt-BR',
+      isPartOf: {
+        '@id': `${this.baseUrl}/#website`,
+      },
+      about: {
+        '@id': `${this.baseUrl}/#organization`,
+      },
+      mainEntity: {
+        '@id': `${this.baseUrl}/#organization`,
+      },
+      primaryImageOfPage: {
+        '@type': 'ImageObject',
+        url: this.homeImage,
+        width: 1200,
+        height: 630,
+        caption: 'Igreja de Cristo — Bíblia, Evangelho e comunhão em Cristo',
+      },
     });
   }
 }

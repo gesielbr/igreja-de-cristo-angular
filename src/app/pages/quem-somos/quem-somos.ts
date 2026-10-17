@@ -23,6 +23,15 @@ import { MissionCard } from '../../shared/components/mission-card/mission-card';
 export class QuemSomos implements OnInit {
   private readonly seo = inject(SeoService);
 
+  private readonly baseUrl = 'https://www.igrejadecristo.net.br';
+
+  private readonly jsonLdId = 'json-ld-quem-somos';
+
+  private readonly pageTitle = 'Quem Somos | Igreja de Cristo - História, Fé, Missão e Valores';
+
+  private readonly pageDescription =
+    'Conheça a história, missão, visão e valores da Igreja de Cristo. Uma comunidade cristã firmada na Bíblia, em Jesus Cristo e no amor ao próximo. Saiba mais sobre nossa fé e propósito.';
+
   // Dados do Hero
   heroSlides = [
     {
@@ -71,11 +80,10 @@ export class QuemSomos implements OnInit {
    */
   private setupSEO(): void {
     this.seo.update({
-      title: 'Quem Somos | Igreja de Cristo - História, Fé, Missão e Valores',
-      description:
-        'Conheça a história, missão, visão e valores da Igreja de Cristo. Uma comunidade cristã firmada na Bíblia, em Jesus Cristo e no amor ao próximo. Saiba mais sobre nossa fé e propósito.',
+      title: this.pageTitle,
+      description: this.pageDescription,
       path: '/quem-somos',
-      image: 'https://www.igrejadecristo.net.br/assets/img/og-image-quem-somos.jpg',
+      image: `${this.baseUrl}/assets/img/og-image-quem-somos.jpg`,
       imageAlt: 'Igreja de Cristo - Conheça nossa história, fé, missão e valores',
       keywords:
         'quem somos Igreja de Cristo, história da igreja, missão cristã, visão igreja, valores cristãos, comunidade cristã, fé em Jesus, bíblia, evangelho, declaração de fé, propósito cristão, igreja evangélica Brasil',
@@ -89,76 +97,39 @@ export class QuemSomos implements OnInit {
    * Adiciona os dados estruturados JSON-LD da página.
    */
   private addJsonLd(): void {
+    const organizationId = `${this.baseUrl}/#organization`;
+    const websiteId = `${this.baseUrl}/#website`;
+    const pageUrl = `${this.baseUrl}/quem-somos`;
+    const webpageId = `${pageUrl}#webpage`;
+    const breadcrumbId = `${pageUrl}#breadcrumb`;
+
+    // Entidades globais compartilhadas pelo site.
+    this.seo.setGlobalJsonLd();
+
+    // Dados estruturados específicos da página Quem Somos.
     const jsonLd = {
       '@context': 'https://schema.org',
       '@graph': [
-        // ORGANIZAÇÃO
-        {
-          '@type': 'Organization',
-          '@id': 'https://www.igrejadecristo.net.br/#organization',
-          name: 'Igreja de Cristo',
-          alternateName: ['Igreja de Cristo no Brasil', 'Comunidade Cristã Igreja de Cristo'],
-          url: 'https://www.igrejadecristo.net.br/',
-          logo: {
-            '@type': 'ImageObject',
-            url: 'https://www.igrejadecristo.net.br/assets/img/logo.svg',
-            width: '300',
-            height: '120',
-          },
-          description:
-            'Conheça a história, missão, visão e valores da Igreja de Cristo. Uma comunidade cristã firmada na Bíblia, em Jesus Cristo e no amor ao próximo.',
-          sameAs: [
-            'https://www.instagram.com/igrejadecristogaropabasc/',
-            'https://www.facebook.com/IgrejadeCristoCuritibaCentro',
-            'https://www.youtube.com/@IgrejadeCristoCuritiba',
-            'https://wa.me/5553981493086',
-          ],
-          contactPoint: {
-            '@type': 'ContactPoint',
-            telephone: '+55-53-98149-3086',
-            contactType: 'General Inquiries',
-            availableLanguage: ['Portuguese'],
-          },
-        },
-
-        // WEBSITE
-        {
-          '@type': 'WebSite',
-          '@id': 'https://www.igrejadecristo.net.br/#website',
-          name: 'Igreja de Cristo',
-          alternateName: 'Igreja de Cristo no Brasil',
-          url: 'https://www.igrejadecristo.net.br/',
-          publisher: {
-            '@id': 'https://www.igrejadecristo.net.br/#organization',
-          },
-          inLanguage: 'pt-BR',
-          potentialAction: {
-            '@type': 'SearchAction',
-            target: {
-              '@type': 'EntryPoint',
-              urlTemplate: 'https://www.igrejadecristo.net.br/search?q={search_term_string}',
-            },
-            'query-input': 'required name=search_term_string',
-          },
-        },
-
-        // ABOUT PAGE — QUEM SOMOS
         {
           '@type': 'AboutPage',
-          '@id': 'https://www.igrejadecristo.net.br/quem-somos#webpage',
-          name: 'Quem Somos | Igreja de Cristo - História, Fé, Missão e Valores',
-          description:
-            'Conheça a história, missão, visão e valores da Igreja de Cristo. Uma comunidade cristã firmada na Bíblia, em Jesus Cristo e no amor ao próximo. Saiba mais sobre nossa fé e propósito.',
-          url: 'https://www.igrejadecristo.net.br/quem-somos',
+          '@id': webpageId,
+          name: this.pageTitle,
+          description: this.pageDescription,
+          url: pageUrl,
           inLanguage: 'pt-BR',
           isPartOf: {
-            '@id': 'https://www.igrejadecristo.net.br/#website',
+            '@id': websiteId,
           },
           about: {
-            '@id': 'https://www.igrejadecristo.net.br/#organization',
+            '@id': organizationId,
           },
           breadcrumb: {
-            '@id': 'https://www.igrejadecristo.net.br/quem-somos#breadcrumb',
+            '@id': breadcrumbId,
+          },
+          primaryImageOfPage: {
+            '@type': 'ImageObject',
+            url: `${this.baseUrl}/assets/img/og-image-quem-somos.jpg`,
+            caption: 'Igreja de Cristo - Conheça nossa história, fé, missão e valores',
           },
           mainEntity: {
             '@type': 'ItemList',
@@ -171,37 +142,35 @@ export class QuemSomos implements OnInit {
                 position: 1,
                 name: 'Nossa história',
                 description: 'Conheça a origem da Igreja de Cristo e sua trajetória.',
-                url: 'https://www.igrejadecristo.net.br/quem-somos#historia',
+                url: `${pageUrl}#historia`,
               },
               {
                 '@type': 'ListItem',
                 position: 2,
                 name: 'Nossa fé',
                 description: 'Acreditamos em Jesus Cristo e na Bíblia como nossa regra de fé.',
-                url: 'https://www.igrejadecristo.net.br/quem-somos#fe',
+                url: `${pageUrl}#fe`,
               },
               {
                 '@type': 'ListItem',
                 position: 3,
                 name: 'Nossa missão',
                 description: 'Anunciar o Evangelho e servir ao próximo com amor.',
-                url: 'https://www.igrejadecristo.net.br/quem-somos#missao',
+                url: `${pageUrl}#missao`,
               },
               {
                 '@type': 'ListItem',
                 position: 4,
                 name: 'Nossos valores',
                 description: 'Fundamentados na Bíblia, vivemos em comunhão e amor.',
-                url: 'https://www.igrejadecristo.net.br/quem-somos#valores',
+                url: `${pageUrl}#valores`,
               },
             ],
           },
         },
-
-        // BREADCRUMB LIST
         {
           '@type': 'BreadcrumbList',
-          '@id': 'https://www.igrejadecristo.net.br/quem-somos#breadcrumb',
+          '@id': breadcrumbId,
           name: 'Breadcrumbs da página Quem Somos',
           description: 'Caminho de navegação para a página Quem Somos da Igreja de Cristo.',
           itemListElement: [
@@ -209,19 +178,19 @@ export class QuemSomos implements OnInit {
               '@type': 'ListItem',
               position: 1,
               name: 'Início',
-              item: 'https://www.igrejadecristo.net.br/',
+              item: `${this.baseUrl}/`,
             },
             {
               '@type': 'ListItem',
               position: 2,
               name: 'Quem Somos',
-              item: 'https://www.igrejadecristo.net.br/quem-somos',
+              item: pageUrl,
             },
           ],
         },
       ],
     };
 
-    this.seo.setJsonLd(jsonLd);
+    this.seo.setJsonLd(jsonLd, this.jsonLdId);
   }
 }

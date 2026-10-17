@@ -17,6 +17,14 @@ import { Contact } from '../../shared/models/contact-model';
 const SITE_URL = 'https://www.igrejadecristo.net.br';
 const PAGE_URL = `${SITE_URL}/igrejas`;
 
+const PAGE_TITLE = 'Igrejas de Cristo no Brasil: Endereços e Contatos';
+
+const PAGE_DESCRIPTION =
+  'Encontre uma Igreja de Cristo perto de você. Veja as igrejas por Estado e cidade, com endereço e contato de cada congregação.';
+
+const PAGE_IMAGE = `${SITE_URL}/assets/img/og-image-igrejas.jpg`;
+const JSON_LD_ID = 'json-ld-igrejas';
+
 interface EstadoAgrupado {
   nome: string;
   uf: string;
@@ -50,6 +58,7 @@ export class Igrejas implements OnInit {
   readonly estados = signal<EstadoAgrupado[]>([]);
   readonly carregando = signal(true);
   readonly erro = signal(false);
+
   /** Texto lido por leitores de tela após uma busca (aria-live). */
   readonly mensagemBusca = signal('');
 
@@ -65,15 +74,7 @@ export class Igrejas implements OnInit {
   igrejas: Church[] = [];
 
   ngOnInit(): void {
-    this.seo.update({
-      title: 'Igrejas de Cristo no Brasil: Endereços e Contatos',
-      description:
-        'Encontre uma Igreja de Cristo perto de você. Veja as igrejas por Estado e cidade, com endereço e contato de cada congregação.',
-      path: '/igrejas',
-      image: `${SITE_URL}/assets/img/og-image-igrejas.jpg`,
-      imageAlt: 'Igrejas de Cristo no Brasil: encontre uma comunidade perto de você',
-    });
-
+    this.setupSEO();
     this.carregar();
 
     this.igrejasService
@@ -83,6 +84,22 @@ export class Igrejas implements OnInit {
         next: (contatos) => this.contatos.set(contatos),
         error: (erro) => console.error('Erro ao buscar contatos:', erro),
       });
+  }
+
+  /**
+   * Configura os metadados SEO da página por meio do SeoService.
+   */
+  private setupSEO(): void {
+    this.seo.update({
+      title: PAGE_TITLE,
+      description: PAGE_DESCRIPTION,
+      path: '/igrejas',
+      image: PAGE_IMAGE,
+      imageAlt: 'Igrejas de Cristo no Brasil: encontre uma comunidade perto de você',
+    });
+
+    // Entidades globais compartilhadas pelo site.
+    this.seo.setGlobalJsonLd();
   }
 
   buscarIgrejas(valor: string, event?: Event): void {
@@ -98,10 +115,12 @@ export class Igrejas implements OnInit {
 
   /**
    * Carrega todas as igrejas (sem termo) ou busca por termo.
-   * Cancela a requisição anterior para evitar resposta atrasada sobrescrevendo a lista.
+   * Cancela a requisição anterior para evitar resposta atrasada
+   * sobrescrevendo a lista.
    */
   private carregar(termo = ''): void {
     this.requisicaoAtual?.unsubscribe();
+
     this.carregando.set(true);
     this.erro.set(false);
 
@@ -113,10 +132,13 @@ export class Igrejas implements OnInit {
       next: (igrejas) => {
         this.igrejas = igrejas;
         this.organizarPorEstado();
+
         this.carregando.set(false);
+
         this.mensagemBusca.set(termo ? this.montarMensagemBusca(igrejas.length, termo) : '');
 
-        // JSON-LD descreve a lista completa: gerado uma única vez, nunca a partir de busca
+        // O JSON-LD representa a lista completa, nunca os resultados
+        // filtrados de uma busca. É gerado uma única vez por instância.
         if (!termo && !this.jsonLdGerado && igrejas.length > 0) {
           this.addJsonLd(igrejas);
           this.jsonLdGerado = true;
@@ -124,9 +146,11 @@ export class Igrejas implements OnInit {
       },
       error: (erro) => {
         console.error('Erro ao carregar igrejas:', erro);
+
         this.estados.set([]);
         this.erro.set(true);
         this.carregando.set(false);
+
         this.mensagemBusca.set('Não foi possível carregar as igrejas agora.');
       },
     });
@@ -136,7 +160,9 @@ export class Igrejas implements OnInit {
     if (total === 0) {
       return `Nenhuma igreja encontrada para "${termo}".`;
     }
+
     const resultado = total === 1 ? '1 igreja encontrada' : `${total} igrejas encontradas`;
+
     return `${resultado} para "${termo}".`;
   }
 
@@ -147,6 +173,7 @@ export class Igrejas implements OnInit {
       if (!estadosMap.has(igreja.uf)) {
         estadosMap.set(igreja.uf, []);
       }
+
       estadosMap.get(igreja.uf)!.push(igreja);
     });
 
@@ -163,59 +190,80 @@ export class Igrejas implements OnInit {
   }
 
   /**
-   * JSON-LD específico desta página. Organization e WebSite NÃO ficam aqui:
-   * são globais (index.html) e esta página apenas os referencia por @id.
+   * JSON-LD específico desta página.
+   * Organization e WebSite são globais e apenas referenciados por @id.
    */
   private addJsonLd(igrejas: Church[]): void {
-    this.seo.setJsonLd({
-      '@context': 'https://schema.org',
-      '@graph': [
-        {
-          '@type': 'CollectionPage',
-          '@id': `${PAGE_URL}#webpage`,
-          url: PAGE_URL,
-          name: 'Igrejas de Cristo no Brasil',
-          description:
-            'Lista de igrejas de Cristo no Brasil organizadas por Estado e cidade, com endereço e contato.',
-          inLanguage: 'pt-BR',
-          isPartOf: { '@id': `${SITE_URL}/#website` },
-          about: { '@id': `${SITE_URL}/#organization` },
-          breadcrumb: { '@id': `${PAGE_URL}#breadcrumb` },
-          mainEntity: { '@id': `${PAGE_URL}#lista` },
-        },
-        {
-          '@type': 'BreadcrumbList',
-          '@id': `${PAGE_URL}#breadcrumb`,
-          itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Início', item: `${SITE_URL}/` },
-            { '@type': 'ListItem', position: 2, name: 'Igrejas', item: PAGE_URL },
-          ],
-        },
-        {
-          '@type': 'ItemList',
-          '@id': `${PAGE_URL}#lista`,
-          name: 'Igrejas de Cristo no Brasil por Estado',
-          numberOfItems: igrejas.length,
-          itemListElement: igrejas.map((igreja, index) => ({
-            '@type': 'ListItem',
-            position: index + 1,
-            item: {
-              '@type': 'Church',
-              name: igreja.nomeCongregacao,
-              address: {
-                '@type': 'PostalAddress',
-                streetAddress: [igreja.enderecoLogradouro, igreja.numero, igreja.complemento]
-                  .filter(Boolean)
-                  .join(', '),
-                addressLocality: igreja.cidade,
-                addressRegion: igreja.uf,
-                postalCode: igreja.cep || undefined,
-                addressCountry: igreja.pais || 'BR',
-              },
+    this.seo.setJsonLd(
+      {
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'CollectionPage',
+            '@id': `${PAGE_URL}#webpage`,
+            url: PAGE_URL,
+            name: 'Igrejas de Cristo no Brasil',
+            description:
+              'Lista de igrejas de Cristo no Brasil organizadas por Estado e cidade, com endereço e contato.',
+            inLanguage: 'pt-BR',
+            isPartOf: {
+              '@id': `${SITE_URL}/#website`,
             },
-          })),
-        },
-      ],
-    });
+            about: {
+              '@id': `${SITE_URL}/#organization`,
+            },
+            breadcrumb: {
+              '@id': `${PAGE_URL}#breadcrumb`,
+            },
+            mainEntity: {
+              '@id': `${PAGE_URL}#lista`,
+            },
+          },
+          {
+            '@type': 'BreadcrumbList',
+            '@id': `${PAGE_URL}#breadcrumb`,
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Início',
+                item: `${SITE_URL}/`,
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Igrejas',
+                item: PAGE_URL,
+              },
+            ],
+          },
+          {
+            '@type': 'ItemList',
+            '@id': `${PAGE_URL}#lista`,
+            name: 'Igrejas de Cristo no Brasil por Estado',
+            numberOfItems: igrejas.length,
+            itemListElement: igrejas.map((igreja, index) => ({
+              '@type': 'ListItem',
+              position: index + 1,
+              item: {
+                '@type': 'Church',
+                name: igreja.nomeCongregacao,
+                address: {
+                  '@type': 'PostalAddress',
+                  streetAddress: [igreja.enderecoLogradouro, igreja.numero, igreja.complemento]
+                    .filter(Boolean)
+                    .join(', '),
+                  addressLocality: igreja.cidade,
+                  addressRegion: igreja.uf,
+                  postalCode: igreja.cep || undefined,
+                  addressCountry: igreja.pais || 'BR',
+                },
+              },
+            })),
+          },
+        ],
+      },
+      JSON_LD_ID,
+    );
   }
 }
