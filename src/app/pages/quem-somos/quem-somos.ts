@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
+import { Component, OnInit, inject } from '@angular/core';
+import { SeoService } from '../../shared/services/seo.service';
 import { PageLayout } from '../../shared/components/page-layout/page-layout';
 import { SectionContainer } from '../../shared/components/section-container/section-container';
 import { SectionSideTitle } from '../../shared/components/side-title/section-side-title';
@@ -21,6 +21,8 @@ import { MissionCard } from '../../shared/components/mission-card/mission-card';
   styleUrl: './quem-somos.css',
 })
 export class QuemSomos implements OnInit {
+  private readonly seo = inject(SeoService);
+
   // Dados do Hero
   heroSlides = [
     {
@@ -59,133 +61,38 @@ export class QuemSomos implements OnInit {
     },
   ];
 
-  constructor(
-    private title: Title,
-    private meta: Meta,
-  ) {}
-
   ngOnInit(): void {
     this.setupSEO();
     this.addJsonLd();
   }
 
   /**
-   * Configura todas as tags SEO para a página "Quem Somos"
+   * Configura os metadados SEO da página Quem Somos.
    */
   private setupSEO(): void {
-    // ============================================
-    // TÍTULO DA PÁGINA - Otimizado com palavras-chave
-    // ============================================
-    this.title.setTitle('Quem Somos | Igreja de Cristo - História, Fé, Missão e Valores');
-
-    // ============================================
-    // METADADOS BÁSICOS - Descrição mais rica
-    // ============================================
-    this.meta.updateTag({
-      name: 'description',
-      content:
+    this.seo.update({
+      title: 'Quem Somos | Igreja de Cristo - História, Fé, Missão e Valores',
+      description:
         'Conheça a história, missão, visão e valores da Igreja de Cristo. Uma comunidade cristã firmada na Bíblia, em Jesus Cristo e no amor ao próximo. Saiba mais sobre nossa fé e propósito.',
-    });
-    this.meta.updateTag({
-      name: 'keywords',
-      content:
+      path: '/quem-somos',
+      image: 'https://www.igrejadecristo.net.br/assets/img/og-image-quem-somos.jpg',
+      imageAlt: 'Igreja de Cristo - Conheça nossa história, fé, missão e valores',
+      keywords:
         'quem somos Igreja de Cristo, história da igreja, missão cristã, visão igreja, valores cristãos, comunidade cristã, fé em Jesus, bíblia, evangelho, declaração de fé, propósito cristão, igreja evangélica Brasil',
+      revisitAfter: '7 days',
+      twitterSite: '@igrejadecristo',
+      twitterCreator: '@igrejadecristo',
     });
-    this.meta.updateTag({
-      name: 'robots',
-      content: 'index, follow, max-snippet:-1, max-image-preview:large',
-    });
-    this.meta.updateTag({
-      name: 'googlebot',
-      content: 'index, follow, max-snippet:-1, max-image-preview:large',
-    });
-    this.meta.updateTag({
-      name: 'revisit-after',
-      content: '7 days',
-    });
-
-    // ============================================
-    // OPEN GRAPH - Otimizado para compartilhamento
-    // ============================================
-    this.meta.updateTag({ property: 'og:type', content: 'website' });
-    this.meta.updateTag({
-      property: 'og:title',
-      content: 'Quem Somos | Igreja de Cristo - História, Fé, Missão e Valores',
-    });
-    this.meta.updateTag({
-      property: 'og:description',
-      content:
-        'Conheça a história, missão, visão e valores da Igreja de Cristo. Uma comunidade cristã firmada na Bíblia, em Jesus Cristo e no amor ao próximo. Descubra nossa fé e propósito.',
-    });
-    this.meta.updateTag({
-      property: 'og:url',
-      content: 'https://www.igrejadecristo.net.br/quem-somos',
-    });
-    this.meta.updateTag({ property: 'og:site_name', content: 'Igreja de Cristo' });
-    this.meta.updateTag({ property: 'og:locale', content: 'pt_BR' });
-    this.meta.updateTag({
-      property: 'og:image',
-      content: 'https://www.igrejadecristo.net.br/assets/img/og-image-quem-somos.jpg',
-    });
-    this.meta.updateTag({ property: 'og:image:width', content: '1200' });
-    this.meta.updateTag({ property: 'og:image:height', content: '630' });
-    this.meta.updateTag({
-      property: 'og:image:alt',
-      content: 'Igreja de Cristo - Conheça nossa história, fé, missão e valores',
-    });
-
-    // ============================================
-    // TWITTER CARD - Otimizado
-    // ============================================
-    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
-    this.meta.updateTag({
-      name: 'twitter:title',
-      content: 'Quem Somos | Igreja de Cristo - História, Fé, Missão e Valores',
-    });
-    this.meta.updateTag({
-      name: 'twitter:description',
-      content:
-        'Conheça a história, missão, visão e valores da Igreja de Cristo. Uma comunidade cristã firmada na Bíblia, em Jesus Cristo e no amor ao próximo.',
-    });
-    this.meta.updateTag({
-      name: 'twitter:image',
-      content: 'https://www.igrejadecristo.net.br/assets/img/og-image-quem-somos.jpg',
-    });
-    this.meta.updateTag({ name: 'twitter:site', content: '@igrejadecristo' });
-    this.meta.updateTag({ name: 'twitter:creator', content: '@igrejadecristo' });
-
-    // ============================================
-    // CORES E TEMA - Mantido igual
-    // ============================================
-    this.meta.updateTag({ name: 'theme-color', content: '#163b67' });
-    this.meta.updateTag({ name: 'msapplication-TileColor', content: '#163b67' });
   }
 
   /**
-   * Adiciona JSON-LD (Dados Estruturados) para melhorar o SEO
+   * Adiciona os dados estruturados JSON-LD da página.
    */
   private addJsonLd(): void {
-    // VERIFICA SE ESTÁ NO NAVEGADOR
-    if (typeof document === 'undefined' || typeof window === 'undefined') {
-      return;
-    }
-
-    // Remove JSON-LD antigo se existir
-    const oldScript = document.querySelector('script[type="application/ld+json"]');
-    if (oldScript) {
-      oldScript.remove();
-    }
-
-    // Cria o novo script com os dados estruturados
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-
     const jsonLd = {
       '@context': 'https://schema.org',
       '@graph': [
-        // ============================================
         // ORGANIZAÇÃO
-        // ============================================
         {
           '@type': 'Organization',
           '@id': 'https://www.igrejadecristo.net.br/#organization',
@@ -213,9 +120,8 @@ export class QuemSomos implements OnInit {
             availableLanguage: ['Portuguese'],
           },
         },
-        // ============================================
+
         // WEBSITE
-        // ============================================
         {
           '@type': 'WebSite',
           '@id': 'https://www.igrejadecristo.net.br/#website',
@@ -235,9 +141,8 @@ export class QuemSomos implements OnInit {
             'query-input': 'required name=search_term_string',
           },
         },
-        // ============================================
-        // ABOUT PAGE - Página Quem Somos
-        // ============================================
+
+        // ABOUT PAGE — QUEM SOMOS
         {
           '@type': 'AboutPage',
           '@id': 'https://www.igrejadecristo.net.br/quem-somos#webpage',
@@ -292,9 +197,8 @@ export class QuemSomos implements OnInit {
             ],
           },
         },
-        // ============================================
+
         // BREADCRUMB LIST
-        // ============================================
         {
           '@type': 'BreadcrumbList',
           '@id': 'https://www.igrejadecristo.net.br/quem-somos#breadcrumb',
@@ -318,7 +222,6 @@ export class QuemSomos implements OnInit {
       ],
     };
 
-    script.textContent = JSON.stringify(jsonLd);
-    document.head.appendChild(script);
+    this.seo.setJsonLd(jsonLd);
   }
 }

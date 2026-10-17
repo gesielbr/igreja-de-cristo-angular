@@ -11,7 +11,7 @@ import {
 import { HOME_HERO } from '../../shared/configs/hero-slide-config';
 import { PageLayout } from '../../shared/components/page-layout/page-layout';
 import { IgrejasService } from '../../shared/services/igrejas.service';
-import { SeoService } from '../../shared/services/seo-home.service';
+import { SeoService } from '../../shared/services/seo.service';
 import { Church } from '../../shared/models/church.model';
 import { Contact } from '../../shared/models/contact-model';
 
