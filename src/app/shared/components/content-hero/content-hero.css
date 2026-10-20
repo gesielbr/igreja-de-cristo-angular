@@ -4,7 +4,7 @@
 
 .page-hero {
   background:
-    linear-gradient(100deg, rgba(32, 78, 124, 0.82), rgba(73, 124, 174, 0.5)),
+    linear-gradient(100deg, #142e48d1, rgba(73, 124, 174, 0.5)),
     url('/assets/img/culto-igreja-de-cristo.png') center / cover;
 }
 

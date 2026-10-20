@@ -3,11 +3,16 @@
 :root {
   /* Brand Colors */
   --brand-primary: #163b67;
-  --brand-primary-soft: #214f7a;
+  /* --brand-primary-soft: #214f7a; */
+  --brand-primary-soft: #001a32;
   --brand-primary-super-soft: rgba(22, 59, 103, 0.08);
   --brand-primary-dark: #102945;
-  --brand-accent: #d4af37;
-  --brand-accent-dark: #b79322;
+  /* --brand-accent: #d4af37; */
+  --brand-accent: #bf7b12;
+  --brand-accent: #eaa61a;
+  /* --brand-accent-dark: #b79322; */
+  /* --brand-accent-dark: #eaa61a; */
+  --brand-accent-dark: #ca8b07;
   --brand-accent-soft: rgba(212, 175, 55, 0.16);
 
   /* Neutral Colors */
