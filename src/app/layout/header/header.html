@@ -166,10 +166,11 @@
               routerLink="/"
               routerLinkActive="active"
               [routerLinkActiveOptions]="{ exact: true }"
+              #rlaInicioDesktop="routerLinkActive"
               class="nav-link sidebar-link rounded-3 px-3"
-              aria-current="page"
+              [attr.aria-current]="rlaInicioDesktop.isActive ? 'page' : null"
             >
-              <i class="bi bi-house-door me-2"></i>
+              <i class="bi bi-house-door me-2" aria-hidden="true"></i>
               Início
             </a>
           </li>
@@ -178,9 +179,11 @@
             <a
               routerLink="/quem-somos"
               routerLinkActive="active"
+              #rlaQuemSomosDesktop="routerLinkActive"
               class="nav-link sidebar-link rounded-3 px-3"
+              [attr.aria-current]="rlaQuemSomosDesktop.isActive ? 'page' : null"
             >
-              <i class="bi bi-people me-2"></i>
+              <i class="bi bi-people me-2" aria-hidden="true"></i>
               Quem Somos
             </a>
           </li>
@@ -189,9 +192,11 @@
             <a
               routerLink="/igrejas"
               routerLinkActive="active"
+              #rlaIgrejasDesktop="routerLinkActive"
               class="nav-link sidebar-link rounded-3 px-3"
+              [attr.aria-current]="rlaIgrejasDesktop.isActive ? 'page' : null"
             >
-              <i class="bi bi-geo-alt me-2"></i>
+              <i class="bi bi-geo-alt me-2" aria-hidden="true"></i>
               Encontre sua igreja
             </a>
           </li>
@@ -200,9 +205,11 @@
             <a
               routerLink="/eventos"
               routerLinkActive="active"
+              #rlaEventosDesktop="routerLinkActive"
               class="nav-link sidebar-link rounded-3 px-3"
+              [attr.aria-current]="rlaEventosDesktop.isActive ? 'page' : null"
             >
-              <i class="bi bi-calendar-event me-2"></i>
+              <i class="bi bi-calendar-event me-2" aria-hidden="true"></i>
               Eventos
             </a>
           </li>
@@ -211,9 +218,11 @@
             <a
               routerLink="/galeria"
               routerLinkActive="active"
+              #rlaGaleriaDesktop="routerLinkActive"
               class="nav-link sidebar-link rounded-3 px-3"
+              [attr.aria-current]="rlaGaleriaDesktop.isActive ? 'page' : null"
             >
-              <i class="bi bi-images me-2"></i>
+              <i class="bi bi-images me-2" aria-hidden="true"></i>
               Galeria
             </a>
           </li>
@@ -222,9 +231,11 @@
             <a
               routerLink="/contato"
               routerLinkActive="active"
+              #rlaContatoDesktop="routerLinkActive"
               class="nav-link sidebar-link rounded-3 px-3"
+              [attr.aria-current]="rlaContatoDesktop.isActive ? 'page' : null"
             >
-              <i class="bi bi-chat-dots me-2"></i>
+              <i class="bi bi-chat-dots me-2" aria-hidden="true"></i>
               Contato
             </a>
           </li>
