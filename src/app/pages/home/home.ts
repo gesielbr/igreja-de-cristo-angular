@@ -40,7 +40,7 @@ export class Home implements OnInit {
   private readonly homeDescription =
     'Conheça a Igreja de Cristo, sua fé baseada no Amor, na Bíblia e no Evangelho de Jesus. Encontre congregações, informações de contato e comunidades cristãs.';
 
-  private readonly homeImage = `${this.baseUrl}/assets/img/og-image-home.jpg`;
+  private readonly homeImage = `${this.baseUrl}/assets/img/og-image.jpg`;
 
   heroSlides = HOME_HERO;
 

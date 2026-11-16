@@ -22,7 +22,7 @@ const PAGE_TITLE = 'Igrejas de Cristo no Brasil: Endereços e Contatos';
 const PAGE_DESCRIPTION =
   'Encontre uma Igreja de Cristo perto de você. Veja as igrejas por Estado e cidade, com endereço e contato de cada congregação.';
 
-const PAGE_IMAGE = `${SITE_URL}/assets/img/og-image-igrejas.jpg`;
+const PAGE_IMAGE = `${SITE_URL}/assets/img/og-image.jpg`;
 const JSON_LD_ID = 'json-ld-igrejas';
 
 interface EstadoAgrupado {

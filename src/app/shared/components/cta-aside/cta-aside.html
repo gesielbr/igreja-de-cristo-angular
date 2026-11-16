@@ -17,23 +17,41 @@
     }
 
     @for (link of section.links; track link.href) {
-      <a
-        class="btn w-100"
-        [class.mb-2]="variant() === 'desktop'"
-        [class.mb-1]="variant() === 'mobile'"
-        [class.btn-outline-light]="link.variant === 'outline'"
-        [class.btn-gold]="link.variant === 'gold'"
-        [href]="link.href"
-        [attr.aria-label]="link.ariaLabel ?? link.label"
-        [attr.target]="link.external ? '_blank' : null"
-        [attr.rel]="link.external ? 'noopener noreferrer' : null"
-      >
-        @if (link.icon) {
-          <i aria-hidden="true" [class]="'bi me-1 ' + link.icon"></i>
-        }
+      @if (link.external) {
+        <a
+          class="btn w-100"
+          [class.mb-2]="variant() === 'desktop'"
+          [class.mb-1]="variant() === 'mobile'"
+          [class.btn-outline-light]="link.variant === 'outline'"
+          [class.btn-gold]="link.variant === 'gold'"
+          [href]="link.href"
+          [attr.aria-label]="link.ariaLabel ?? link.label"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          @if (link.icon) {
+            <i aria-hidden="true" [class]="'bi me-1 ' + link.icon"></i>
+          }
 
-        {{ link.label }}
-      </a>
+          {{ link.label }}
+        </a>
+      } @else {
+        <a
+          class="btn w-100"
+          [class.mb-2]="variant() === 'desktop'"
+          [class.mb-1]="variant() === 'mobile'"
+          [class.btn-outline-light]="link.variant === 'outline'"
+          [class.btn-gold]="link.variant === 'gold'"
+          [routerLink]="link.href"
+          [attr.aria-label]="link.ariaLabel ?? link.label"
+        >
+          @if (link.icon) {
+            <i aria-hidden="true" [class]="'bi me-1 ' + link.icon"></i>
+          }
+
+          {{ link.label }}
+        </a>
+      }
     }
   </section>
 }

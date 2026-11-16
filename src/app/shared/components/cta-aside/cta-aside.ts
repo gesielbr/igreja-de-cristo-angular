@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-
+import { RouterLink } from '@angular/router';
 import { CtaAsideSection } from '../../models/cta-aside-section.model';
 
 @Component({
@@ -7,6 +7,7 @@ import { CtaAsideSection } from '../../models/cta-aside-section.model';
   standalone: true,
   templateUrl: './cta-aside.html',
   styleUrl: './cta-aside.css',
+  imports: [RouterLink],
 })
 export class CtaAsideComponent {
   sections = input.required<CtaAsideSection[]>();

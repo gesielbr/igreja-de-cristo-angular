@@ -20,7 +20,7 @@ const PAGE_TITLE =
 const PAGE_DESCRIPTION =
   'Veja fotos da Igreja de Cristo no Brasil em momentos de culto, batismos, estudos bíblicos, oração, comunhão e encontros. Confira registros da comunidade de Garopaba e acompanhe futuras galerias de outras congregações.';
 
-const PAGE_IMAGE = `${SITE_URL}/assets/img/garopaba/irmao_paulo_pregando.jpeg`;
+const PAGE_IMAGE = `${SITE_URL}/assets/img/og-image.jpg`;
 
 const PAGE_IMAGE_ALT =
   'Galeria da Igreja de Cristo no Brasil com registros de cultos, batismos e comunhão';

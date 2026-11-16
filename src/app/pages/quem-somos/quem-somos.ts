@@ -83,7 +83,7 @@ export class QuemSomos implements OnInit {
       title: this.pageTitle,
       description: this.pageDescription,
       path: '/quem-somos',
-      image: `${this.baseUrl}/assets/img/og-image-quem-somos.jpg`,
+      image: `${this.baseUrl}/assets/img/og-image.jpg`,
       imageAlt: 'Igreja de Cristo - Conheça nossa história, fé, missão e valores',
       keywords:
         'quem somos Igreja de Cristo, história da igreja, missão cristã, visão igreja, valores cristãos, comunidade cristã, fé em Jesus, bíblia, evangelho, declaração de fé, propósito cristão, igreja evangélica Brasil',

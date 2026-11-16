@@ -19,7 +19,7 @@ const PAGE_TITLE = 'Eventos da Igreja de Cristo no Brasil | Cultos, Congressos e
 const PAGE_DESCRIPTION =
   'Confira a programação e os eventos da Igreja de Cristo no Brasil, incluindo cultos, estudos bíblicos, congressos, conferências e encontros nacionais e regionais realizados por congregações em diferentes cidades.';
 
-const PAGE_IMAGE = `${SITE_URL}/assets/img/og-image-eventos.jpg`;
+const PAGE_IMAGE = `${SITE_URL}/assets/img/og-image.jpg`;
 const JSON_LD_ID = 'json-ld-eventos';
 
 const KEYWORDS =
