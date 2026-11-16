@@ -47,7 +47,7 @@ export class TrackingService {
 }
  */
 
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, ApplicationRef } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
@@ -56,6 +56,8 @@ import { filter } from 'rxjs/operators';
 })
 export class TrackingService {
   private router = inject(Router);
+
+  private appRef = inject(ApplicationRef);
 
   init(): void {
     window.dataLayer = window.dataLayer || [];
@@ -160,8 +162,6 @@ export class TrackingService {
           page_url: window.location.href,
         };
 
-        console.log('TRACKING:', eventData);
-
         window.dataLayer?.push(eventData);
       },
       true,
@@ -174,16 +174,16 @@ export class TrackingService {
       .subscribe((event) => {
         if (!(event instanceof NavigationEnd)) return;
 
-        const pageView = {
-          event: 'page_view',
-          page_location: window.location.href,
-          page_path: event.urlAfterRedirects,
-          page_title: document.title,
-        };
+        this.appRef.whenStable().then(() => {
+          const pageView = {
+            event: 'page_view',
+            page_location: window.location.href,
+            page_path: event.urlAfterRedirects,
+            page_title: document.title,
+          };
 
-        console.log('PAGE VIEW:', pageView);
-
-        window.dataLayer?.push(pageView);
+          window.dataLayer?.push(pageView);
+        });
       });
   }
 }
