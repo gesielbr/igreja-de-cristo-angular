@@ -162,6 +162,8 @@ export class TrackingService {
           page_url: window.location.href,
         };
 
+        console.log('TRACKING:', eventData);
+
         window.dataLayer?.push(eventData);
       },
       true,
@@ -181,6 +183,8 @@ export class TrackingService {
             page_path: event.urlAfterRedirects,
             page_title: document.title,
           };
+
+          console.log('PAGE VIEW:', pageView);
 
           window.dataLayer?.push(pageView);
         });
