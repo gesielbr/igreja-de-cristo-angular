@@ -56,11 +56,38 @@ import { filter } from 'rxjs/operators';
 })
 export class TrackingService {
   private router = inject(Router);
-
   private appRef = inject(ApplicationRef);
+
+  private readonly COOKIE_NAME = 'idc_visitor_id';
+  private readonly COOKIE_DAYS = 90;
+
+  /**
+   * Recupera o visitor_id existente ou gera um novo UUID v4 armazenado por 90 dias
+   */
+  private getOrCreateVisitorId(): string {
+    const match = document.cookie.match(new RegExp('(^| )' + this.COOKIE_NAME + '=([^;]+)'));
+    if (match) {
+      return match[2];
+    }
+
+    const newUuid =
+      typeof crypto !== 'undefined' && crypto.randomUUID
+        ? crypto.randomUUID()
+        : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+            const r = (Math.random() * 16) | 0;
+            const v = c === 'x' ? r : (r & 0x3) | 0x8;
+            return v.toString(16);
+          });
+
+    const expires = new Date(Date.now() + this.COOKIE_DAYS * 864e5).toUTCString();
+    document.cookie = `${this.COOKIE_NAME}=${newUuid}; expires=${expires}; path=/; SameSite=Lax; Secure`;
+
+    return newUuid;
+  }
 
   init(): void {
     window.dataLayer = window.dataLayer || [];
+    const visitorId = this.getOrCreateVisitorId();
 
     console.log('DataLayer inicializado:', window.dataLayer);
 
@@ -68,14 +95,12 @@ export class TrackingService {
       'click',
       (event) => {
         const target = event.target as HTMLElement;
-
         const element = target.closest('button, a, [role="button"]') as HTMLElement | null;
 
         if (!element) return;
 
         // Data e hora
         const now = new Date();
-
         const eventDate = new Intl.DateTimeFormat('pt-BR', {
           day: '2-digit',
           month: '2-digit',
@@ -101,7 +126,6 @@ export class TrackingService {
 
         // Sistema operacional
         let operatingSystem = 'Unknown';
-
         if (/Windows NT/i.test(userAgent)) {
           operatingSystem = 'Windows';
         } else if (/Android/i.test(userAgent)) {
@@ -116,7 +140,6 @@ export class TrackingService {
 
         // Navegador
         let browser = 'Unknown';
-
         if (/Edg\//i.test(userAgent)) {
           browser = 'Microsoft Edge';
         } else if (/OPR\//i.test(userAgent)) {
@@ -131,9 +154,10 @@ export class TrackingService {
           browser = 'Safari';
         }
 
-        // Dados do evento
+        // Dados do evento de clique com o visitor_id embutido
         const eventData = {
           event: 'dom_interaction',
+          visitor_id: visitorId,
 
           // Data e hora
           event_date: eventDate,
@@ -146,16 +170,12 @@ export class TrackingService {
 
           // Informações do elemento
           element_type: element.tagName.toLowerCase(),
-
           element_text:
             element.getAttribute('aria-label') ||
             element.getAttribute('data-track-label') ||
             element.textContent?.trim(),
-
           element_id: element.id || undefined,
-
           element_class: element.className || undefined,
-
           element_url: element instanceof HTMLAnchorElement ? element.href : undefined,
 
           // Página atual
@@ -163,7 +183,6 @@ export class TrackingService {
         };
 
         console.log('TRACKING:', eventData);
-
         window.dataLayer?.push(eventData);
       },
       true,
@@ -177,15 +196,17 @@ export class TrackingService {
         if (!(event instanceof NavigationEnd)) return;
 
         this.appRef.whenStable().then(() => {
+          const visitorId = this.getOrCreateVisitorId();
+
           const pageView = {
             event: 'page_view',
+            visitor_id: visitorId,
             page_location: window.location.href,
             page_path: event.urlAfterRedirects,
             page_title: document.title,
           };
 
           console.log('PAGE VIEW:', pageView);
-
           window.dataLayer?.push(pageView);
         });
       });
