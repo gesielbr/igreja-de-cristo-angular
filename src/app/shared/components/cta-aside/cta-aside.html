@@ -17,6 +17,14 @@
     }
 
     @for (link of section.links; track link.href) {
+      <!-- Molde reutilizável com o conteúdo interno do botão -->
+      <ng-template #linkContent>
+        @if (link.icon) {
+          <i aria-hidden="true" [class]="'bi me-1 ' + link.icon"></i>
+        }
+        {{ link.label }}
+      </ng-template>
+
       @if (link.external) {
         <a
           class="btn w-100"
@@ -26,14 +34,11 @@
           [class.btn-gold]="link.variant === 'gold'"
           [href]="link.href"
           [attr.aria-label]="link.ariaLabel ?? link.label"
+          [attr.data-bs-dismiss]="variant() === 'mobile' ? 'offcanvas' : null"
           target="_blank"
           rel="noopener noreferrer"
         >
-          @if (link.icon) {
-            <i aria-hidden="true" [class]="'bi me-1 ' + link.icon"></i>
-          }
-
-          {{ link.label }}
+          <ng-container *ngTemplateOutlet="linkContent" />
         </a>
       } @else {
         <a
@@ -44,12 +49,9 @@
           [class.btn-gold]="link.variant === 'gold'"
           [routerLink]="link.href"
           [attr.aria-label]="link.ariaLabel ?? link.label"
+          [attr.data-bs-dismiss]="variant() === 'mobile' ? 'offcanvas' : null"
         >
-          @if (link.icon) {
-            <i aria-hidden="true" [class]="'bi me-1 ' + link.icon"></i>
-          }
-
-          {{ link.label }}
+          <ng-container *ngTemplateOutlet="linkContent" />
         </a>
       }
     }

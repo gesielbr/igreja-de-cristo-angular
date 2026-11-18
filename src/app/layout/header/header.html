@@ -7,7 +7,7 @@
 </a>
 
 <!-- Header mobile -->
-<header class="d-lg-none sticky-top bg-brand shadow-sm">
+<header class="d-lg-none sticky-top bg-brand shadow-sm" data-tracking-section="menu-mobile">
   <nav
     aria-label="Navegação principal mobile"
     class="navbar navbar-dark px-3 d-flex flex-nowrap align-items-center justify-content-between"
@@ -134,7 +134,11 @@
       <hr class="border-secondary my-4" />
 
       <!-- CORRIGIDO: adicionado () -->
-      <app-cta-aside [sections]="ctaSections()" variant="mobile"></app-cta-aside>
+      <app-cta-aside
+        [sections]="ctaSections()"
+        variant="mobile"
+        data-tracking-section="menu-mobile-dinamico"
+      ></app-cta-aside>
     </nav>
   </div>
 </header>
@@ -145,6 +149,7 @@
     <aside
       aria-label="Navegação e informações da igreja"
       class="col-lg-3 d-none d-lg-flex sidebar bg-brand text-white min-vh-100 sticky-top flex-column p-4"
+      data-tracking-section="menu-desktop"
     >
       <a
         aria-label="Igreja de Cristo - página inicial"

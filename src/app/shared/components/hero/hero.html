@@ -8,7 +8,12 @@
   >
     <div class="carousel-inner">
       @for (slide of slides(); track slide.image; let first = $first) {
-        <div class="carousel-item" [class.active]="first">
+        <!-- Adicionamos a linha abaixo -->
+        <div
+          class="carousel-item"
+          [class.active]="first"
+          [attr.data-tracking-section]="slide.title"
+        >
           <img
             [src]="slide.image"
             [alt]="slide.alt"
@@ -38,7 +43,6 @@
                 </p>
               }
 
-              <!-- Versão Desktop -->
               <a
                 aria-label="{{ slide.buttonAriaLabel || slide.buttonText }}"
                 [routerLink]="slide.buttonLink"
@@ -47,24 +51,13 @@
                 <i aria-hidden="true" class="bi bi-{{ slide.buttonIcon || 'chevron-right' }}"></i>
                 {{ slide.buttonText }}
               </a>
-
-              <!-- Versão Mobile -->
-              <!--  <a
-                aria-label="{{ slide.buttonAriaLabel || slide.buttonText }}"
-                [routerLink]="slide.buttonLink"
-                class="btn btn-gold mt-3 w-100 py-2 d-inline-block d-md-none"
-              >
-                <i
-                  aria-hidden="true"
-                  class="bi bi-{{ slide.buttonIcon || 'chevron-right' }} me-2"
-                ></i>
-                {{ slide.buttonText }}
-              </a> -->
             </div>
           </div>
         </div>
       }
     </div>
+
+    <!-- Indicadores do carrossel (mantidos iguais) -->
     <div class="carousel-indicators">
       @for (slide of slides(); track slide.image; let index = $index; let first = $first) {
         <button
